@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 
@@ -18,7 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "accounts.apps.AccountsConfig",
-    "personal_cabinet.apps.PersonalCabinetConfig"
+    "personal_account.apps.PersonalCabinetConfig"
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

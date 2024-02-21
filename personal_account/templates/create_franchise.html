@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Franchise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 66%; /* 2/3 от ширины видимой области страницы */
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 15px; /* Скругление углов */
+            box-sizing: border-box;
+            resize: vertical; /* Разрешить изменение размера по вертикали */
+            font-family: Arial, sans-serif; /* Установить шрифт */
+            font-size: 16px; /* Установить размер шрифта */
+            line-height: 1.5; /* Установить высоту строки */
+        }
+
+        textarea:focus {
+            border-color: #4caf50; /* изменение цвета границы при фокусе */
+            background-color: #fff; /* изменение цвета фона при фокусе */
+        }
+
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif; /* Установить шрифт */
+            font-size: 16px; /* Установить размер шрифта */
+            line-height: 1.5; /* Установить высоту строки */
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .preview-image {
+            width: 100px; /* Ширина изображения */
+            height: 100px; /* Высота изображения */
+            margin: 5px; /* Внешний отступ между изображениями */
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            overflow: hidden; /* Скрытие части изображения, выходящей за рамки div */
+        }
+
+        .image-container {
+            width: 100px; /* Размер квадратного div */
+            height: 100px; /* Размер квадратного div */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: #f0f0f0; /* Серый фон */
+            /* Добавляем тени для эффекта elevation */
+            border-radius: 10px; /* Скругление углов */
+        }
+
+        .image-container img {
+            width: 100%; /* Масштабирование изображения по ширине контейнера */
+            height: auto; /* Автоматическое масштабирование по высоте */
+
+        }
+
+        .delete-button {
+            color: red; /* Цвет крестика */
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        {#    ---------------------#}
+        .form-row {
+            display: flex;
+            justify-content: start;
+            margin: 10px;
+        }
+
+        .form-row > div {
+            justify-content: space-evenly;
+            margin: 10px;
+        }
+
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <h2>Create Franchise</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div>
+                <label for="id_short_description">Краткое описание:</label>
+                <input type="text" name="short_description" required="" id="id_short_description">
+            </div>
+
+            <div>
+                <label for="id_title">Название франшизы:</label>
+                <input type="text" name="title" required="" id="id_title">
+            </div>
+        </div>
+
+        {#        ---------------------#}
+        <div class="form-row">
+            <div>
+                <label for="id_inn_link">ИНН:</label>
+                <input name="inn_link" required="" id="id_inn_link"></input>
+            </div>
+
+            <div>
+                <label for="id_date_of_trademark_registration">Дата регистрации товарного знака:</label>
+                <input name="date_of_trademark_registration" required=""
+                       id="id_date_of_trademark_registration"></input>
+            </div>
+
+
+            <div>
+                <label for="id_business_launch_deadline">Крайний срок запуска бизнеса:</label>
+                <input type="number" name="business_launch_deadline" required="" id="id_business_launch_deadline">
+            </div>
+
+            <div>
+                <label for="id_year_of_company_opening">Год открытия франшизы:</label>
+                <input type="number" name="year_of_company_opening" required="" id="id_year_of_company_opening">
+            </div>
+
+            <div>
+                <label for="id_registered_trademark_number">Номер зарегистрированного товарного знака:</label>
+                <input type="number" name="registered_trademark_number" required="" id="id_registered_trademark_number">
+            </div>
+
+
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="id_juridical_information">Юридическая информация:</label>
+                <input name="juridical_information" required=""
+                       id="id_juridical_information"></input>
+            </div>
+
+            <div>
+                <label for="id_link_to_the_franchise_website">Ссылка на веб-сайт франшизы:</label>
+                <input name="link_to_the_franchise_website" required=""
+                       id="id_link_to_the_franchise_website"></input>
+            </div>
+
+            <div>
+                <label for="id_number_of_franchise_points">Количество точек франшизы:</label>
+                <input type="number" name="number_of_franchise_points" required="" id="id_number_of_franchise_points">
+            </div>
+            <div>
+                <label for="id_franchise_start_year">Год старта франшизы: </label>
+                <input type="number" name="franchise_start_year" required="" id="id_franchise_start_year">
+            </div>
+        </div>
+        {#------------------------------------------------------------------------#}
+
+        <div class="form-row">
+            <div>
+                <label for="id_lump_sum_payment">Единовременная выплата:</label>
+                <input type="number" name="lump_sum_payment" required="" id="id_lump_sum_payment">
+            </div>
+
+            <div>
+                <label for="id_investments_from_and_to">Инвестиции от и до:</label>
+                <input name="investments_from_and_to" required=""
+                       id="id_investments_from_and_to"></input>
+            </div>
+
+            <div>
+                <label for="id_payback_period">Срок окупаемости:</label>
+                <input type="number" name="payback_period" required="" id="id_payback_period">
+            </div>
+
+            <div>
+                <label for="id_monthly_profit">Ежемесячная прибыль:</label>
+                <input name="monthly_profit" required="" id="id_monthly_profit"></input>
+            </div>
+        </div>
+
+        {#        ------------------------------------------------------#}
+        <div class="form-row">
+            <div>
+                <label for="id_required_number_of_employees">Требуемое количество сотрудников:</label>
+                <input type="number" name="required_number_of_employees" required=""
+                       id="id_required_number_of_employees">
+            </div>
+
+            <div>
+                <label for="id_city_head_office">Город головного офис:</label>
+                <input name="city_head_office" required="" id="id_city_head_office"></input>
+            </div>
+
+            <div>
+                <label for="id_number_of_own_points">Количество собственных точек:</label>
+                <input type="number" name="number_of_own_points" required="" id="id_number_of_own_points">
+            </div>
+
+
+            <div>
+                <label for="id_in_which_cities_shouldiopenafranchise">В каких городах следует открывать
+                    франшизу:</label>
+                <input name="in_which_cities_shouldiopenafranchise" required=""
+                       id="id_in_which_cities_shouldiopenafranchise"></input>
+            </div>
+
+        </div>
+        <p>
+            <label for="id_category">Категория:</label>
+            {{ form.category }}
+        </p>
+
+
+        {#------------------------------------------------------------------------------#}
+        <p>
+            <label for="id_most_important_choosing_factors">Наиболее важные факторы выбора:</label>
+            <textarea name="most_important_choosing_factors" required=""
+                      id="id_most_important_choosing_factors"></textarea>
+        </p>
+
+        <p>
+            <label for="id_training_and_support">Training and support:</label>
+            <textarea name="training_and_support" required=""
+                      id="id_training_and_support"></textarea>
+        </p>
+        <p>
+            <label for="id_advantages_over_competitors">Преимущества перед конкурентами:</label>
+            <textarea name="advantages_over_competitors" cols="40" rows="10" required=""
+                      id="id_advantages_over_competitors" style="height: 129px;"></textarea>
+        </p>
+        <p>
+            <label for="id_company_description">Описание компании:</label>
+            <textarea name="company_description" cols="40" rows="10" required="" id="id_company_description"></textarea>
+        </p>
+        <p>
+            <label for="id_costs_at_the_franchise_launch_stage">Расходы на этапе запуска франшизы :</label>
+            <textarea name="costs_at_the_franchise_launch_stage" cols="40" rows="10" required=""
+                      id="id_costs_at_the_franchise_launch_stage"></textarea>
+        </p>
+        <p>
+            <label for="id_desired_placement_sections">Желаемые разделы размещения:</label>
+            <textarea name="desired_placement_sections" cols="40" rows="10" required=""
+                      id="id_desired_placement_sections" style="height: 171px;"></textarea>
+        </p>
+        <p>
+            <label for="id_example_of_profit_calculation">Пример расчета прибыли:</label>
+            <textarea name="example_of_profit_calculation" cols="40" rows="10" required=""
+                      id="id_example_of_profit_calculation"></textarea>
+        </p>
+
+        <p>
+            <label for="id_geography_of_development">География развития:</label>
+            <textarea name="geography_of_development" cols="40" rows="10" required=""
+                      id="id_geography_of_development"></textarea>
+        </p>
+
+        <p>
+            <label for="id_juicy_description_of_the_franchise">Сочное описание франшизы:</label>
+            <textarea name="juicy_description_of_the_franchise" cols="40" rows="10" required=""
+                      id="id_juicy_description_of_the_franchise"></textarea>
+        </p>
+
+        <p>
+            <label for="id_most_important_choosing_factors">Наиболее важные факторы выбора:</label>
+            <textarea name="most_important_choosing_factors" cols="40" rows="10" required=""
+                      id="id_most_important_choosing_factors"></textarea>
+        </p>
+
+        <p>
+            <label for="id_room_requirements">Требования к помещению:</label>
+            <textarea name="room_requirements" cols="40" rows="10" required="" id="id_room_requirements"></textarea>
+        </p>
+        <div>
+            <label for="id_royalties_monthly_deductions">Ежемесячные отчисления в виде роялти:</label>
+            <textarea name="royalties_monthly_deductions" cols="40" rows="10" required=""
+                      id="id_royalties_monthly_deductions"></textarea>
+        </div>
+
+        <p>
+            <label for="id_training_and_support">Обучение и поддержка:</label>
+            <textarea name="training_and_support" cols="40" rows="10" required=""
+                      id="id_training_and_support"></textarea>
+        </p>
+        <p>
+            <label for="id_what_is_included_in_the_lump_sum">Что включено в единовременный платеж:</label>
+            <textarea name="what_is_included_in_the_lump_sum" cols="40" rows="10" required=""
+                      id="id_what_is_included_in_the_lump_sum"></textarea>
+        </p>
+        <p>
+            <label for="id_what_is_your_main_product">К какому товару или услуге относится основной продукт:</label>
+            <textarea name="what_is_your_main_product" cols="40" rows="10" required="" id="id_what_is_your_main_product"
+                      style="height: 92px;"></textarea>
+        </p>
+
+        <label for="id_image">Additional Images:</label>
+
+        <p>
+            <label for="id_preview_photo">Презентационная картинка по ГОСТ-1020:</label>
+            <input type="file" name="preview_photo" accept="image/*" id="id_preview_photo">
+        </p>
+
+        <input required name="images" id="imageInput" type="file" multiple class="changelist-form-container"/>
+        <div id="imagePreview"></div>
+
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Функция handleFiles будет вызвана сразу после загрузки страницы
+        handleFiles.call(document.getElementById("imageInput"));
+    });
+    // Получаем ссылку на элемент input для выбора файлов
+    const inputElement = document.getElementById("imageInput");
+
+    // Добавляем обработчик события изменения файлов
+    inputElement.addEventListener("change", handleFiles, false);
+
+    // Функция для обработки загруженных файлов
+    function handleFiles() {
+        const fileList = this.files; // Получаем список загруженных файлов
+
+        // Очищаем предварительный просмотр
+        const imagePreview = document.getElementById("imagePreview");
+        imagePreview.innerHTML = '';
+
+        // Перебираем каждый файл
+        for (let i = 0; i < fileList.length; i++) {
+            const file = fileList[i];
+            const imageType = /^image\//; // Проверяем, является ли файл изображением
+
+            if (imageType.test(file.type)) {
+                const imgContainer = document.createElement("div");
+                imgContainer.classList.add("preview-image");
+
+                const img = document.createElement("img");
+                img.file = file;
+
+                const reader = new FileReader();
+                reader.onload = (function (aImg) {
+                    return function (e) {
+                        aImg.src = e.target.result;
+                    };
+                })(img);
+                reader.readAsDataURL(file); // Читаем содержимое файла как URL-адрес данных
+
+                // Обертка для изображения
+                const imageWrapper = document.createElement("div");
+                imageWrapper.classList.add("image-container");
+
+                // Добавляем кнопку удаления
+                const deleteButton = document.createElement("span");
+                deleteButton.innerHTML = "&#10060;";
+                deleteButton.classList.add("delete-button");
+                deleteButton.addEventListener("click", function () {
+                    // Удаляем файл из списка загруженных файлов
+                    const updatedFiles = Array.from(inputElement.files).filter(item => item !== file);
+                    const newFileList = new DataTransfer();
+                    for (const file of updatedFiles) {
+                        newFileList.items.add(file);
+                    }
+                    inputElement.files = newFileList.files;
+                    // Удаляем контейнер с изображением из предварительного просмотра
+                    imagePreview.removeChild(imgContainer);
+                });
+
+                // Добавляем обработчик события клика на изображение для открытия модального окна
+                img.addEventListener("click", function () {
+                    const modal = document.getElementById("myModal");
+                    const modalImg = document.getElementById("img01");
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+
+                    const span = document.getElementsByClassName("close")[0];
+                    span.onclick = function () {
+                        modal.style.display = "none";
+                    };
+                });
+
+                imageWrapper.appendChild(img);
+                imgContainer.appendChild(imageWrapper);
+                imgContainer.appendChild(deleteButton);
+
+                imagePreview.appendChild(imgContainer); // Добавляем контейнер с изображением и кнопкой удаления в предварительный просмотр
+            }
+        }
+    }
+</script>
+<script>
+    var inputElements = document.querySelectorAll('#id_business_launch_deadline,' +
+        ' #id_franchise_start_year, #id_lump_sum_payment, #id_number_of_franchise_points, #id_number_of_own_points, #id_payback_period, #id_registered_trademark_number, #id_required_number_of_employees, #id_year_of_company_opening');
+
+    // Проходим по каждому элементу
+    inputElements.forEach(function (inputElement) {
+        // Добавляем обработчик события на ввод текста
+        inputElement.addEventListener('input', function (event) {
+            // Получаем введенное значение
+            var inputValue = event.target.value;
+            // Удаляем из введенного значения все символы, кроме цифр
+            var cleanedValue = inputValue.replace(/\D/g, '');
+
+            // Обновляем значение в поле ввода
+            event.target.value = cleanedValue;
+        });
+    });
+</script>
+</html>

@@ -11,6 +11,7 @@ class RegistrationForm(forms.ModelForm):
         fields = ['username', 'email', 'password', 'surname', 'phone_number', 'user_type']
 
 
+
 class EmailAuthenticationForm(AuthenticationForm):
     def clean(self):
         email = self.cleaned_data.get('email')

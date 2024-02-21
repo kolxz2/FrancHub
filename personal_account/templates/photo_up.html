@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Franchise Photos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
+    <style>
+        .dz-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+<form action="{% url 'upload_photos' %}" method="post" enctype="multipart/form-data" class="dropzone" id="myDropzone">
+    {% csrf_token %}
+    <div class="fallback">
+        <input required name="images" type="file" multiple class="changelist-form-container"/>
+    </div>
+    <button type="submit">Upload Data</button>
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+<script>
+    Dropzone.options.myDropzone = {
+        paramName: 'file', // Match with the name used in views.py request.FILES.getlist('file')
+        maxFilesize: 10, // MB
+        acceptedFiles: 'image/*',
+        init: function () {
+            var myDropzone = this; // Store reference to Dropzone object
+
+            this.on('sending', function (file, xhr, formData) {
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+            });
+
+            var uploadButton = document.querySelector("#upload-button");
+
+            // Event listener for when the upload button is clicked
+            uploadButton.addEventListener("click", function () {
+                // Process the queued files when the button is clicked
+                myDropzone.processQueue();
+            });
+
+            // Add event listener for the remove button
+            this.on("addedfile", function (file) {
+                var _this = this;
+                var removeButton = Dropzone.createElement("<button class='dz-remove'>&times;</button>");
+                removeButton.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    _this.removeFile(file);
+                });
+                file.previewElement.appendChild(removeButton);
+            });
+        }
+    };
+</script>
+</body>
+</html>

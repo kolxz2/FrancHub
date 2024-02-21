@@ -1,0 +1,25 @@
+<!-- user_franchises.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Franchises</title>
+</head>
+<body>
+<h2>Your Franchises</h2>
+<div class="franchises-container">
+    {% for franchise in franchises %}
+        <a href="{% url 'edit_franchise' franchise.franchise_id %}" class="franchise-link">
+            <div class="franchise-card">
+                {% if franchise.photo %}
+                    <img src="{{ franchise.photo.url }}" alt="{{ franchise.title }}" width="100">
+                {% endif %}
+                <h3>{{ franchise.title }}</h3>
+                <p>{{ franchise.description }}</p>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+</body>
+
+</html>

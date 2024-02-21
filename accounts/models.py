@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = ['username']
     USER_TYPE_CHOICES = [
         ('owner', 'Франчайзер'),
-        ('franchise ', 'Франчизи'),
+        ('franchise', 'Франчизи'),
     ]
 
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, verbose_name="Тип пользователя", null=True,

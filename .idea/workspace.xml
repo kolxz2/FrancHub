@@ -4,43 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/FrancHub.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrancHub/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrancHub/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrancHub/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrancHub/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrancHub/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/lk.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/templates/greeting_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/templates/my_template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_cabinet/views.py" afterDir="false" />
+    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="registration, login, detect auth">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/migrations/0002_alter_customuser_user_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/30ce8f077b1c7ccb1128262135acfe62.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/3a55385e84.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/All.min.2e7e9f523812e947e453432ab0f92b61.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/All.min.f47ff0601af836f9bdd253cadc5f8a53.gz.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_002.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_002.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/bsp-analytics.min.3d492319d8b084de04ab3a208c32f0b5.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/destination" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/gtm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/js_002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/web-vitals.iife.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/webcomponents-loader.2938a610ca02c611209b1a5ba2884385.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/30ce8f077b1c7ccb1128262135acfe62.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/3a55385e84.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/All.min.2e7e9f523812e947e453432ab0f92b61.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/All.min.f47ff0601af836f9bdd253cadc5f8a53.gz.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_002.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_002.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/bsp-analytics.min.3d492319d8b084de04ab3a208c32f0b5.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/gtm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/js_002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/js_003" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/web-vitals.iife.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/webcomponents-loader.2938a610ca02c611209b1a5ba2884385.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/templates/edit_franchise.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/templates/photo_up.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/templates/upload_franchise_photos.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/templates/user_franchises.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrancHub/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrancHub/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrancHub/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrancHub/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/templates/greeting_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/greeting_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/templates/my_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/my_template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_cabinet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +85,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.venv/Lib/site-packages/django/core/handlers/wsgi.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/.venv/Lib/site-packages/django/forms/models.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -85,12 +121,13 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "proofread",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
-      "postgresql"
+      "postgresql",
+      "sqlite"
     ]
   }
 }]]></component>
@@ -99,8 +136,11 @@
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\accounts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\accounts\templates" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account\templates\create_franchise" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account\templates" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account" />
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\accounts" />
-      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\MainApp" />
     </key>
   </component>
   <component name="RunManager">
@@ -152,11 +192,97 @@
       <workItem from="1707339602210" duration="213000" />
       <workItem from="1707378473693" duration="3140000" />
       <workItem from="1707471167116" duration="4782000" />
-      <workItem from="1707478330944" duration="6563000" />
+      <workItem from="1707478330944" duration="7240000" />
+      <workItem from="1707562933573" duration="19000" />
+      <workItem from="1707827420598" duration="20422000" />
+      <workItem from="1707933285270" duration="456000" />
+      <workItem from="1707985386951" duration="171000" />
+      <workItem from="1707993828916" duration="10957000" />
+      <workItem from="1708097467378" duration="3977000" />
+      <workItem from="1708107244643" duration="19000" />
+      <workItem from="1708353318331" duration="18817000" />
+      <workItem from="1708411950367" duration="2418000" />
+      <workItem from="1708429553353" duration="8191000" />
+      <workItem from="1708438466636" duration="22582000" />
     </task>
+    <task id="LOCAL-00001" summary="registration, login, detect auth">
+      <option name="closed" value="true" />
+      <created>1707490248879</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707490248879</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="registration, login, detect auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="registration, login, detect auth" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/accounts/views.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/accounts/views.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/accounts/views.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
+          <line>84</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="request.POST.'user_type' (2921472440688)" />
+        <watch expression="request.COOKIES" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -14,27 +14,38 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)  # Сначала создаем пользователя, но не сохраняем его в базе данных
-            password = form.cleaned_data['password']  # Получаем пароль из формы
-            user.set_password(password)  # Устанавливаем зашифрованный пароль
-            user.save()  # Сохраняем пользователя в базе данных
+            user = form.save(commit=False)
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
 
-            # Авторизуем пользователя
-            authenticated_user = authenticate(username=user.username, password=password)
-            login(request, authenticated_user)
+            user = authenticate(request, email=user.email, password=password)
+            login(request, user)
 
-            # После успешной регистрации перенаправляем пользователя на страницу приветствия
             return redirect('greeting')
     else:
         form = RegistrationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'register_page.htm', {'form': form})
 
 
 def logout_view(request):
     logout(request)
     # После выхода из системы перенаправляем пользователя на страницу входа или на другую страницу
-    return redirect('login_view')
+    return redirect('login')
 
+
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('greeting')
+        else:
+            return render(request, 'login.html', {'error_message': 'Invalid login credentials'})
+    else:
+        return render(request, 'login_page.htm')
 
 class LoginUser(SuccessMessageMixin, LoginView):
     form_class = AuthenticationForm

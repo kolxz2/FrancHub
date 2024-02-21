@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<form action="{% url 'upload_photos' %}" method="post" enctype="multipart/form-data" class="dropzone" id="myDropzone">
+    {% csrf_token %}
+    <!-- Fallback for non-JavaScript users -->
+    <div class="fallback">
+        <input required name="images" type="file" multiple class="changelist-form-container"/>
+        <div id="imagePreview"></div>
+    </div>
+    <button id="upload-button" type="submit">Upload Data</button> <!-- Change type to "button" -->
+</form>
+
+</body>
+<script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+    var files = event.target.files; // Получаем список выбранных файлов
+    var imagePreview = document.getElementById('imagePreview');
+
+    imagePreview.innerHTML = ''; // Очищаем содержимое предварительного просмотра
+
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            var img = document.createElement('img');
+            img.src = e.target.result; // Устанавливаем источник изображения как base64-код
+            img.style.maxWidth = '100px'; // Устанавливаем максимальную ширину изображения
+            img.style.maxHeight = '100px'; // Устанавливаем максимальную высоту изображения
+            img.style.marginRight = '10px'; // Добавляем отступ между изображениями
+            imagePreview.appendChild(img); // Добавляем изображение в предварительный просмотр
+        };
+
+        reader.readAsDataURL(file); // Читаем файл как Data URL
+    }
+});
+
+</script>
+</html>
