@@ -1,31 +1,32 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 
-from .forms import CurrentUserForm, AddFranchiseForm, FranchiseEditForm, FranchisePhotoForm
-from .models import Franchise, FranchisePhoto
+from .forms import CurrentUserForm, AddFranchiseForm, FranchiseEditForm
+from .models import Franchise, FranchisePhoto, RequestsToBuy
 
 
 def my_view(request):
     current_user_form = CurrentUserForm(request=request)
-    return render(request, 'my_template.html', {'current_user_form': current_user_form})
+    return render(request, 'greeting_form.html', {'current_user_form': current_user_form})
 
 
 @login_required
 def create_franchise(request):
     if request.user.user_type != 'owner':
         return redirect('login')
-
     if request.method == 'POST':
         form = AddFranchiseForm(request.POST, request.FILES, request=request)
-        if form.is_valid():
-            form.save()
+        franchise_photos = request.FILES.getlist('images')
+        if form.is_valid() and len(franchise_photos) > 0:
+            franchise = form.save()
+            for photo in franchise_photos:
+                FranchisePhoto.objects.create(franchise=franchise, franchise_photos=photo)
             return redirect('user_franchises')
-
     else:
         form = AddFranchiseForm()
-
-    return render(request, 'create_franchise.html',{'form': form} )
+    return render(request, 'create_franchise.html', {'form': form})
 
 
 @login_required
@@ -35,57 +36,53 @@ def user_franchises(request):
 
 
 @login_required
+def user_buy_franchise_requests(request):
+    user_franchises = Franchise.objects.filter(user_id=request.user.id)
+    requests_to_buy = []
+    for franchise in user_franchises:
+        franchise_requests = RequestsToBuy.objects.filter(franchise=franchise)
+        for franchise_request in franchise_requests:
+            request_info = {
+                'request': franchise_request,
+                'franchise': franchise_request.franchise,
+                'user': franchise_request.user,
+                'created_at': franchise_request.created_at
+            }
+            requests_to_buy.append(request_info)
+
+    return render(request, 'user_buy_franchise_requests.html', {'requests_to_buy': requests_to_buy})
+
+
+@login_required
 def edit_franchise(request, franchise_id):
     franchise = get_object_or_404(Franchise, pk=franchise_id)
     if franchise.user_id != request.user.id:
         return redirect('unauthorized_access')
     if request.method == 'POST':
-        form = FranchiseEditForm(request.POST, instance=franchise)
+        if 'delete_franchise' in request.POST:
+            franchise.delete()
+            return redirect('user_franchises')
+        form = AddFranchiseForm(request.POST, request.FILES, instance=franchise)
+        franchise_photos = request.FILES.getlist('images')
         if form.is_valid():
+            FranchisePhoto.objects.filter(franchise=franchise).delete()
             form.save()
-            return redirect('franchise_list')
+            for photo in franchise_photos:
+                FranchisePhoto.objects.create(franchise=franchise, franchise_photos=photo)
+            return redirect('user_franchises')
     else:
         form = FranchiseEditForm(instance=franchise)
-    return render(request, 'edit_franchise.html', {'form': form})
+    return render(request, 'create_franchise.html', {'franchise': franchise, 'form': form})
 
 
-# def upload_photos2(request):
-#     if request.method == 'POST':
-#         form = FranchisePhotoForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             franchise_id = 2  # Assuming you have some way to determine franchise_id
-#             for photo in request.FILES.getlist('file'):  # Change 'photo' to 'file' to match Dropzone paramName
-#                 try:
-#                     FranchisePhoto.objects.create(franchise_id=franchise_id, franchise_photos=photo)
-#                 except Exception as e:
-#                     print(f"Error occurred while saving photo: {e}")
-#             return redirect('franchise_detail', franchise_id=franchise_id)
-#         else:
-#             print(f"Form is not valid: {form.errors}")
-#     else:
-#         form = FranchisePhotoForm()
-#     return render(request, 'upload_franchise_photos.html', {'form': form})
+@login_required
+def delete_franchise(request, franchise_id):
+    franchise = get_object_or_404(Franchise, pk=franchise_id)
+    if franchise.user_id != request.user.id:
+        return redirect('unauthorized_access')
+    if request.method == 'POST':
+        franchise.delete()
+        return redirect('user_franchises')
+    else:
 
-#
-# def upload_photos(request):
-#     if request.method == 'POST':
-#
-#         images = request.FILES.getlist('images')
-#
-#         franchise_id = 2  # Получите franchise_id из вашего контекста или запроса
-#         for photo in request.FILES.getlist('images'):
-#             FranchisePhoto.objects.create(franchise_id=franchise_id, franchise_photos=photo)
-#         return redirect('franchise_detail', franchise_id=franchise_id)
-#
-#     return render(request, 'upload_franchise_photos.html')
-#
-#
-# def upload_images(request):
-#     if request.method == 'POST' and request.FILES.getlist('images'):
-#         images = request.FILES.getlist('images')
-#         # Обработка каждого изображения
-#         for photo in request.FILES.getlist('images'):
-#             FranchisePhoto.objects.create(franchise_id=2, franchise_photos=photo)
-#
-#         return HttpResponse('Images uploaded successfully!')
-#     return render(request, 'photo_up.html')
+        return HttpResponseRedirect(reverse('user_franchises'))

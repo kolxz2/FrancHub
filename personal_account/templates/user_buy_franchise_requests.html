@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <style>
+        .franchise-advantages {
+            color: #282828; /* Цвет текста */
+            font-size: 20px; /* Размер шрифта */
+            font-weight: normal; /* Жирный текст */
+            font-family: Arial, sans-serif;
+
+        }
+
+        body:before {
+            visibility: hidden;
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        @media only screen and (min-width: 320px) {
+            body:before {
+                content: "mq-xs";
+            }
+        }
+
+        @media only screen and (min-width: 568px) {
+            body:before {
+                content: "mq-sm";
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            body:before {
+                content: "mq-md";
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            body:before {
+                content: "mq-lg";
+            }
+        }
+
+        @media only screen and (min-width: 1240px) {
+            body:before {
+                content: "mq-hk";
+            }
+        }
+
+        @media only screen and (min-width: 1440px) {
+            body:before {
+                content: "mq-xl";
+            }
+        }
+
+        @media only screen and (min-width: 1620px) {
+            body:before {
+                content: "mq-xls";
+            }
+        }
+    </style>
+    <style type="text/css">:root {
+        --containerMaxWidth: 1240px;
+        --containerXlMaxWidth: 1440px;
+        --containerNarrowWidth: 800px;
+        --gap: 20px;
+        --headerHeight: 96px;
+    }
+    </style>
+    <style type="text/css">:root {
+        --grey-mid: #d3d3d3;
+        --grey-dark: #848484;
+        --navy: #1a162e;
+        --white: #fff;
+        --grey-light: #eaedf3;
+        --sky: #9cbaff;
+        --cobalt: #1d46a4;
+        --marine: #001e62;
+        --coral: #ff6868;
+        --color-gray: #dddddd;
+        --color-dark-gray: #333333;
+        --error: #ee0120;
+        --success: #28a745;
+        --live: #ee0120;
+        --color-primary-theme: var(--cobalt);
+        --color-secondary-theme: #958f8f;
+        --color-grayscale-one: #faf9f9;
+        --color-grayscale-two: #f1eced;
+        --color-grayscale-three: #e6dfe0;
+        --color-grayscale-four: #f0f0f0;
+        --color-grayscale-five: #949494;
+        --color-bgcolor-theme: #faf9f9;
+        --color-primary-text-theme: #1a162e;
+        --color-primary-text-inverse-theme: #ffffff;
+        --color-secondary-text-theme: var(--grey-dark);
+        --color-secondary-text-inverse-theme: var(--grey-dark);
+        --color-site-bg-theme: #ffffff;
+        --color-border-theme: #e6dfe0;
+        --color-header-bg-theme: #ffffff;
+        --color-header-border-theme: #f1eced;
+        --color-header-text-theme: var(--cobalt);
+        --color-breadcrumb-bar-bg-theme: #ffffff;
+        --color-breadcrumb-bar-border-theme: #f1eced;
+        --color-breadcrumb-bar-text-theme: var(--cobalt);
+        --color-footer-bg-theme: #001e62;
+        --color-footer-text-theme: #ffffff;
+        --color-footer-link-theme: #ffffff;
+        --color-banner-bg-theme: var(--cobalt);
+        --color-banner-text-theme: #ffffff;
+        --color-link-text-theme: var(--cobalt);
+        --color-link-text-hover-theme: var(--sky);
+        --color-button-bg-theme: #ff6868;
+        --color-button-border-theme: #ff6868;
+        --color-button-text-theme: #ffffff;
+        --color-button-hover-bg-theme: #ff4d4d;
+        --color-button-hover-border-theme: #ff4d4d;
+        --color-button-hover-text-theme: #ffffff;
+        --color-button-selected-bg-theme: #e53939;
+        --color-button-selected-border-theme: #e53939;
+        --color-button-selected-text-theme: #ffffff;
+        --color-button-disabled-bg-theme: #faafaf;
+        --color-button-disabled-border-theme: #faafaf;
+        --color-button-disabled-text-theme: #ffffff;
+        --color-button-outline-bg-theme: #ffffff;
+        --color-button-outline-border-theme: #ff6868;
+        --color-button-outline-text-theme: #ff6868;
+        --color-button-outline-hover-bg-theme: rgba(234, 237, 243, 0.4);
+        --color-button-outline-hover-border-theme: #ff4d4d;
+        --color-button-outline-hover-text-theme: #ff4d4d;
+        --color-button-outline-selected-bg-theme: rgba(234, 237, 243, 0.9);
+        --color-button-outline-selected-border-theme: #e53939;
+        --color-button-outline-selected-text-theme: #e53939;
+        --color-button-outline-disabled-bg-theme: rgba(234, 237, 243, 0.4);
+        --color-button-outline-disabled-border-theme: #faafaf;
+        --color-button-outline-disabled-text-theme: #faafaf;
+        --color-button-tag-bg-theme: #ffffff;
+        --color-button-tag-border-theme: var(--color-link-text-theme);
+        --color-button-tag-text-theme: var(--color-link-text-theme);
+        --color-button-tag-hover-bg-theme: #ffffff;
+        --color-button-tag-hover-border-theme: var(--color-link-text-hover-theme);
+        --color-button-tag-hover-text-theme: var(--color-link-text-hover-theme);
+        --color-button-tag-selected-bg-theme: #ffffff;
+        --color-button-tag-selected-border-theme: var(--color-link-text-hover-theme);
+        --color-button-tag-selected-text-theme: var(--color-link-text-hover-theme);
+        --color-button-tag-disabled-bg-theme: #ffffff;
+        --color-button-tag-disabled-border-theme: #d3d3d3;
+        --color-button-tag-disabled-text-theme: #d3d3d3;
+
+
+        --color-drawer-bg-theme: var(--marine);
+        --color-drawer-text-theme: var(--white);
+        --color-lead-btn-bg-theme: var(--grey-light);
+        --color-lead-btn-text-theme: var(--white);
+        --color-lead-btn-active-bg-theme: var(--marine);
+        --color-lead-btn-active-text-theme: var(--white);
+
+    }
+    </style>
+
+    <script defer as="script" src="https://kit.fontawesome.com/3a55385e84.js" crossorigin="anonymous"></script>
+
+    <meta property="og:title" content="Venture X">
+
+    <meta property="og:url"
+          content="https://www.franchiseeurope.com/property-real-estate-franchises-4014/venture-x-13702/">
+
+    <meta property="og:image"
+          content="https://static4.franchisedirect.ie/dims4/default/875e4dc/2147483647/strip/true/crop/350x184+0+18/resize/1200x630!/quality/95/?url=https%3A%2F%2Ffranchisedirect-40-prod-ops.s3.amazonaws.com%2F9b%2Fd0%2F8fa66c3b4f7bb858bdc95682d29f%2F29a8ce20d6b3d9739281055b1448768c.png">
+
+
+    <meta property="og:image:url"
+          content="https://static4.franchisedirect.ie/dims4/default/875e4dc/2147483647/strip/true/crop/350x184+0+18/resize/1200x630!/quality/95/?url=https%3A%2F%2Ffranchisedirect-40-prod-ops.s3.amazonaws.com%2F9b%2Fd0%2F8fa66c3b4f7bb858bdc95682d29f%2F29a8ce20d6b3d9739281055b1448768c.png">
+
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image">
+
+    <meta property="og:image:alt" content="Venture X">
+
+
+    <meta property="og:description"
+          content="Venture X strives to provide high quality, flexible, collaborative spaces to business professionals allowing our members to grow their companies and exceed their business goals. We hope to provide a unique set of amenities and benefits that support business growth and professional development.">
+
+    <meta property="og:site_name" content="Europe">
+
+
+    <meta property="og:type" content="website">
+
+
+    <meta name="twitter:card" content="summary_large_image"/>
+
+
+    <meta name="twitter:description"
+          content="Venture X strives to provide high quality, flexible, collaborative spaces to business professionals allowing our members to grow their companies and exceed their business goals. We hope to provide a unique set of amenities and benefits that support business growth and professional development."/>
+
+
+    <meta name="twitter:image:alt" content="Venture X"/>
+
+
+    <meta name="twitter:site" content="@FranEurope"/>
+
+
+    <meta name="twitter:title" content="Venture X"/>
+
+
+    <meta property="fb:app_id" content="3220250721325111">
+
+
+    <meta name="google-site-verification" content="melVhzZDz4ntWAUkiocoxMivMKv_VQdhzzjafGYGsNM">
+
+    <link data-cssvarsponyfill="true" class="Webpack-css" rel="stylesheet"
+          href="https://franchisedirect-40-prod-ops.s3.amazonaws.com/resource/00000181-4e84-d821-a7fb-6eec5f430000/styleguide/All.min.64049740222a65de1afcca93fa9aeffc.gz.css">
+    <style>[data-contain-layout] .PromoK-title {
+        font-size: 21px;
+    }
+
+    [data-has-footerLogo] .Page-footer-row,
+    [data-has-logos] .Page-footer-row {
+        align-items: flex-start;
+    }</style>
+    <style>.FDDRankingItemPage-buttons {
+        display: grid;
+        gap: 10px;
+    }
+
+    .FDDRankingItemPage-buttons .LeadButton {
+        margin: 0;
+    } </style>
+    <style>
+        [data-has-aside='false'] .Page-main {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media only screen and (min-width: 1280px) {
+            [data-has-aside='false'] .Page-main {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+        }
+
+        @media only screen and (min-width: 1360px) {
+            [data-has-aside='false'] .Page-main {
+                padding-left: calc((100% - var(--container-max-wdth)) / 2);
+                padding-right: calc((100% - var(--container-max-wdth)) / 2);
+            }
+        }
+    </style>
+    <style>.LeadCheckoutModal .ProfilePromo-requestInfo .LeadButtonA[data-profile-status=active] .LeadCheckboxInput-label .addedToList {
+        display: none !important;
+    }
+
+    .SearchResultsModule .ProfilePromo-requestInfo .LeadButtonA[data-profile-status=active] .LeadCheckboxInput-label .addedToList {
+        display: block !important;
+    }
+
+    .Page-sponsoredPromos .ProfilePromo-requestInfo .LeadButtonA[data-profile-status=active] .LeadCheckboxInput-label .addedToList {
+        display: block !important;
+    }
+
+    .ProfileListACarousel .ProfilePromo-requestInfo .LeadButtonA[data-profile-status=active] .LeadCheckboxInput-label .addedToList {
+        display: block !important;
+    }</style>
+    <style>.Page-breadcrumbs {
+        display: none;
+    }</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+    <title>Start a Venture X Franchise, Venture X Franchise Opportunity for Sale | Franchise Europe</title>
+    <meta name="description"
+          content="Venture X provides professional, co-working, and private office spaces. Promote yourself to Boss and meet the growing need for shared office spaces. Click HERE for free information to meet the need in your market!">
+    <link rel="canonical" href="https://www.franchiseeurope.com/property-real-estate-franchises-4014/venture-x-13702/">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png">
+    <!-- Start Google Analytics Events -->
+
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WL699JM');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <meta name="brightspot.cached" content="false">
+
+    <!-- this will add webcomponent polyfills based on browsers. As of 04/29/21 still needed for IE11 and Safari -->
+    <script src="https://franchisedirect-40-prod-ops.s3.amazonaws.com/resource/00000181-4e84-d821-a7fb-6eec5f430000/webcomponents-loader/webcomponents-loader.2938a610ca02c611209b1a5ba2884385.gz.js"></script>    <!--This is needed for custom elements to function in browsers that
+    support them natively but that are using es6 code transpiled to es5.
+    This will cause a non-fatal error to show up in the IE11 console.
+    It can be safely ignored. https://github.com/webcomponents/webcomponentsjs/issues/749 -->
+    <script>
+        (function () {
+            'use strict';
+
+            (() => {
+                'use strict';
+                if (!window.customElements) return;
+                const a = HTMLElement, b = window.customElements.define, c = window.customElements.get, d = new Map,
+                    e = new Map;
+                let f = !1, g = !1;
+                HTMLElement = function () {
+                    if (!f) {
+                        const a = d.get(this.constructor), b = c.call(window.customElements, a);
+                        g = !0;
+                        const e = new b;
+                        return e
+                    }
+                    f = !1;
+                }, HTMLElement.prototype = a.prototype;
+                Object.defineProperty(window, 'customElements', {
+                    value: window.customElements,
+                    configurable: !0,
+                    writable: !0
+                }), Object.defineProperty(window.customElements, 'define', {
+                    value: (c, h) => {
+                        const i = h.prototype, j = class extends a {
+                            constructor() {
+                                super(), Object.setPrototypeOf(this, i), g || (f = !0, h.call(this)), g = !1;
+                            }
+                        }, k = j.prototype;
+                        j.observedAttributes = h.observedAttributes, k.connectedCallback = i.connectedCallback, k.disconnectedCallback = i.disconnectedCallback, k.attributeChangedCallback = i.attributeChangedCallback, k.adoptedCallback = i.adoptedCallback, d.set(h, c), e.set(c, h), b.call(window.customElements, c, j);
+                    }, configurable: !0, writable: !0
+                }), Object.defineProperty(window.customElements, 'get', {
+                    value: (a) => e.get(a),
+                    configurable: !0,
+                    writable: !0
+                });
+            })();
+
+            /**
+             @license
+             Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+             This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+             The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+             The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+             Code distributed by Google as part of the polymer project is also
+             subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+             */
+        }());
+    </script>
+    <script>
+        /**
+         For the fastest load times https://developers.google.com/speed/docs/insights/BlockingJS
+         and to prevent any FOUC, as well as prevent any race conditions for browsers that also
+         rely on the CSS variables polyfill, this is inlined.
+         **/
+        if (!window.customElements) {
+            (function () {
+                'use strict';
+                var h = new function () {
+                };
+                var aa = new Set("annotation-xml color-profile font-face font-face-src font-face-uri font-face-format font-face-name missing-glyph".split(" "));
+
+                function m(b) {
+                    var a = aa.has(b);
+                    b = /^[a-z][.0-9_a-z]*-[\-.0-9_a-z]*$/.test(b);
+                    return !a && b
+                }
+
+                function n(b) {
+                    var a = b.isConnected;
+                    if (void 0 !== a) return a;
+                    for (; b && !(b.__CE_isImportDocument || b instanceof Document);) b = b.parentNode || (window.ShadowRoot && b instanceof ShadowRoot ? b.host : void 0);
+                    return !(!b || !(b.__CE_isImportDocument || b instanceof Document))
+                }
+
+                function p(b, a) {
+                    for (; a && a !== b && !a.nextSibling;) a = a.parentNode;
+                    return a && a !== b ? a.nextSibling : null
+                }
+
+                function t(b, a, c) {
+                    c = c ? c : new Set;
+                    for (var d = b; d;) {
+                        if (d.nodeType === Node.ELEMENT_NODE) {
+                            var e = d;
+                            a(e);
+                            var f = e.localName;
+                            if ("link" === f && "import" === e.getAttribute("rel")) {
+                                d = e.import;
+                                if (d instanceof Node && !c.has(d)) for (c.add(d), d = d.firstChild; d; d = d.nextSibling) t(d, a, c);
+                                d = p(b, e);
+                                continue
+                            } else if ("template" === f) {
+                                d = p(b, e);
+                                continue
+                            }
+                            if (e = e.__CE_shadowRoot) for (e = e.firstChild; e; e = e.nextSibling) t(e, a, c)
+                        }
+                        d = d.firstChild ? d.firstChild : p(b, d)
+                    }
+                }
+
+                function u(b, a, c) {
+                    b[a] = c
+                };
+
+                function v() {
+                    this.a = new Map;
+                    this.s = new Map;
+                    this.f = [];
+                    this.b = !1
+                }
+
+                function ba(b, a, c) {
+                    b.a.set(a, c);
+                    b.s.set(c.constructor, c)
+                }
+
+                function w(b, a) {
+                    b.b = !0;
+                    b.f.push(a)
+                }
+
+                function x(b, a) {
+                    b.b && t(a, function (a) {
+                        return y(b, a)
+                    })
+                }
+
+                function y(b, a) {
+                    if (b.b && !a.__CE_patched) {
+                        a.__CE_patched = !0;
+                        for (var c = 0; c < b.f.length; c++) b.f[c](a)
+                    }
+                }
+
+                function z(b, a) {
+                    var c = [];
+                    t(a, function (b) {
+                        return c.push(b)
+                    });
+                    for (a = 0; a < c.length; a++) {
+                        var d = c[a];
+                        1 === d.__CE_state ? b.connectedCallback(d) : A(b, d)
+                    }
+                }
+
+                function B(b, a) {
+                    var c = [];
+                    t(a, function (b) {
+                        return c.push(b)
+                    });
+                    for (a = 0; a < c.length; a++) {
+                        var d = c[a];
+                        1 === d.__CE_state && b.disconnectedCallback(d)
+                    }
+                }
+
+                function C(b, a, c) {
+                    c = c ? c : {};
+                    var d = c.w || new Set, e = c.i || function (a) {
+                        return A(b, a)
+                    }, f = [];
+                    t(a, function (a) {
+                        if ("link" === a.localName && "import" === a.getAttribute("rel")) {
+                            var c = a.import;
+                            c instanceof Node && (c.__CE_isImportDocument = !0, c.__CE_hasRegistry = !0);
+                            c && "complete" === c.readyState ? c.__CE_documentLoadHandled = !0 : a.addEventListener("load", function () {
+                                var c = a.import;
+                                if (!c.__CE_documentLoadHandled) {
+                                    c.__CE_documentLoadHandled = !0;
+                                    var f = new Set(d);
+                                    f.delete(c);
+                                    C(b, c, {w: f, i: e})
+                                }
+                            })
+                        } else f.push(a)
+                    }, d);
+                    if (b.b) for (a = 0; a <
+                    f.length; a++) y(b, f[a]);
+                    for (a = 0; a < f.length; a++) e(f[a])
+                }
+
+                function A(b, a) {
+                    if (void 0 === a.__CE_state) {
+                        var c = a.ownerDocument;
+                        if (c.defaultView || c.__CE_isImportDocument && c.__CE_hasRegistry) if (c = b.a.get(a.localName)) {
+                            c.constructionStack.push(a);
+                            var d = c.constructor;
+                            try {
+                                try {
+                                    if (new d !== a) throw Error("The custom element constructor did not produce the element being upgraded.");
+                                } finally {
+                                    c.constructionStack.pop()
+                                }
+                            } catch (r) {
+                                throw a.__CE_state = 2, r;
+                            }
+                            a.__CE_state = 1;
+                            a.__CE_definition = c;
+                            if (c.attributeChangedCallback) for (c = c.observedAttributes, d = 0; d < c.length; d++) {
+                                var e = c[d],
+                                    f = a.getAttribute(e);
+                                null !== f && b.attributeChangedCallback(a, e, null, f, null)
+                            }
+                            n(a) && b.connectedCallback(a)
+                        }
+                    }
+                }
+
+                v.prototype.connectedCallback = function (b) {
+                    var a = b.__CE_definition;
+                    a.connectedCallback && a.connectedCallback.call(b)
+                };
+                v.prototype.disconnectedCallback = function (b) {
+                    var a = b.__CE_definition;
+                    a.disconnectedCallback && a.disconnectedCallback.call(b)
+                };
+                v.prototype.attributeChangedCallback = function (b, a, c, d, e) {
+                    var f = b.__CE_definition;
+                    f.attributeChangedCallback && -1 < f.observedAttributes.indexOf(a) && f.attributeChangedCallback.call(b, a, c, d, e)
+                };
+
+                function D(b, a) {
+                    this.c = b;
+                    this.a = a;
+                    this.b = void 0;
+                    C(this.c, this.a);
+                    "loading" === this.a.readyState && (this.b = new MutationObserver(this.f.bind(this)), this.b.observe(this.a, {
+                        childList: !0,
+                        subtree: !0
+                    }))
+                }
+
+                function E(b) {
+                    b.b && b.b.disconnect()
+                }
+
+                D.prototype.f = function (b) {
+                    var a = this.a.readyState;
+                    "interactive" !== a && "complete" !== a || E(this);
+                    for (a = 0; a < b.length; a++) for (var c = b[a].addedNodes, d = 0; d < c.length; d++) C(this.c, c[d])
+                };
+
+                function ca() {
+                    var b = this;
+                    this.b = this.a = void 0;
+                    this.f = new Promise(function (a) {
+                        b.b = a;
+                        b.a && a(b.a)
+                    })
+                }
+
+                function F(b) {
+                    if (b.a) throw Error("Already resolved.");
+                    b.a = void 0;
+                    b.b && b.b(void 0)
+                };
+
+                function G(b) {
+                    this.j = !1;
+                    this.c = b;
+                    this.o = new Map;
+                    this.l = function (b) {
+                        return b()
+                    };
+                    this.g = !1;
+                    this.m = [];
+                    this.u = new D(b, document)
+                }
+
+                G.prototype.define = function (b, a) {
+                    var c = this;
+                    if (!(a instanceof Function)) throw new TypeError("Custom element constructors must be functions.");
+                    if (!m(b)) throw new SyntaxError("The element name '" + b + "' is not valid.");
+                    if (this.c.a.get(b)) throw Error("A custom element with name '" + b + "' has already been defined.");
+                    if (this.j) throw Error("A custom element is already being defined.");
+                    this.j = !0;
+                    var d, e, f, r, k;
+                    try {
+                        var g = function (b) {
+                            var a = l[b];
+                            if (void 0 !== a && !(a instanceof Function)) throw Error("The '" + b + "' callback must be a function.");
+                            return a
+                        }, l = a.prototype;
+                        if (!(l instanceof Object)) throw new TypeError("The custom element constructor's prototype is not an object.");
+                        d = g("connectedCallback");
+                        e = g("disconnectedCallback");
+                        f = g("adoptedCallback");
+                        r = g("attributeChangedCallback");
+                        k = a.observedAttributes || []
+                    } catch (q) {
+                        return
+                    } finally {
+                        this.j = !1
+                    }
+                    a = {
+                        localName: b,
+                        constructor: a,
+                        connectedCallback: d,
+                        disconnectedCallback: e,
+                        adoptedCallback: f,
+                        attributeChangedCallback: r,
+                        observedAttributes: k,
+                        constructionStack: []
+                    };
+                    ba(this.c, b, a);
+                    this.m.push(a);
+                    this.g ||
+                    (this.g = !0, this.l(function () {
+                        return da(c)
+                    }))
+                };
+                G.prototype.i = function (b) {
+                    C(this.c, b)
+                };
+
+                function da(b) {
+                    if (!1 !== b.g) {
+                        b.g = !1;
+                        for (var a = b.m, c = [], d = new Map, e = 0; e < a.length; e++) d.set(a[e].localName, []);
+                        C(b.c, document, {
+                            i: function (a) {
+                                if (void 0 === a.__CE_state) {
+                                    var e = a.localName, f = d.get(e);
+                                    f ? f.push(a) : b.c.a.get(e) && c.push(a)
+                                }
+                            }
+                        });
+                        for (e = 0; e < c.length; e++) A(b.c, c[e]);
+                        for (; 0 < a.length;) {
+                            for (var f = a.shift(), e = f.localName, f = d.get(f.localName), r = 0; r < f.length; r++) A(b.c, f[r]);
+                            (e = b.o.get(e)) && F(e)
+                        }
+                    }
+                }
+
+                G.prototype.get = function (b) {
+                    if (b = this.c.a.get(b)) return b.constructor
+                };
+                G.prototype.whenDefined = function (b) {
+                    if (!m(b)) return Promise.reject(new SyntaxError("'" + b + "' is not a valid custom element name."));
+                    var a = this.o.get(b);
+                    if (a) return a.f;
+                    a = new ca;
+                    this.o.set(b, a);
+                    this.c.a.get(b) && !this.m.some(function (a) {
+                        return a.localName === b
+                    }) && F(a);
+                    return a.f
+                };
+                G.prototype.v = function (b) {
+                    E(this.u);
+                    var a = this.l;
+                    this.l = function (c) {
+                        return b(function () {
+                            return a(c)
+                        })
+                    }
+                };
+                window.CustomElementRegistry = G;
+                G.prototype.define = G.prototype.define;
+                G.prototype.upgrade = G.prototype.i;
+                G.prototype.get = G.prototype.get;
+                G.prototype.whenDefined = G.prototype.whenDefined;
+                G.prototype.polyfillWrapFlushCallback = G.prototype.v;
+                var H = window.Document.prototype.createElement, ea = window.Document.prototype.createElementNS,
+                    fa = window.Document.prototype.importNode, ga = window.Document.prototype.prepend,
+                    ha = window.Document.prototype.append, ia = window.DocumentFragment.prototype.prepend,
+                    ja = window.DocumentFragment.prototype.append, I = window.Node.prototype.cloneNode,
+                    J = window.Node.prototype.appendChild, K = window.Node.prototype.insertBefore,
+                    L = window.Node.prototype.removeChild, M = window.Node.prototype.replaceChild,
+                    N = Object.getOwnPropertyDescriptor(window.Node.prototype,
+                        "textContent"), O = window.Element.prototype.attachShadow,
+                    P = Object.getOwnPropertyDescriptor(window.Element.prototype, "innerHTML"),
+                    Q = window.Element.prototype.getAttribute, R = window.Element.prototype.setAttribute,
+                    S = window.Element.prototype.removeAttribute, T = window.Element.prototype.getAttributeNS,
+                    U = window.Element.prototype.setAttributeNS, ka = window.Element.prototype.removeAttributeNS,
+                    la = window.Element.prototype.insertAdjacentElement,
+                    ma = window.Element.prototype.insertAdjacentHTML, na = window.Element.prototype.prepend,
+                    oa = window.Element.prototype.append, V = window.Element.prototype.before,
+                    pa = window.Element.prototype.after, qa = window.Element.prototype.replaceWith,
+                    ra = window.Element.prototype.remove, sa = HTMLElement,
+                    W = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "innerHTML"),
+                    ta = HTMLElement.prototype.insertAdjacentElement, ua = HTMLElement.prototype.insertAdjacentHTML;
+
+                function va() {
+                    var b = X;
+                    HTMLElement = function () {
+                        function a() {
+                            var a = this.constructor, d = b.s.get(a);
+                            if (!d) throw Error("The custom element being constructed was not registered with `customElements`.");
+                            var e = d.constructionStack;
+                            if (!e.length) return e = H.call(document, d.localName), Object.setPrototypeOf(e, a.prototype), e.__CE_state = 1, e.__CE_definition = d, y(b, e), e;
+                            var d = e.length - 1, f = e[d];
+                            if (f === h) throw Error("The HTMLElement constructor was either called reentrantly for this constructor or called multiple times.");
+                            e[d] = h;
+                            Object.setPrototypeOf(f, a.prototype);
+                            y(b, f);
+                            return f
+                        }
+
+                        a.prototype = sa.prototype;
+                        return a
+                    }()
+                };
+
+                function Y(b, a, c) {
+                    function d(a) {
+                        return function (c) {
+                            for (var e = [], d = 0; d < arguments.length; ++d) e[d - 0] = arguments[d];
+                            for (var d = [], f = [], l = 0; l < e.length; l++) {
+                                var q = e[l];
+                                q instanceof Element && n(q) && f.push(q);
+                                if (q instanceof DocumentFragment) for (q = q.firstChild; q; q = q.nextSibling) d.push(q); else d.push(q)
+                            }
+                            a.apply(this, e);
+                            for (e = 0; e < f.length; e++) B(b, f[e]);
+                            if (n(this)) for (e = 0; e < d.length; e++) f = d[e], f instanceof Element && z(b, f)
+                        }
+                    }
+
+                    c.h && (a.prepend = d(c.h));
+                    c.append && (a.append = d(c.append))
+                };
+
+                function wa() {
+                    var b = X;
+                    u(Document.prototype, "createElement", function (a) {
+                        if (this.__CE_hasRegistry) {
+                            var c = b.a.get(a);
+                            if (c) return new c.constructor
+                        }
+                        a = H.call(this, a);
+                        y(b, a);
+                        return a
+                    });
+                    u(Document.prototype, "importNode", function (a, c) {
+                        a = fa.call(this, a, c);
+                        this.__CE_hasRegistry ? C(b, a) : x(b, a);
+                        return a
+                    });
+                    u(Document.prototype, "createElementNS", function (a, c) {
+                        if (this.__CE_hasRegistry && (null === a || "http://www.w3.org/1999/xhtml" === a)) {
+                            var d = b.a.get(c);
+                            if (d) return new d.constructor
+                        }
+                        a = ea.call(this, a, c);
+                        y(b, a);
+                        return a
+                    });
+                    Y(b, Document.prototype, {h: ga, append: ha})
+                };
+
+                function xa() {
+                    var b = X;
+
+                    function a(a, d) {
+                        Object.defineProperty(a, "textContent", {
+                            enumerable: d.enumerable,
+                            configurable: !0,
+                            get: d.get,
+                            set: function (a) {
+                                if (this.nodeType === Node.TEXT_NODE) d.set.call(this, a); else {
+                                    var e = void 0;
+                                    if (this.firstChild) {
+                                        var c = this.childNodes, k = c.length;
+                                        if (0 < k && n(this)) for (var e = Array(k), g = 0; g < k; g++) e[g] = c[g]
+                                    }
+                                    d.set.call(this, a);
+                                    if (e) for (a = 0; a < e.length; a++) B(b, e[a])
+                                }
+                            }
+                        })
+                    }
+
+                    u(Node.prototype, "insertBefore", function (a, d) {
+                        if (a instanceof DocumentFragment) {
+                            var e = Array.prototype.slice.apply(a.childNodes);
+                            a = K.call(this, a, d);
+                            if (n(this)) for (d = 0; d < e.length; d++) z(b, e[d]);
+                            return a
+                        }
+                        e = n(a);
+                        d = K.call(this, a, d);
+                        e && B(b, a);
+                        n(this) && z(b, a);
+                        return d
+                    });
+                    u(Node.prototype, "appendChild", function (a) {
+                        if (a instanceof DocumentFragment) {
+                            var c = Array.prototype.slice.apply(a.childNodes);
+                            a = J.call(this, a);
+                            if (n(this)) for (var e = 0; e < c.length; e++) z(b, c[e]);
+                            return a
+                        }
+                        c = n(a);
+                        e = J.call(this, a);
+                        c && B(b, a);
+                        n(this) && z(b, a);
+                        return e
+                    });
+                    u(Node.prototype, "cloneNode", function (a) {
+                        a = I.call(this, a);
+                        this.ownerDocument.__CE_hasRegistry ? C(b, a) : x(b, a);
+                        return a
+                    });
+                    u(Node.prototype, "removeChild", function (a) {
+                        var c = n(a), e = L.call(this, a);
+                        c && B(b, a);
+                        return e
+                    });
+                    u(Node.prototype, "replaceChild", function (a, d) {
+                        if (a instanceof DocumentFragment) {
+                            var e = Array.prototype.slice.apply(a.childNodes);
+                            a = M.call(this, a, d);
+                            if (n(this)) for (B(b, d), d = 0; d < e.length; d++) z(b, e[d]);
+                            return a
+                        }
+                        var e = n(a), f = M.call(this, a, d), c = n(this);
+                        c && B(b, d);
+                        e && B(b, a);
+                        c && z(b, a);
+                        return f
+                    });
+                    N && N.get ? a(Node.prototype, N) : w(b, function (b) {
+                        a(b, {
+                            enumerable: !0, configurable: !0, get: function () {
+                                for (var a = [], b =
+                                    0; b < this.childNodes.length; b++) a.push(this.childNodes[b].textContent);
+                                return a.join("")
+                            }, set: function (a) {
+                                for (; this.firstChild;) L.call(this, this.firstChild);
+                                J.call(this, document.createTextNode(a))
+                            }
+                        })
+                    })
+                };
+
+                function ya(b) {
+                    var a = Element.prototype;
+
+                    function c(a) {
+                        return function (e) {
+                            for (var c = [], d = 0; d < arguments.length; ++d) c[d - 0] = arguments[d];
+                            for (var d = [], k = [], g = 0; g < c.length; g++) {
+                                var l = c[g];
+                                l instanceof Element && n(l) && k.push(l);
+                                if (l instanceof DocumentFragment) for (l = l.firstChild; l; l = l.nextSibling) d.push(l); else d.push(l)
+                            }
+                            a.apply(this, c);
+                            for (c = 0; c < k.length; c++) B(b, k[c]);
+                            if (n(this)) for (c = 0; c < d.length; c++) k = d[c], k instanceof Element && z(b, k)
+                        }
+                    }
+
+                    V && (a.before = c(V));
+                    V && (a.after = c(pa));
+                    qa && u(a, "replaceWith", function (a) {
+                        for (var e =
+                            [], c = 0; c < arguments.length; ++c) e[c - 0] = arguments[c];
+                        for (var c = [], d = [], k = 0; k < e.length; k++) {
+                            var g = e[k];
+                            g instanceof Element && n(g) && d.push(g);
+                            if (g instanceof DocumentFragment) for (g = g.firstChild; g; g = g.nextSibling) c.push(g); else c.push(g)
+                        }
+                        k = n(this);
+                        qa.apply(this, e);
+                        for (e = 0; e < d.length; e++) B(b, d[e]);
+                        if (k) for (B(b, this), e = 0; e < c.length; e++) d = c[e], d instanceof Element && z(b, d)
+                    });
+                    ra && u(a, "remove", function () {
+                        var a = n(this);
+                        ra.call(this);
+                        a && B(b, this)
+                    })
+                };
+
+                function za() {
+                    var b = X;
+
+                    function a(a, c) {
+                        Object.defineProperty(a, "innerHTML", {
+                            enumerable: c.enumerable,
+                            configurable: !0,
+                            get: c.get,
+                            set: function (a) {
+                                var e = this, d = void 0;
+                                n(this) && (d = [], t(this, function (a) {
+                                    a !== e && d.push(a)
+                                }));
+                                c.set.call(this, a);
+                                if (d) for (var f = 0; f < d.length; f++) {
+                                    var r = d[f];
+                                    1 === r.__CE_state && b.disconnectedCallback(r)
+                                }
+                                this.ownerDocument.__CE_hasRegistry ? C(b, this) : x(b, this);
+                                return a
+                            }
+                        })
+                    }
+
+                    function c(a, c) {
+                        u(a, "insertAdjacentElement", function (a, e) {
+                            var d = n(e);
+                            a = c.call(this, a, e);
+                            d && B(b, e);
+                            n(a) && z(b, e);
+                            return a
+                        })
+                    }
+
+                    function d(a, c) {
+                        function e(a, e) {
+                            for (var c = []; a !== e; a = a.nextSibling) c.push(a);
+                            for (e = 0; e < c.length; e++) C(b, c[e])
+                        }
+
+                        u(a, "insertAdjacentHTML", function (a, b) {
+                            a = a.toLowerCase();
+                            if ("beforebegin" === a) {
+                                var d = this.previousSibling;
+                                c.call(this, a, b);
+                                e(d || this.parentNode.firstChild, this)
+                            } else if ("afterbegin" === a) d = this.firstChild, c.call(this, a, b), e(this.firstChild, d); else if ("beforeend" === a) d = this.lastChild, c.call(this, a, b), e(d || this.firstChild, null); else if ("afterend" === a) d = this.nextSibling, c.call(this,
+                                a, b), e(this.nextSibling, d); else throw new SyntaxError("The value provided (" + String(a) + ") is not one of 'beforebegin', 'afterbegin', 'beforeend', or 'afterend'.");
+                        })
+                    }
+
+                    O && u(Element.prototype, "attachShadow", function (a) {
+                        return this.__CE_shadowRoot = a = O.call(this, a)
+                    });
+                    P && P.get ? a(Element.prototype, P) : W && W.get ? a(HTMLElement.prototype, W) : w(b, function (b) {
+                        a(b, {
+                            enumerable: !0, configurable: !0, get: function () {
+                                return I.call(this, !0).innerHTML
+                            }, set: function (a) {
+                                var b = "template" === this.localName, e = b ? this.content : this,
+                                    c = H.call(document, this.localName);
+                                for (c.innerHTML = a; 0 < e.childNodes.length;) L.call(e, e.childNodes[0]);
+                                for (a = b ? c.content : c; 0 < a.childNodes.length;) J.call(e, a.childNodes[0])
+                            }
+                        })
+                    });
+                    u(Element.prototype, "setAttribute", function (a, c) {
+                        if (1 !== this.__CE_state) return R.call(this, a, c);
+                        var e = Q.call(this, a);
+                        R.call(this, a, c);
+                        c = Q.call(this, a);
+                        b.attributeChangedCallback(this, a, e, c, null)
+                    });
+                    u(Element.prototype, "setAttributeNS", function (a, c, d) {
+                        if (1 !== this.__CE_state) return U.call(this, a, c, d);
+                        var e = T.call(this, a, c);
+                        U.call(this,
+                            a, c, d);
+                        d = T.call(this, a, c);
+                        b.attributeChangedCallback(this, c, e, d, a)
+                    });
+                    u(Element.prototype, "removeAttribute", function (a) {
+                        if (1 !== this.__CE_state) return S.call(this, a);
+                        var c = Q.call(this, a);
+                        S.call(this, a);
+                        null !== c && b.attributeChangedCallback(this, a, c, null, null)
+                    });
+                    u(Element.prototype, "removeAttributeNS", function (a, c) {
+                        if (1 !== this.__CE_state) return ka.call(this, a, c);
+                        var d = T.call(this, a, c);
+                        ka.call(this, a, c);
+                        var e = T.call(this, a, c);
+                        d !== e && b.attributeChangedCallback(this, c, d, e, a)
+                    });
+                    ta ? c(HTMLElement.prototype,
+                        ta) : la ? c(Element.prototype, la) : console.warn("Custom Elements: `Element#insertAdjacentElement` was not patched.");
+                    ua ? d(HTMLElement.prototype, ua) : ma ? d(Element.prototype, ma) : console.warn("Custom Elements: `Element#insertAdjacentHTML` was not patched.");
+                    Y(b, Element.prototype, {h: na, append: oa});
+                    ya(b)
+                };/*
+
+                Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+                This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+                The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+                The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+                Code distributed by Google as part of the polymer project is also
+                subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+                */
+                var Z = window.customElements;
+                if (!Z || Z.forcePolyfill || "function" != typeof Z.define || "function" != typeof Z.get) {
+                    var X = new v;
+                    va();
+                    wa();
+                    Y(X, DocumentFragment.prototype, {h: ia, append: ja});
+                    xa();
+                    za();
+                    document.__CE_hasRegistry = !0;
+                    var customElements = new G(X);
+                    Object.defineProperty(window, "customElements", {
+                        configurable: !0,
+                        enumerable: !0,
+                        value: customElements
+                    })
+                }
+                ;
+            }).call(self);
+        }
+
+        /**
+         This allows us to load the IE polyfills via feature detection so that they do not load
+         needlessly in the browsers that do not need them. It also ensures they are loaded
+         non async so that they load before the rest of our JS.
+         */
+        var head = document.getElementsByTagName('head')[0];
+        if (!window.CSS || !window.CSS.supports || !window.CSS.supports('--fake-var', 0)) {
+            var script = document.createElement('script');
+            script.setAttribute('src', "https://franchisedirect-40-prod-ops.s3.amazonaws.com/resource/00000181-4e84-d821-a7fb-6eec5f430000/styleguide/util/IEPolyfills.b7cc1486d51a2cfd0b5559ca5b9d5c21.gz.js");
+            script.setAttribute('type', 'text/javascript');
+            script.async = false;
+            head.appendChild(script);
+        }
+    </script>
+    <script src="{% static 'franchise_info_files/All.min.2e7e9f523812e947e453432ab0f92b61.gz.js' %}"></script>
+
+    <script>
+
+        window.fbAsyncInit = function () {
+            FB.init({
+
+                appId: '3220250721325111',
+
+                xfbml: true,
+                version: 'v2.9'
+            });
+        };
+
+        window.addEventListener('load', (event) => {
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        });
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3557446-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            window.dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3557446-3', {send_page_view: false});
+
+    </script>
+
+    <script>    <!-- Facebook Pixel Code start -->
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window,
+        document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '315682851889147'); // Insert your pixel ID here.
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" alt="facebook"
+                   src="https://www.facebook.com/tr?id=315682851889147&ev=PageView&noscript=1"/></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Anti-flicker snippet *we need to activae this code in head tag for AB test when AB is on
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-WL699JM':true});</script>
+ -->
+
+
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="doubleclick"
+                 src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1047280992/?guid=ON&amp;script=0"/>
+        </div>
+    </noscript>
+    <!-- End Google Remarketing Code -->
+    </script>
+    <script> gtag('config', 'AW-1047280992');</script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .table-container {
+            text-align: center;
+        }
+
+        .styled-table {
+            width: 80%; /* Уменьшаем ширину таблицы */
+            margin: 25px auto; /* Центрируем таблицу по горизонтали */
+            border-collapse: collapse;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            text-align: center; /* Центрируем содержимое ячеек */
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+    </style>
+</head>
+
+<body>
+<bsp-header class="Page-header" data-shrink-header="false"
+            data-header-style="tall">
+    <div class="Page-header-hamburger-menu">
+        <div class="Page-header-hamburger-menu-wrapper">
+            <div class="Page-header-hamburger-menu-content">
+                <bsp-nav class="Navigation" data-allow-nav-overflow="true">
+                    <ul class="Navigation-items">
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'main_list' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Франшизы</span>
+                                </a>
+                                    {#                                    <div class="NavigationItem-more">#}
+                                    {#                                        <button aria-label="Open Sub Navigation">#}
+                                    {#                                            <i class="fa-solid fa-chevron-down"></i>#}
+                                    {#                                        </button>#}
+                                    {#                                    </div>#}
+                                </div>
+                                {#                                <div class="NavigationItem-items-container" data-hide-subnav-title data-item-count="2"#}
+                                {#                                     data-horizontal-nav="true">#}
+                                {#                                    <ul class="NavigationItem-items">#}
+                                {#                                        <li class="NavigationItem-items-item">#}
+                                {#                                            <div class="NavigationGroup">#}
+                                {##}
+                                {#                                                <div class="NavigationGroup-title">Industry</div>#}
+                                {#                                                <ul class="NavigationGroup-items">#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/automotive-franchises-4018/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Automotive Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/business-professional-franchises-4001/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Business &amp; Professional</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/business-opportunities-4002/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Business Opportunities</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/childrens-franchises-4003/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Children&#x27;s Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/cleaning-franchises-4004/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Cleaning Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/coffee-franchises-4005/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Coffee Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/computer-internet-franchises/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Computer &amp; Internet</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/education-franchises-4006/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Education Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/fitness-franchises-4007/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Fitness Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/food-franchises-4008/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Food Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                </ul>#}
+                                {#                                            </div>#}
+                                {#                                        </li>#}
+                                {#                                        <li class="NavigationItem-items-item">#}
+                                {#                                            <div class="NavigationGroup">#}
+                                {##}
+                                {#                                                <div class="NavigationGroup-title">Industry</div>#}
+                                {#                                                <ul class="NavigationGroup-items">#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/food-franchises-4008/fast-food-franchises/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Fast Food Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchise-service-providers/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchise Service Providers</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/health-beauty-franchises-4009/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Health &amp; Beauty</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/home-based-franchise-opportunities/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Home Based Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/home-services-franchises-4011/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Home Services Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/online-franchises-4012/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Online Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/property-real-estate-franchises-4014/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Property &amp; Real Estate</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/restaurant-franchises-4015/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Restaurant Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/retail-franchises-4016/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Retail Franchises</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/travel-leisure-franchises-4017/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Travel &amp; Leisure</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                </ul>#}
+                                {#                                            </div>#}
+                                {#                                        </li>#}
+                                {#                                    </ul>#}
+                                {#                                </div>#}
+                            </div>
+                        </li>
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                        {#                                                                    href="https://www.franchiseeurope.com/franchises-under-10000/"#}
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Статьи</span>
+                                </a>
+                                    {#                                    <div class="NavigationItem-more">#}
+                                    {#                                        <button aria-label="Open Sub Navigation">#}
+                                    {#                                            <i class="fa-solid fa-chevron-down"></i>#}
+                                    {#                                        </button>#}
+                                    {#                                    </div>#}
+                                </div>
+                                {#                                <div class="NavigationItem-items-container" data-hide-subnav-title data-item-count="2"#}
+                                {#                                     data-horizontal-nav="true">#}
+                                {#                                    <ul class="NavigationItem-items">#}
+                                {#                                        <li class="NavigationItem-items-item">#}
+                                {#                                            <div class="NavigationGroup">#}
+                                {##}
+                                {#                                                <div class="NavigationGroup-title">Investment</div>#}
+                                {#                                                <ul class="NavigationGroup-items">#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-10000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €10,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-20000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €20,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-30000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €30,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-40000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €40,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-50000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €50,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-60000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €60,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-70000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €70,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-80000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €80,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                </ul>#}
+                                {#                                            </div>#}
+                                {#                                        </li>#}
+                                {#                                        <li class="NavigationItem-items-item">#}
+                                {#                                            <div class="NavigationGroup">#}
+                                {##}
+                                {#                                                <div class="NavigationGroup-title">Investment</div>#}
+                                {#                                                <ul class="NavigationGroup-items">#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-90000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €90,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-100000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €100,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-200000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €200,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-300000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €300,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-400000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €400,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-under-500000/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Franchises under €500,000</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                    <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                                {#                                                                                              href="https://www.franchiseeurope.com/franchises-any-amount/"#}
+                                {#                                                                                              data-cms-ai="0"><span#}
+                                {#                                                            class="NavigationLink-title">Any Amount</span></a>#}
+                                {#                                                    </li>#}
+                                {#                                                </ul>#}
+                                {#                                            </div>#}
+                                {#                                        </li>#}
+                                {#                                    </ul>#}
+                                {#                                </div>#}
+                            </div>
+                        </li>
+                        {#                        <li class="Navigation-items-item">#}
+                        {#                            <div class="NavigationItem">#}
+                        {#                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"#}
+                        {#                                                                    href="https://www.franchiseeurope.com/european-franchises/"#}
+                        {#                                                                    data-cms-ai="0">#}
+                        {#                                    <span class="NavigationItem-text-link-label">Location</span>#}
+                        {#                                </a>#}
+                        {#                                    <div class="NavigationItem-more">#}
+                        {#                                        <button aria-label="Open Sub Navigation">#}
+                        {#                                            <i class="fa-solid fa-chevron-down"></i>#}
+                        {#                                        </button>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                                <div class="NavigationItem-items-container">#}
+                        {#                                    <ul class="NavigationItem-items">#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/european-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">European Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/international-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">International Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                    </ul>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </li>#}
+                        {#                        <li class="Navigation-items-item">#}
+                        {#                            <div class="NavigationItem">#}
+                        {#                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"#}
+                        {#                                                                    href="https://www.franchiseeurope.com/popular-searches/"#}
+                        {#                                                                    data-cms-ai="0">#}
+                        {#                                    <span class="NavigationItem-text-link-label">Popular Searches</span>#}
+                        {#                                </a>#}
+                        {#                                    <div class="NavigationItem-more">#}
+                        {#                                        <button aria-label="Open Sub Navigation">#}
+                        {#                                            <i class="fa-solid fa-chevron-down"></i>#}
+                        {#                                        </button>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                                <div class="NavigationItem-items-container">#}
+                        {#                                    <ul class="NavigationItem-items">#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/directory/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise Directory A-Z</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/top-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Top Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/hot-trending-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Hot &amp; Trending Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/new-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">New Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/low-cost-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Low Cost Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/home-based-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Home-Based Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/part-time-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Part-Time Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/mobile-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Mobile Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/master-franchises/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Master Franchises</span></a>#}
+                        {#                                        </li>#}
+                        {#                                    </ul>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </li>#}
+                        {#                        <li class="Navigation-items-item">#}
+                        {#                            <div class="NavigationItem">#}
+                        {#                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"#}
+                        {#                                                                    href="https://www.franchiseeurope.com/information/"#}
+                        {#                                                                    data-cms-ai="0">#}
+                        {#                                    <span class="NavigationItem-text-link-label">Resources</span>#}
+                        {#                                </a>#}
+                        {#                                    <div class="NavigationItem-more">#}
+                        {#                                        <button aria-label="Open Sub Navigation">#}
+                        {#                                            <i class="fa-solid fa-chevron-down"></i>#}
+                        {#                                        </button>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                                <div class="NavigationItem-items-container">#}
+                        {#                                    <ul class="NavigationItem-items">#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/information/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise Information</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/ultimate-guide-to-franchising"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">How to Start Your Franchise</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/the-ultimate-guide-to-franchising-marketing"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise Marketing</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/information/franchise-articles/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise Articles</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/franchise-blog/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise Europe Blog</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/news/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise News</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/successstories/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise Success Stories</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/video/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchise Videos</span></a>#}
+                        {#                                        </li>#}
+                        {#                                        <li class="NavigationItem-items-item"><a class="NavigationLink"#}
+                        {#                                                                                 href="https://www.franchiseeurope.com/information/franchisor-focus/"#}
+                        {#                                                                                 data-cms-ai="0"><span#}
+                        {#                                                class="NavigationLink-title">Franchisor Focus</span></a>#}
+                        {#                                        </li>#}
+                        {#                                    </ul>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </li>#}
+                        <li class="Navigation-items-item" data-overflow-trigger>
+                            <div class="NavigationItem" data-overflow-menu>
+                                <div class="NavigationItem-text">
+                                    <div class="NavigationItem-text-link">
+                                        <span class="NavigationItem-text-link-label">More</span>
+                                    </div>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="NavigationItem-items-container"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="Navigation-items-auth" data-logged-in="false">
+                        {% if user.is_authenticated %}
+
+                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+
+
+
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationLink"
+                                                                    href="{% url 'logout' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Выход</span>
+                                </a></div>
+                            </div>
+                        </li>
+
+                    {% else %}
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'register' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Регистрация</span>
+                                </a></div>
+                            </div>
+                        </li>
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'login' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Вход</span>
+                                </a></div>
+                            </div>
+                        </li>
+                    {% endif %}
+                    </ul>
+                </bsp-nav>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="Page-header-bar">
+        <div class="Page-header-bar-logo">
+        </div>
+        <button class="Page-header-menu-trigger" aria-expanded="false">
+            <svg class="burger-menu">
+                <use xlink:href="#burger-menu"></use>
+            </svg>
+            <svg class="close-x">
+                <use xlink:href="#close-x"></use>
+            </svg>
+            <span class="label">Menu</span>
+        </button>
+
+        <div class="Page-header-navigation">
+            <bsp-nav class="Navigation" data-allow-nav-overflow="true">
+                <ul class="Navigation-items">
+                    <li class="Navigation-items-item">
+                        <div class="NavigationItem">
+                            <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                href="{% url 'main_list' %}"
+                                                                data-cms-ai="0">
+                                <span class="NavigationItem-text-link-label">Франшизы</span>
+                            </a>
+                                <div class="NavigationItem-more">
+                                    <button aria-label="Open Sub Navigation">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            {#                            <div class="NavigationItem-items-container" data-hide-subnav-title data-item-count="2"#}
+                            {#                                 data-horizontal-nav="true">#}
+                            {#                                <ul class="NavigationItem-items">#}
+                            {#                                    <li class="NavigationItem-items-item">#}
+                            {#                                        <div class="NavigationGroup">#}
+                            {##}
+                            {#                                            <div class="NavigationGroup-title">Industry</div>#}
+                            {#                                            <ul class="NavigationGroup-items">#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/automotive-franchises-4018/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Automotive Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/business-professional-franchises-4001/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Business &amp; Professional</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/business-opportunities-4002/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Business Opportunities</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/childrens-franchises-4003/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Children&#x27;s Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/cleaning-franchises-4004/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Cleaning Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/coffee-franchises-4005/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Coffee Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/computer-internet-franchises/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Computer &amp; Internet</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/education-franchises-4006/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Education Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/fitness-franchises-4007/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Fitness Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/food-franchises-4008/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Food Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                            </ul>#}
+                            {#                                        </div>#}
+                            {#                                    </li>#}
+                            {#                                    <li class="NavigationItem-items-item">#}
+                            {#                                        <div class="NavigationGroup">#}
+                            {##}
+                            {#                                            <div class="NavigationGroup-title">Industry</div>#}
+                            {#                                            <ul class="NavigationGroup-items">#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/food-franchises-4008/fast-food-franchises/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Fast Food Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/franchise-service-providers/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Franchise Service Providers</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/health-beauty-franchises-4009/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Health &amp; Beauty</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/home-based-franchise-opportunities/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Home Based Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/home-services-franchises-4011/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Home Services Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/online-franchises-4012/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Online Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/property-real-estate-franchises-4014/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Property &amp; Real Estate</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/restaurant-franchises-4015/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Restaurant Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/retail-franchises-4016/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Retail Franchises</span></a>#}
+                            {#                                                </li>#}
+                            {#                                                <li class="NavigationGroup-items-item"><a class="NavigationLink"#}
+                            {#                                                                                          href="https://www.franchiseeurope.com/travel-leisure-franchises-4017/"#}
+                            {#                                                                                          data-cms-ai="0"><span#}
+                            {#                                                        class="NavigationLink-title">Travel &amp; Leisure</span></a>#}
+                            {#                                                </li>#}
+                            {#                                            </ul>#}
+                            {#                                        </div>#}
+                            {#                                    </li>#}
+                            {#                                </ul>#}
+                            {#                            </div>#}
+                        </div>
+                    </li>
+                    <li class="Navigation-items-item">
+                        <div class="NavigationItem">
+                            <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                    {#                                                                href="https://www.franchiseeurope.com/franchises-under-10000/"#}
+                                                                data-cms-ai="0">
+                                <span class="NavigationItem-text-link-label">Статьи</span>
+                            </a>
+                                <div class="NavigationItem-more">
+                                    <button aria-label="Open Sub Navigation">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% if user.user_type ==  'owner' %}
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'create_franchise' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Зарегестрировать франшизу</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'user_franchises' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Ваши франшизы</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'user_buy_franchise_requests' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Заявки на покупку</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endif %}
+
+                    <li class="Navigation-items-item" data-overflow-trigger>
+                        <div class="NavigationItem" data-overflow-menu>
+                            <div class="NavigationItem-text">
+                                <div class="NavigationItem-text-link">
+                                    <span class="NavigationItem-text-link-label">More</span>
+                                </div>
+                                <div class="NavigationItem-more">
+                                    <button aria-label="Open Sub Navigation">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="NavigationItem-items-container"></div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="Navigation-items-auth" data-logged-in="false">
+                    {% if user.is_authenticated %}
+
+                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+
+
+
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationLink"
+                                                                    href="{% url 'logout' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Выход</span>
+                                </a></div>
+                            </div>
+                        </li>
+
+                    {% else %}
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'register' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Регистрация</span>
+                                </a></div>
+                            </div>
+                        </li>
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'login' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Вход</span>
+                                </a></div>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </bsp-nav>
+        </div>
+    </div>
+</bsp-header>
+
+{% if requests_to_buy %}
+    <div class="table-container">
+    <div style="padding: 20px">
+        <h1>Заявки на покупку франшиз</h1>
+    </div>
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>Франшиза</th>
+                <th>Email пользователя</th>
+                <th>Телефон пользователя</th>
+                <th>Дата создания</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in requests_to_buy %}
+                <tr>
+                    <td><a href="{% url 'edit_franchise' item.franchise.franchise_id %}">{{ item.franchise.title }}</a>
+                    </td>
+                    <td>{{ item.user.email }}</td>
+                    <td>{{ item.user.phone_number }}</td>
+                    <td>{{ item.created_at }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+{% else %}
+    <h1>Заявок на покупку не поступало</h1>
+{% endif %}
+
+</body>
+</html>

@@ -1634,7 +1634,7 @@
                                          data-value-missing="Email address is required"
                                          data-type-mismatch="The value entered is not a valid email" data-name="email">
                             <label class="EmailInput-label">
-                                Email address<span class="EmailInput-required">*</span></label>
+                                Почта<span class="EmailInput-required">*</span></label>
 
                             <input class="EmailInput-textField" type="name" aria-label="Email address" name="email"
                                    autocomplete="email" required>
@@ -1664,7 +1664,7 @@
                                         </div>
                                     </template>
                                 </bsp-tooltip>
-                                Password<span class="PasswordInput-required">*</span></label>
+                                Пароль<span class="PasswordInput-required">*</span></label>
 
                             <input class="PasswordInput-textField"
                                    pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
@@ -1686,7 +1686,7 @@
                                                          data-input-mismatch-message="Password inputs must match"
                         >
                             <label class="PasswordInput-label">
-                                Repeat Password<span class="PasswordInput-required">*</span></label>
+                                Повторите пароль<span class="PasswordInput-required">*</span></label>
 
                             <input class="PasswordInput-textField" type="password" aria-label="Repeat Password"
                                    placeholder="••••••••" required>
@@ -1718,7 +1718,7 @@
                                         data-iso-code="GB" data-city-label-override="City"
                                         data-region-label-override="Region"
                                         data-postcode-label-override="Postcode"
-                                        data-phone-regex-override="^\+?[0-9]+$">Франчизи
+                                        data-phone-regex-override="^\+?[0-9]+$">Франчайзи
                                 </option>
 
 
@@ -1745,18 +1745,13 @@
                 <div class="AuthenticationForm-helpLinks">
                     <div class="AuthenticationForm-helpLinksItem">
                                 <span>
-                                    Already a member?
+                                    Вы уже регистрировались?
                                 </span>
-                        <a class="Link" href="https://www.franchiseeurope.com/authenticate/login" target="" rel=""
-                           data-cms-ai="0">Sign up</a>
+                        <a class="Link"href="{% url 'login' %}" target="" rel=""
+                           data-cms-ai="0">Войдите</a>
                     </div>
 
-                    <div class="AuthenticationForm-helpLinksItem">
 
-                        <a class="Link"
-                           target="" rel="" data-cms-ai="0">Franchisors, sign up here <i
-                                class='fa-solid fa-chevron-right'></i></a>
-                    </div>
                 </div>
             </form>
         </bsp-form>

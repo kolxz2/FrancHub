@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*1ovi5fds1)*zgd=7r=pi#alr!+b2q#v)xlg9j$s#52)8u99^5'
@@ -9,7 +8,6 @@ SECRET_KEY = 'django-insecure-*1ovi5fds1)*zgd=7r=pi#alr!+b2q#v)xlg9j$s#52)8u99^5
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,7 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "accounts.apps.AccountsConfig",
-    "personal_account.apps.PersonalCabinetConfig"
+    "personal_account.apps.PersonalCabinetConfig",
+    "buy_franchises.apps.BuyFranchisesConfig"
 ]
 
 MIDDLEWARE = [
@@ -51,6 +50,12 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'buy_franchises/static/'),
+]
+
 WSGI_APPLICATION = 'FrancHub.wsgi.application'
 
 DATABASES = {
@@ -59,7 +64,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

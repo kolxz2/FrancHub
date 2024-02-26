@@ -4,75 +4,137 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="registration, login, detect auth">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/migrations/0002_alter_customuser_user_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/30ce8f077b1c7ccb1128262135acfe62.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/3a55385e84.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/All.min.2e7e9f523812e947e453432ab0f92b61.gz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/All.min.f47ff0601af836f9bdd253cadc5f8a53.gz.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_002.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_002.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/Untitled_005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/bsp-analytics.min.3d492319d8b084de04ab3a208c32f0b5.gz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/destination" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/gtm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/js_002" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/web-vitals.iife.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/login_page_files/webcomponents-loader.2938a610ca02c611209b1a5ba2884385.gz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/30ce8f077b1c7ccb1128262135acfe62.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/3a55385e84.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/All.min.2e7e9f523812e947e453432ab0f92b61.gz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/All.min.f47ff0601af836f9bdd253cadc5f8a53.gz.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_002.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_002.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/Untitled_005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/bsp-analytics.min.3d492319d8b084de04ab3a208c32f0b5.gz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/gtm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/js_002" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/js_003" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/web-vitals.iife.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/register_page_files/webcomponents-loader.2938a610ca02c611209b1a5ba2884385.gz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_account/templates/edit_franchise.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_account/templates/photo_up.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_account/templates/upload_franchise_photos.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_account/templates/user_franchises.html" afterDir="false" />
+    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="Create franchise, login and logaut with css">
+      <change afterPath="$PROJECT_DIR$/FrancHub/view.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/16004481.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/30ce8f077b1c7ccb1128262135acfe62.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/3a55385e84.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/All.min.2e7e9f523812e947e453432ab0f92b61.gz.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/All.min.64049740222a65de1afcca93fa9aeffc.gz.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/analytics.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/bat.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/bsp-analytics.min.3d492319d8b084de04ab3a208c32f0b5.gz.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/f(1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/f(2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/f.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/fbevents.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/gtm.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/hotjar-3103585.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/js(1)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/js(2)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(1)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(10)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(11)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(12)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(13)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(14)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(15)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(16)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(17)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(18)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(2)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(3)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(4)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(5)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(6)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(7)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(8)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/saved_resource(9)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/sdk.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/web-vitals.iife.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/app_hel_files/webcomponents-loader.2938a610ca02c611209b1a5ba2884385.gz.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/30ce8f077b1c7ccb1128262135acfe62.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/3a55385e84.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/All.min.2e7e9f523812e947e453432ab0f92b61.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/All.min.64049740222a65de1afcca93fa9aeffc.gz.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_002.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_002.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_003.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_004.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_005.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_006.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_012.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_013.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_014.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_016.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_017.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_018.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_019.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_020.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_021.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_022.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_023.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_025.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_026.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_027.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_028.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_029.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_030.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_031.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_032.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/Untitled_033.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/a.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/bsp-analytics.min.3d492319d8b084de04ab3a208c32f0b5.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/destination" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/gtm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/js_002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/js_003" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/sdk_cmp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/web-vitals.iife.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/static/franchise_info_files/webcomponents-loader.2938a610ca02c611209b1a5ba2884385.gz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/templates/main_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buy_franchises/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0002_remove_franchise_city_head_office_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0003_requeststobuy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0004_requeststobuy_created_at.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0005_franchise_allow_to_publish_requeststobuy_status.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0006_franchise_start_investments.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0007_alter_franchise_start_investments.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/templates/user_buy_franchise_requests.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrancHub/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrancHub/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrancHub/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrancHub/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/lk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/login_page.htm" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/login_page.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/register_page.htm" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/register_page.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/templates/greeting_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/greeting_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/templates/my_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/my_template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_cabinet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/templates/edit_franchise.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/templates/greeting_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/greeting_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/templates/my_template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/templates/photo_up.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/templates/user_franchises.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/user_franchises.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,8 +147,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -109,19 +171,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.FrancHub.executor": "Run",
+    "Django Server.FrancHub.executor": "Debug",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/kolxz2Aorus/PycharmProjects/FrancHub/accounts",
+    "last_opened_file_path": "C:/Users/kolxz2Aorus/PycharmProjects/FrancHub/buy_franchises/static/app_hel_files",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "proofread",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -133,14 +195,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\buy_franchises\static\app_hel_files" />
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\accounts" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\buy_franchises\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\buy_franchises\static\franchise_info_files" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\buy_franchises\static" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\buy_franchises\templates" />
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\buy_franchises" />
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\accounts\templates" />
-      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account\templates\create_franchise" />
-      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account\templates" />
-      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account" />
-      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\accounts" />
     </key>
   </component>
   <component name="RunManager">
@@ -173,7 +238,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -204,6 +269,20 @@
       <workItem from="1708411950367" duration="2418000" />
       <workItem from="1708429553353" duration="8191000" />
       <workItem from="1708438466636" duration="22582000" />
+      <workItem from="1708505382032" duration="178000" />
+      <workItem from="1708534233218" duration="11029000" />
+      <workItem from="1708609699341" duration="714000" />
+      <workItem from="1708613607255" duration="988000" />
+      <workItem from="1708617432215" duration="15000" />
+      <workItem from="1708619968972" duration="1628000" />
+      <workItem from="1708622512670" duration="2810000" />
+      <workItem from="1708625822811" duration="23600000" />
+      <workItem from="1708718064549" duration="12110000" />
+      <workItem from="1708772339901" duration="23965000" />
+      <workItem from="1708806941703" duration="2514000" />
+      <workItem from="1708811051018" duration="315000" />
+      <workItem from="1708865443223" duration="1022000" />
+      <workItem from="1708866487698" duration="19684000" />
     </task>
     <task id="LOCAL-00001" summary="registration, login, detect auth">
       <option name="closed" value="true" />
@@ -213,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707490248879</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Create franchise, login and logaut with css">
+      <option name="closed" value="true" />
+      <created>1708505481928</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708505481928</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,60 +308,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="registration, login, detect auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="registration, login, detect auth" />
+    <MESSAGE value="Create franchise, login and logaut with css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create franchise, login and logaut with css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/accounts/views.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/accounts/views.py</url>
-          <line>56</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/accounts/views.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>14</line>
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm</url>
+          <line>36984</line>
           <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>72</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>83</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>82</line>
-          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

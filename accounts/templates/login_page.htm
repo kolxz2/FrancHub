@@ -1160,18 +1160,18 @@
                         <li class="Navigation-items-item">
                             <div class="NavigationItem">
                                 <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="https://www.franchiseeurope.com/authenticate/register"
+                                                                    href="{% url 'register' %}"
                                                                     data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Join</span>
+                                    <span class="NavigationItem-text-link-label">Регистрация</span>
                                 </a></div>
                             </div>
                         </li>
                         <li class="Navigation-items-item">
                             <div class="NavigationItem">
                                 <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="https://www.franchiseeurope.com/authenticate/login"
+                                                                    href="{% url 'login' %}"
                                                                     data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Sign In</span>
+                                    <span class="NavigationItem-text-link-label">Войти</span>
                                 </a></div>
                             </div>
                         </li>
@@ -1605,7 +1605,7 @@
     <div class="AuthenticationPage-content" data-modulewell>
         <bsp-form class="AuthenticationForm">
             <div class="AuthenticationForm-header">
-                <h1 class="AuthenticationForm-title">Sign In</h1>
+                <h1 class="AuthenticationForm-title">Вход в аккаунт</h1>
             </div>
 
 
@@ -1620,7 +1620,7 @@
                                          data-value-missing="Email is required"
                                          data-type-mismatch="The value entered is not a valid email" data-name="email">
                             <label class="EmailInput-label">
-                                Email<span class="EmailInput-required">*</span></label>
+                                Почта<span class="EmailInput-required">*</span></label>
 
                             <input class="EmailInput-textField" type="email" aria-label="Email" name="email" id="id_email"
                                    autocomplete="email" placeholder="email@email.com" required>
@@ -1634,7 +1634,7 @@
                                             data-bad-input="The browser is unable to convert your input"
                                             data-value-missing="Password is required" data-name="password">
                             <label class="PasswordInput-label">
-                                Password<span class="PasswordInput-required">*</span></label>
+                                Пароль<span class="PasswordInput-required">*</span></label>
 
                             <input class="PasswordInput-textField" type="password" aria-label="Password" name="password" id="id_password"
                                    placeholder="••••••••" required>
@@ -1645,7 +1645,7 @@
 
                 <div class="AuthenticationForm-submit">
                     <button class="button-primary" type="submit">
-                        Sign In
+                        Вход в аккаунт
                     </button>
 
                 </div>
@@ -1655,18 +1655,14 @@
                     <div class="AuthenticationForm-helpLinksItem">
 
                                 <span>
-                                    Not a member?
+                                    Вы не регистрировались ?
                                 </span>
 
-                        <a class="Link" href="https://www.franchiseeurope.com/authenticate/register" target="" rel=""
-                           data-cms-ai="0">Sign up</a>
+                        <a class="Link" href="{% url 'register' %}" target="" rel=""
+                           data-cms-ai="0">Регистрация</a>
                     </div>
 
-                    <div class="AuthenticationForm-helpLinksItem">
 
-                        <a class="Link" href="https://www.franchiseeurope.com/authenticate/forgot-password" target=""
-                           rel="" data-cms-ai="0">Forgot Password?</a>
-                    </div>
 
                 </div>
 

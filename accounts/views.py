@@ -1,13 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.shortcuts import redirect
 
-from .forms import RegistrationForm, EmailAuthenticationForm
+from .forms import RegistrationForm
 
 
 def register(request):
@@ -21,9 +21,9 @@ def register(request):
 
             user = authenticate(request, email=user.email, password=password)
             login(request, user)
-
-            return redirect('greeting')
+            return redirect('main_list')
     else:
+        logout(request)
         form = RegistrationForm()
     return render(request, 'register_page.htm', {'form': form})
 
@@ -41,11 +41,18 @@ def login_view(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('greeting')
+            # Получаем предыдущий URL из заголовков запроса
+            previous_url = request.META.get('HTTP_REFERER')
+            # Если предыдущий URL существует и он не является URL для входа, перенаправляем на него
+            if previous_url and previous_url != request.build_absolute_uri(reverse('login')):
+                return redirect(previous_url)
+            else:
+                return redirect('main_list')
         else:
             return render(request, 'login.html', {'error_message': 'Invalid login credentials'})
     else:
         return render(request, 'login_page.htm')
+
 
 class LoginUser(SuccessMessageMixin, LoginView):
     form_class = AuthenticationForm
@@ -63,4 +70,4 @@ class LoginUser(SuccessMessageMixin, LoginView):
 
     def get_success_url(self):
         user = self.request.user
-        return reverse_lazy('greeting')
+        return reverse_lazy('main_list')

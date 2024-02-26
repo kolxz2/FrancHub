@@ -19,9 +19,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from FrancHub import settings
+from FrancHub.view import redirect_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('accounts.urls')),
-    path('', include('personal_account.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('admin/', admin.site.urls),
+                  path('', redirect_view, name='redirect_view_name'),
+                  path('', include('accounts.urls')),
+                  path('', include('personal_account.urls')),
+                  path('', include('buy_franchises.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
