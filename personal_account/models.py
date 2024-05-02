@@ -187,10 +187,10 @@ class RequestsToBuy(models.Model):
     franchise = models.ForeignKey(Franchise, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     STATUS_TYPE_CHOICES = [
-        ('owner', 'На рассмотрении'),
-        ('franchise', 'Отменена'),
-        ('franchise', 'Франчайзер не смог связаться'),
-        ('franchise', 'Сделка заключена'),
+        ('under_consideration', 'На рассмотрении'),
+        ('cansel', 'Отменена'),
+        ('could_not_be_contacted', 'Франчайзер не смог связаться'),
+        ('the_deal_is_done', 'Сделка заключена'),
     ]
     status = models.CharField(max_length=100, choices=STATUS_TYPE_CHOICES, verbose_name="Статус заявки", null=True,
                               blank=True)

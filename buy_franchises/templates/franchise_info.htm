@@ -37030,6 +37030,22 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                 </div>
                             </div>
                         </li>
+                        {% elif user.user_type ==  'franchise' %}
+                           <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'user_requests_to_by' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Заявки на покупку</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     {% endif %}
 
                     <li class="Navigation-items-item" data-overflow-trigger>

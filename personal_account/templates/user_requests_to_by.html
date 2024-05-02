@@ -1851,7 +1851,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                             </div>
                         </li>
                     {% elif user.user_type ==  'franchise' %}
-                           <li class="Navigation-items-item">
+                        <li class="Navigation-items-item">
                             <div class="NavigationItem">
                                 <div class="NavigationItem-text"><a class="NavigationItem-text-link"
                                                                     href="{% url 'user_requests_to_by' %}"
@@ -1947,20 +1947,14 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                 <tr>
                     <td><a href="{% url 'edit_franchise' item.franchise.franchise_id %}">{{ item.franchise.title }}</a>
                     </td>
-                    <td>{{ item.user.email }}</td>
+                    <td>{{ item.user.email }} {{ item.request.id }}</td>
                     <td>{{ item.user.phone_number }}</td>
                     <td>{{ item.created_at }}</td>
                     <td>
-                        <form class="statusForm" method="post" action="{% url 'user_buy_franchise_requests' %}">
+                        <form method="post" action="{% url 'user_requests_to_by' %}">
                             {% csrf_token %}
-                            <select class="statusSelect" name="status">
-                                {% for choice in item.request.STATUS_TYPE_CHOICES %}
-                                    <option value="{{ choice.0 }}/{{ item.request.id }}"
-                                            {% if item.status == choice.0 %} selected {% endif %}>
-                                        {{ choice.1 }}
-                                    </option>
-                                {% endfor %}
-                            </select>
+                            <input hidden="" name="request_id" value="{{ item.id }}">
+                            <button type="submit"   {% if item.status == "cansel" %} disabled {% endif %}>Отменить заявку </button>
                         </form>
                     </td>
                 </tr>
@@ -1972,16 +1966,12 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 
 
 {% else %}
-    <h1>Заявок на покупку не поступало</h1>
+    <div style=" align-items: center;     justify-content: center;  display: flex;">
+    <h1>Вы не отправляли заявки на покупку франшиз</h1>
+    </div>
+
 {% endif %}
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-<script>
-    $(document).ready(function () {
-        $('.statusSelect').change(function () {
-            $(this).closest('form').submit(); // Автоматическая отправка формы при изменении значения в select
-        });
-    });
-</script>
+
 </html>

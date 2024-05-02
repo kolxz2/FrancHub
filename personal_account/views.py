@@ -37,6 +37,19 @@ def user_franchises(request):
 
 @login_required
 def user_buy_franchise_requests(request):
+    list_visibility = False
+    if request.method == 'POST':
+        list_visibility = True
+        status_value = request.POST.get('status')
+        status, request_id = status_value.split('/')
+        # Получаем объект RequestsToBuy по его id
+        request_to_buy = get_object_or_404(RequestsToBuy, id=request_id)
+        # Изменяем статус заявки на новое значение
+        request_to_buy.status = status
+        request_to_buy.save()
+        # Перенаправляем пользователя на ту же страницу или на другую страницу, где вы хотите отобразить обновленные данные
+        return redirect('user_buy_franchise_requests')
+
     user_franchises = Franchise.objects.filter(user_id=request.user.id)
     requests_to_buy = []
     for franchise in user_franchises:
@@ -46,11 +59,34 @@ def user_buy_franchise_requests(request):
                 'request': franchise_request,
                 'franchise': franchise_request.franchise,
                 'user': franchise_request.user,
-                'created_at': franchise_request.created_at
+                'created_at': franchise_request.created_at,
+                'status': franchise_request.status
             }
             requests_to_buy.append(request_info)
+    if requests_to_buy:
+        list_visibility = True
 
-    return render(request, 'user_buy_franchise_requests.html', {'requests_to_buy': requests_to_buy})
+    return render(request, 'user_buy_franchise_requests.html', {'requests_to_buy': requests_to_buy, 'list_visibility': list_visibility})
+
+
+@login_required
+def user_requests_to_by(request):
+    list_visibility = False
+    if request.method == 'POST':
+        list_visibility = True
+        request_id = request.POST.get('request_id')
+        request_to_buy = get_object_or_404(RequestsToBuy, id=request_id)
+        # Изменяем статус заявки на новое значение
+        # request_to_buy.status = "cansel"
+        request_to_buy.delete()
+        # Перенаправляем пользователя на ту же страницу или на другую страницу, где вы хотите отобразить обновленные данные
+        # return redirect('user_buy_franchise_requests')
+
+    user_franchises = RequestsToBuy.objects.filter(user=request.user.id)
+    if user_franchises:
+        list_visibility = True
+    return render(request, 'user_requests_to_by.html', {'requests_to_buy': user_franchises, 'list_visibility': list_visibility})
+
 
 
 @login_required
