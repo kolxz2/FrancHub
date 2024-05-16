@@ -10,28 +10,31 @@ from personal_account.models import Franchise, FranchisePhoto, RequestsToBuy, Ca
 def main_list(request):
     budget = request.GET.get('budget')
     category = request.GET.get('category')
+
+    franchise_list = Franchise.objects.filter(allow_to_publish=True)
+
     if budget and budget != '':
         if budget == "5000000":
-            # В случае, если выбрано "Более 5,000,000 ₽", фильтруем объекты, где start_investments больше или равно 5000000
-            franchise_list = Franchise.objects.filter(start_investments__gte=5000000)
+            franchise_list = franchise_list.filter(start_investments__gte=5000000)
         else:
             min_investment, max_investment = map(int, budget.split('/'))
-            franchise_list = Franchise.objects.filter(start_investments__gte=min_investment,
-                                                      start_investments__lte=max_investment)
-    else:
-        franchise_list = Franchise.objects.all()
+            franchise_list = franchise_list.filter(start_investments__gte=min_investment,
+                                                   start_investments__lte=max_investment)
     if category and category != '':
         franchise_list = franchise_list.filter(category__title=category)
+
     categories = Category.objects.all()
     user = request.user
-    return render(request, 'main_list.html',
-                  {'franchise_list': franchise_list,
-                   'user': user,
-                   'categories': categories,
-                   'budget': budget,
-                   'category': category
-                   }
-                  )
+
+    return render(request,
+                  'main_list.html',
+                  {
+                      'franchise_list': franchise_list,
+                      'user': user,
+                      'categories': categories,
+                      'budget': budget,
+                      'category': category
+                  })
 
 
 @csrf_exempt
