@@ -3,9 +3,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
+from django.shortcuts import render
+from django.urls import reverse_lazy, reverse
 
 from .forms import RegistrationForm
 
@@ -40,12 +40,15 @@ def login_view(request):
         password = request.POST.get('password')
         user = authenticate(request, email=email, password=password)
         if user is not None:
+
             login(request, user)
             # Получаем предыдущий URL из заголовков запроса
             previous_url = request.META.get('HTTP_REFERER')
             # Если предыдущий URL существует и он не является URL для входа, перенаправляем на него
             if previous_url and previous_url != request.build_absolute_uri(reverse('login')):
                 return redirect(previous_url)
+            elif user.is_staff or user.is_superuser:
+                return redirect('all_site_franchises')
             else:
                 return redirect('main_list')
         else:

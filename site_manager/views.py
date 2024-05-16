@@ -19,10 +19,12 @@ def franchise_validation(request):
             return redirect('user_franchises')
     else:
         form = AddFranchiseForm()
-    return render(request, 'create_franchise.html', {'form': form})
+    return render(request, 'franchise_validation.html', {'form': form})
 
 
 @login_required
 def all_site_franchises(request):
+    if not request.user.is_staff:
+        return redirect('login')
     franchises = Franchise.objects.all()
-    return render(request, 'user_franchises.html', {'franchises': franchises})
+    return render(request, 'all_site_franchises.html', {'franchises': franchises})
