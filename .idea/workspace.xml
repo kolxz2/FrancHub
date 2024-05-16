@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="Create site admin">
+    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="Delete Статьи">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buy_franchises/templates/main_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/templates/main_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/templates/user_buy_franchise_requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/user_buy_franchise_requests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/templates/user_franchises.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/user_franchises.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/templates/user_requests_to_by.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/user_requests_to_by.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site_manager/templates/franchise_validation.html" beforeDir="false" afterPath="$PROJECT_DIR$/site_manager/templates/franchise_validation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site_manager/templates/user_franchises.html" beforeDir="false" afterPath="$PROJECT_DIR$/site_manager/templates/all_site_franchises.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site_manager/templates/all_site_franchises.html" beforeDir="false" afterPath="$PROJECT_DIR$/site_manager/templates/all_site_franchises.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/site_manager/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +174,7 @@
       <workItem from="1714980563423" duration="886000" />
       <workItem from="1715589565735" duration="616000" />
       <workItem from="1715721571997" duration="311000" />
-      <workItem from="1715846860545" duration="7333000" />
+      <workItem from="1715846860545" duration="11351000" />
     </task>
     <task id="LOCAL-00001" summary="registration, login, detect auth">
       <option name="closed" value="true" />
@@ -233,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715852300291</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Delete Статьи">
+      <option name="closed" value="true" />
+      <created>1715856260324</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715856260324</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +243,8 @@
     <MESSAGE value="Create franchise, login and logaut with css" />
     <MESSAGE value="Finished work" />
     <MESSAGE value="Create site admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create site admin" />
+    <MESSAGE value="Delete Статьи" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Статьи" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

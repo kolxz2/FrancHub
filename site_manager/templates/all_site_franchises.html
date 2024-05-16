@@ -5,6 +5,39 @@
     {% load static %}
     <meta charset="UTF-8">
     <style>
+        .select-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .arrow.expanded {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
         .franchise-advantages {
             color: #282828; /* Цвет текста */
             font-size: 20px; /* Размер шрифта */
@@ -1738,6 +1771,26 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                             <div class="SearchResultsModule-filters">
                                 <div class="SearchResultsModule-wrapper">
                                     <main class="SearchResultsModule-main">
+                                        <form method="GET">
+                                            <div class="select-wrapper">
+                                                <select name="publish_filter" id="publishFilter" style="width: 500px"
+                                                        onchange="toggleArrow()">
+                                                    <option value="" {% if not publish_filter %}selected{% endif %}>
+                                                        Все
+                                                    </option>
+                                                    <option value="published"
+                                                            {% if publish_filter == 'published' %}selected{% endif %}>
+                                                        Опубликованные
+                                                    </option>
+                                                    <option value="unpublished"
+                                                            {% if publish_filter == 'unpublished' %}selected{% endif %}>
+                                                        Неопубликованные
+                                                    </option>
+                                                </select>
+                                                <span id="arrow" class="arrow"></span>
+                                            </div>
+                                            <button type="submit">Фильтровать</button>
+                                        </form>
                                         <div class="ModuleHeader">
                                             <div class="ModuleHeader-block"><h2 class="ModuleHeader-title">Франшизы
                                                 сайта</h2></div>
@@ -1750,7 +1803,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                                          style="--profile-promo-background: var(--white);">
                                                         <bsp-media-gallery class="ProfilePromo-media"
                                                                            data-flickity-enabled="">
-                                                            <a href="{% url 'edit_franchise' franchise.franchise_id %}"
+                                                            <a href="{% url 'franchise_validation' franchise.franchise_id %}"
                                                                class="franchise-link">
                                                                 <img class="Image"
                                                                      data-image-size="profilePromo"
@@ -1867,11 +1920,15 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                                                     ₽
                                                                 </div>
                                                             </div>
+
                                                             <div class="ProfilePromo-cta"><a class="Link"
-                                                                                             href="{% url 'edit_franchise' franchise.franchise_id %}"
+                                                                                             href="{% url 'franchise_validation' franchise.franchise_id %}"
                                                                                              aria-label="Wayback Burgers"
-                                                                                             data-cms-ai="0">Узнат
-                                                                больше</a></div>
+                                                                                             data-cms-ai="0"
+                                                                                             style="color: {% if franchise.allow_to_publish %}green{% else %}#e6c200{% endif %};">
+                                                                {% if franchise.allow_to_publish %}
+                                                                    Опубликована{% else %}Нужна проверка{% endif %}</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <template class="ProfilePromo-modal"
@@ -1889,6 +1946,23 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         </div>
     </div>
 </main>
+<script>
+    function toggleArrow() {
+        var select = document.getElementById('publishFilter');
+        var arrow = document.getElementById('arrow');
+
+        if (select.options[select.selectedIndex].value !== "") {
+            arrow.classList.add('expanded');
+        } else {
+            arrow.classList.remove('expanded');
+        }
+    }
+
+    document.getElementById('publishFilter').addEventListener('click', function () {
+        document.getElementById('arrow').classList.toggle('expanded');
+    });
+</script>
+А
 </body>
 
 </html>
