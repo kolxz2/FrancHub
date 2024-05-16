@@ -5,15 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="Finished work">
-      <change afterPath="$PROJECT_DIR$/personal_account/templates/user_requests_to_by.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0010_franchise_sait_manager_comment_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/templates/franchise_validation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/templates/user_franchises.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site_manager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buy_franchises/templates/main_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/templates/main_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrancHub/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrancHub/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrancHub/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FrancHub/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buy_franchises/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/personal_account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/templates/user_buy_franchise_requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/user_buy_franchise_requests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,33 +56,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.FrancHub.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kolxz2Aorus/Downloads&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.FrancHub.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/kolxz2Aorus/PycharmProjects/FrancHub/site_manager",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;,
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql",
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\site_manager" />
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\buy_franchises\static\app_hel_files" />
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\accounts" />
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\personal_account" />
@@ -174,6 +185,11 @@
       <workItem from="1713779635560" duration="1251000" />
       <workItem from="1713825658089" duration="27000" />
       <workItem from="1714584081091" duration="711000" />
+      <workItem from="1714628159385" duration="9151000" />
+      <workItem from="1714980563423" duration="886000" />
+      <workItem from="1715589565735" duration="616000" />
+      <workItem from="1715721571997" duration="311000" />
+      <workItem from="1715846860545" duration="4450000" />
     </task>
     <task id="LOCAL-00001" summary="registration, login, detect auth">
       <option name="closed" value="true" />
@@ -199,7 +215,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708939101457</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Finished work">
+      <option name="closed" value="true" />
+      <created>1714628184961</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714628184961</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Finished work">
+      <option name="closed" value="true" />
+      <created>1715721594949</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715721594949</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,31 +250,6 @@
           <url>file://$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm</url>
           <line>36984</line>
           <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>92</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>94</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>96</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/personal_account/views.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

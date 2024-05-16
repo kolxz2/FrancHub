@@ -18,7 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "accounts.apps.AccountsConfig",
     "personal_account.apps.PersonalCabinetConfig",
-    "buy_franchises.apps.BuyFranchisesConfig"
+    "buy_franchises.apps.BuyFranchisesConfig",
+    "site_manager.apps.SiteManagerConfig"
 ]
 
 MIDDLEWARE = [

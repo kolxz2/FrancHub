@@ -53,9 +53,10 @@ class Franchise(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     preview_photo = models.ImageField(upload_to="preview_photo/", null=True, blank=True)
-    allow_to_publish = models.BooleanField()
-    # todo добавить в регистрацию франшизы поле
     start_investments = models.IntegerField()
+
+    allow_to_publish = models.BooleanField(default=False)
+    sait_manager_comment = models.TextField(null=True, blank=True)
 
     def delete(self, *args, **kwargs):
         # Удаление файла изображения перед удалением экземпляра модели
@@ -86,6 +87,7 @@ class FranchisePhoto(models.Model):
 
 class LocationMap(models.Model):
     map_id = models.AutoField(primary_key=True)
+    franchise = models.ForeignKey(Franchise, on_delete=models.CASCADE)
     adygea = models.IntegerField()
     altai = models.IntegerField()
     altai_republic = models.IntegerField()
@@ -103,7 +105,6 @@ class LocationMap(models.Model):
     crimea = models.IntegerField()
     dagestan = models.IntegerField()
     donetsk = models.IntegerField()
-    franchise = models.ForeignKey(Franchise, on_delete=models.CASCADE)
     ingushetia = models.IntegerField()
     irkutsk = models.IntegerField()
     ivanovo = models.IntegerField()
