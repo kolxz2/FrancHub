@@ -15,7 +15,7 @@ def main_list(request):
     category = request.GET.get('category')
     search_query = request.GET.get('search')
 
-    franchise_list = Franchise.objects.filter(allow_to_publish=True)
+    franchise_list = Franchise.objects.filter(allow_to_publish="published")
 
     if budget and budget != '':
         if budget == "5000000":

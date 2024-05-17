@@ -45,12 +45,19 @@ class Franchise(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     preview_photo = models.ImageField(upload_to="preview_photo/", null=True, blank=True)
-    allow_to_publish = models.BooleanField(default=False)
+    STATUS_PUBLISH = [
+        ('need_a_check', 'Нужна проверка'),
+        ('published', 'Опубликована'),
+        ('filled_in_incorrectly', 'Заполнена неверно')
+    ]
+    allow_to_publish = models.CharField(max_length=100, choices=STATUS_PUBLISH, verbose_name="Статус заявки", null=True,
+                              blank=True)
     sait_manager_comment = models.TextField(null=True, blank=True)
     average_check = models.IntegerField()
     royalties_monthly_coast = models.IntegerField()
     start_investments = models.IntegerField()
     lump_sum_payment = models.IntegerField()
+
 
     def delete(self, *args, **kwargs):
         # Удаление файла изображения перед удалением экземпляра модели
