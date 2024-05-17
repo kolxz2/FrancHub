@@ -5,6 +5,34 @@
     {% load static %}
     <meta charset="UTF-8">
     <style>
+        input::-webkit-outer-spin-button,
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+
+        .marker-class {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
         .franchise-advantages {
             color: #282828; /* Цвет текста */
             font-size: 20px; /* Размер шрифта */
@@ -164,7 +192,8 @@
 
     }
     </style>
-
+    <script src="https://api-maps.yandex.ru/v3/?apikey=b94a3ac5-188a-4af3-b0b6-ab4c78289a42&lang=ru_RU"></script>
+     <script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
     <script defer as="script" src="https://kit.fontawesome.com/3a55385e84.js" crossorigin="anonymous"></script>
 
     <meta property="og:title" content="Venture X">
@@ -36664,40 +36693,40 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                     <ul class="Navigation-items-auth" data-logged-in="false">
                         {% if user.is_authenticated %}
 
-                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+                            <div style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
 
 
 
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationLink"
-                                                                    href="{% url 'logout' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Выход</span>
-                                </a></div>
-                            </div>
-                        </li>
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationLink"
+                                                                        href="{% url 'logout' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Выход</span>
+                                    </a></div>
+                                </div>
+                            </li>
 
-                    {% else %}
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="{% url 'register' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Регистрация</span>
-                                </a></div>
-                            </div>
-                        </li>
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="{% url 'login' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Вход</span>
-                                </a></div>
-                            </div>
-                        </li>
-                    {% endif %}
+                        {% else %}
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                        href="{% url 'register' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Регистрация</span>
+                                    </a></div>
+                                </div>
+                            </li>
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                        href="{% url 'login' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Вход</span>
+                                    </a></div>
+                                </div>
+                            </li>
+                        {% endif %}
                     </ul>
                 </bsp-nav>
 
@@ -36906,8 +36935,8 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                 </div>
                             </div>
                         </li>
-                        {% elif user.user_type ==  'franchise' %}
-                           <li class="Navigation-items-item">
+                    {% elif user.user_type ==  'franchise' %}
+                        <li class="Navigation-items-item">
                             <div class="NavigationItem">
                                 <div class="NavigationItem-text"><a class="NavigationItem-text-link"
                                                                     href="{% url 'user_requests_to_by' %}"
@@ -36944,7 +36973,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                 <ul class="Navigation-items-auth" data-logged-in="false">
                     {% if user.is_authenticated %}
 
-                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+                        <div style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
 
 
 
@@ -37239,18 +37268,16 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                             Финансы
                                         </a>
                                     </li>
-                                    {#                                    <li>#}
-                                    {#                                        <a class="Tabs-tab" href="#videos" data-tab data-id="videos" data-redirect#}
-                                    {#                                           data-cms-ai="0">#}
-                                    {#                                            Videos#}
-                                    {#                                        </a>#}
-                                    {#                                    </li>#}
-                                    {#                                    <li>#}
-                                    {#                                        <a class="Tabs-tab" href="#master-franchise" data-tab data-id="master-franchise"#}
-                                    {#                                           data-cms-ai="0">#}
-                                    {#                                            Master Franchise#}
-                                    {#                                        </a>#}
-                                    {#                                    </li>#}
+                                    <li>
+                                        <a class="Tabs-tab" href="#videos" data-tab data-id="videos" data-redirect
+                                           data-cms-ai="0">
+                                            Калькулятор
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="Tabs-tab" href="#master-franchise" data-tab data-id="master-franchise"
+                                           data-cms-ai="0">Карта размещения</a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -37355,564 +37382,108 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                 <div class="Tabs-panel" data-id="videos" data-tab-panel>
                                     <div class="TabItem videos">
                                         <div class="TabItem-content">
+                                            <div class="container mt-5">
+                                                <h2>Franchise Profitability Calculator</h2>
+                                                <form id="franchise-form">
+                                                    <div class="form-group">
+                                                        <label for="region">Регион открытия бизнеса:</label>
+                                                        <select class="form-control" id="region" name="region"
+                                                                onchange="calculate()">
+                                                            {% for region in regions %}
+                                                                <option value="{{ region.id }}"
+                                                                        data-rent="{{ region.average_rent }}"
+                                                                        data-salary="{{ region.average_salary }}"
+                                                                        data-internet="{{ region.internet_and_communication_payment }}"
+                                                                        data-utility="{{ region.utility_payment }}">{{ region.name }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
 
-                                            <div class="TabItem-header">
-                                                <div class="TabItem-title">Venture X Videos</div>
+                                                    <div class="form-group">
+                                                        <label for="loan_amount">Сумма заемных средств:</label>
+                                                        <input type="number" class="form-control" id="loan_amount"
+                                                               name="loan_amount" min="0" value="0"
+                                                               oninput="calculate()">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="calculation_period">Период займа (в
+                                                            месяцах):</label>
+                                                        <input type="number" class="form-control"
+                                                               id="calculation_period" name="calculation_period" min="1"
+                                                               value="10" oninput="calculate()">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="required_number_of_employees">Количество
+                                                            сотрудников:</label>
+                                                        <input type="number" class="form-control"
+                                                               id="required_number_of_employees"
+                                                               name="required_number_of_employees" min="0"
+                                                               value="{{ franchise.required_number_of_employees }}"
+                                                               oninput="calculate()">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="average_clients">Среднее количество клиентов в
+                                                            месяц:</label>
+                                                        <input type="number" class="form-control" id="average_clients"
+                                                               name="average_clients" min="0" value="100"
+                                                               oninput="calculate()">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="start_investments">Начальные затраты:</label>
+                                                        <input readonly type="number" class="form-control"
+                                                               id="total_initial_investment"
+                                                               name="total_initial_investment" min="0"
+                                                               value="{{ total_initial_investment }}"
+                                                               oninput="calculate()">
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label for="average_check">Средний чек:</label>
+                                                        <input readonly type="number" class="form-control"
+                                                               id="average_check"
+                                                               name="average_check" min="0"
+                                                               value="{{ franchise.average_check }}"
+                                                               oninput="calculate()">
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <label for="royalties_monthly_coast">Ежемесячные роялти:</label>
+                                                        <input readonly type="number" class="form-control"
+                                                               id="royalties_monthly_coast"
+                                                               name="royalties_monthly_coast" min="0"
+                                                               value="{{ franchise.royalties_monthly_coast }}"
+                                                               oninput="calculate()">
+                                                    </div>
+                                                </form>
                                             </div>
 
-                                            <div class="ListO" data-list-columns="3" data-list-item-count="2"
-                                                 data-module>
-                                                <div class="ListO-items" data-list-columns="3"
-                                                     data-list-item-count="2"
-                                                >
-                                                    <div class="ListO-items-item">
-                                                        <div class="ResourcePromo" data-module="narrow"
-                                                             data-content-type="video" data-has-media>
-                                                            <div class="ResourcePromo-content">
-                                                                <div class="ResourcePromo-category">
-            <span class="Link">
-        video</span>
-                                                                </div>
-                                                                <div class="ResourcePromo-title">
-                                                                    <a class="Link"
-                                                                       href="https://www.franchiseeurope.com/venture-x-coworking-30"
-                                                                       data-cms-ai="0">
-                                                                        Venture X: Coworking 3.0</a>
-                                                                </div>
-                                                                <span class="ResourcePromo-date">January 24, 2020 06:43 PM</span>
-                                                                <bsp-video-module-a class="ResourcePromo-media">
-                                                                    <picture>
-                                                                        <source width="689" height="412"
-                                                                                data-image-size="videoModulePoster"
-                                                                                srcset="https://static4.franchisedirect.ie/dims4/default/57f6d4a/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg"/>
-                                                                        <img class="Image"
-                                                                             data-image-size="videoModulePoster"
-                                                                             alt="Venture X: Coworking 3.0"
-                                                                             srcset="https://static4.franchisedirect.ie/dims4/default/57f6d4a/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg 1x,https://static4.franchisedirect.ie/dims4/default/5e82575/2147483647/strip/true/crop/480x287+0+36/resize/1378x824!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg 2x"
-                                                                             width="689" height="412"
-                                                                             src="https://static4.franchisedirect.ie/dims4/default/57f6d4a/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg">
-                                                                    </picture>
-                                                                    <div class="ResourcePromo-playIcon" data-play-icon>
-                                                                        <i class="far fa-play-circle"></i>
-                                                                    </div>
-
-                                                                    <template class="ResourcePromo-modal"
-                                                                              data-video-modal>
-                                                                        <bsp-video-modal class="VideoModal">
-                                                                            <div class="VideoModal-mediaWrapper">
-
-                                                                                <div class="VideoModal-media">
-                                                                                    <picture>
-                                                                                        <source width="689" height="412"
-                                                                                                data-image-size="videoModulePoster"
-                                                                                                srcset="https://static4.franchisedirect.ie/dims4/default/57f6d4a/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg"/>
-                                                                                        <img class="Image"
-                                                                                             data-image-size="videoModulePoster"
-                                                                                             alt="Venture X: Coworking 3.0"
-                                                                                             srcset="https://static4.franchisedirect.ie/dims4/default/57f6d4a/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg 1x,https://static4.franchisedirect.ie/dims4/default/5e82575/2147483647/strip/true/crop/480x287+0+36/resize/1378x824!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg 2x"
-                                                                                             width="689" height="412"
-                                                                                             src="https://static4.franchisedirect.ie/dims4/default/57f6d4a/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FibXbOTCepnQ%2Fhqdefault.jpg">
-                                                                                    </picture>
-                                                                                    <div class="VideoModal-controls">
-                                                                                        <button class="VideoModal-playButton">
-                                                                                            <i class="far fa-play-circle"></i>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                                <div class="VideoModal-player">
-                                                                                    <bsp-youtubeplayer
-                                                                                            class="YouTubeVideoPlayer"
-                                                                                            data-video-player
-                                                                                            player-id="fa773fc27bd0546edac71aeb932a9682d"
-                                                                                            video-id="ibXbOTCepnQ"
-                                                                                            video-title="Venture X: Coworking 3.0"
-                                                                                    >
-                                                                                        <div>
-                                                                                            <iframe id="YouTubeVideoPlayer-fa773fc27bd0546edac71aeb932a9682d"
-                                                                                                    role="application"
-                                                                                                    title="YouTube embedded video player"
-                                                                                                    allowfullscreen
-                                                                                                    src="//www.youtube.com/embed/ibXbOTCepnQ?enablejsapi=1&playsinline=1"></iframe>
-                                                                                        </div>
-
-                                                                                        <video-player-controls
-                                                                                                class="VideoPlayerControls">
-                                                                                            <div class="VideoPlayerControls-initialControls">
-                                                                                                <button class="VideoPlayerControls-initialPlayButton"
-                                                                                                        data-click="play"
-                                                                                                        type="button"
-                                                                                                        aria-label="play">
-                                                                                                    <i class="far fa-play-circle"></i>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                            <div class="VideoPlayerControls-playbackControls">
-                                                                                                <div class="VideoPlayerControls-seekControls">
-                                                                                                    <div class="VideoPlayerControls-seekTrack"></div>
-                                                                                                    <div class="VideoPlayerControls-seekTrackProgress"></div>
-                                                                                                    <div class="VideoPlayerControls-seekTrackVein"></div>
-                                                                                                    <input aria-label="seek"
-                                                                                                           data-change="seek"
-                                                                                                           type="range"
-                                                                                                           min="0"
-                                                                                                           max="100"
-                                                                                                           step="0.01"
-                                                                                                           value="0">
-                                                                                                    <div class="VideoPlayerControls-companionContainer"></div>
-                                                                                                </div>
-                                                                                                <div class="VideoPlayerControls-controls">
-                                                                                                    <div class="VideoPlayerControls-time">
-                                                                                                        0:00 / 0:00
-                                                                                                    </div>
-                                                                                                    <div class="VideoPlayerControls-centerControls">
-                                                                                                        <button class="VideoPlayerControls-rewindButton"
-                                                                                                                data-click="rewind"
-                                                                                                                type="button"
-                                                                                                                aria-label="rewind">
-                                                                                                            <svg>
-                                                                                                                <use xlink:href="#player-back-5"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                        <button class="VideoPlayerControls-playPauseButton"
-                                                                                                                data-click="togglePlayback"
-                                                                                                                type="button"
-                                                                                                                aria-label="toggle playback">
-                                                                                                            <svg class="VideoPlayerControls-playIcon">
-                                                                                                                <use xlink:href="#player-play"></use>
-                                                                                                            </svg>
-                                                                                                            <svg class="VideoPlayerControls-pauseIcon">
-                                                                                                                <use xlink:href="#player-pause"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                        <button class="VideoPlayerControls-forwardButton"
-                                                                                                                data-click="forward"
-                                                                                                                type="button"
-                                                                                                                aria-label="forward">
-                                                                                                            <svg>
-                                                                                                                <use xlink:href="#player-forward-5"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                    <div class="VideoPlayerControls-rightControls">
-                                                                                                        <div class="VideoPlayerControls-companionControl">
-                                                                                                            Video
-                                                                                                            Companion
-                                                                                                            <bsp-toggle-input
-                                                                                                                    class="ToggleInput"
-                                                                                                                    checked>
-                                                                                                                <label class="ToggleInput-label">
-                                                                                                                    <input type="checkbox"
-                                                                                                                           checked
-                                                                                                                           name="companion-toggle">
-                                                                                                                    <div class="ToggleInput-toggle">
-                                                                                                                        <div class="ToggleInput-slider"></div>
-                                                                                                                        <div class="ToggleInput-activeLabel">
-                                                                                                                            On
-                                                                                                                        </div>
-                                                                                                                        <div class="ToggleInput-inactiveLabel">
-                                                                                                                            Off
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-                                                                                                                </label>
-                                                                                                            </bsp-toggle-input>
-                                                                                                        </div>
-                                                                                                        <button class="VideoPlayerControls-muteToggle"
-                                                                                                                data-click="toggleMute"
-                                                                                                                type="button"
-                                                                                                                aria-label="toggle mute">
-                                                                                                            <svg class="VideoPlayerControls-volumeIcon">
-                                                                                                                <use xlink:href="#player-volume"></use>
-                                                                                                            </svg>
-                                                                                                            <svg class="VideoPlayerControls-volumeOffIcon">
-                                                                                                                <use xlink:href="#player-volume-off"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                        <button class="VideoPlayerControls-fullscreenToggle"
-                                                                                                                data-click="toggleFullscreen"
-                                                                                                                type="button"
-                                                                                                                aria-label="toggle fullscreen">
-                                                                                                            <svg class="VideoPlayerControls-enterFullscreenIcon">
-                                                                                                                <use xlink:href="#player-fullscreen"></use>
-                                                                                                            </svg>
-                                                                                                            <svg class="VideoPlayerControls-exitFullscreenIcon">
-                                                                                                                <use xlink:href="#player-fullscreen-exit"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="VideoPlayerControls-miniPlayerControls">
-                                                                                                <button class="VideoPlayerControls-playPauseButton"
-                                                                                                        data-click="togglePlayback"
-                                                                                                        type="button"
-                                                                                                        aria-label="toggle playback">
-                                                                                                    <svg class="VideoPlayerControls-playIcon">
-                                                                                                        <use xlink:href="#player-play"></use>
-                                                                                                    </svg>
-                                                                                                    <svg class="VideoPlayerControls-pauseIcon">
-                                                                                                        <use xlink:href="#player-pause"></use>
-                                                                                                    </svg>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </video-player-controls>
-                                                                                    </bsp-youtubeplayer>
-                                                                                </div>
-
-                                                                            </div>
-                                                                            <div class="VideoModal-content">
-                                                                                <div class="VideoModal-title">Venture X:
-                                                                                    Coworking 3.0
-                                                                                </div>
-
-
-                                                                                <div class="VideoModal-description">
-                                                                                    Venture X is a shared workspace and
-                                                                                    community that is a blend of
-                                                                                    boutique hotel and modern office
-                                                                                    styles with a high level of design
-                                                                                    that feels professional and
-                                                                                    welcoming.
-                                                                                </div>
-
-
-                                                                                <div class="VideoModal-cta">
-
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </bsp-video-modal>
-                                                                    </template>
-                                                                </bsp-video-module-a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ListO-items-item">
-                                                        <div class="ResourcePromo" data-module="narrow"
-                                                             data-content-type="video" data-has-media>
-                                                            <div class="ResourcePromo-content">
-                                                                <div class="ResourcePromo-category">
-            <span class="Link">
-        video</span>
-                                                                </div>
-                                                                <div class="ResourcePromo-title">
-                                                                    <a class="Link"
-                                                                       href="https://www.franchiseeurope.com/coworking-spaces-the-future-of-work"
-                                                                       data-cms-ai="0">
-                                                                        Coworking Spaces: The Future of Work</a>
-                                                                </div>
-                                                                <span class="ResourcePromo-date">January 24, 2020 06:42 PM</span>
-                                                                <bsp-video-module-a class="ResourcePromo-media">
-                                                                    <picture>
-                                                                        <source width="689" height="412"
-                                                                                data-image-size="videoModulePoster"
-                                                                                srcset="https://static4.franchisedirect.ie/dims4/default/3bdfcbd/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg"/>
-                                                                        <img class="Image"
-                                                                             data-image-size="videoModulePoster"
-                                                                             alt="Coworking Spaces: The Future of Work"
-                                                                             srcset="https://static4.franchisedirect.ie/dims4/default/3bdfcbd/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg 1x,https://static4.franchisedirect.ie/dims4/default/45d1d02/2147483647/strip/true/crop/480x287+0+36/resize/1378x824!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg 2x"
-                                                                             width="689" height="412"
-                                                                             src="https://static4.franchisedirect.ie/dims4/default/3bdfcbd/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg">
-                                                                    </picture>
-                                                                    <div class="ResourcePromo-playIcon" data-play-icon>
-                                                                        <i class="far fa-play-circle"></i>
-                                                                    </div>
-
-                                                                    <template class="ResourcePromo-modal"
-                                                                              data-video-modal>
-                                                                        <bsp-video-modal class="VideoModal">
-                                                                            <div class="VideoModal-mediaWrapper">
-
-                                                                                <div class="VideoModal-media">
-                                                                                    <picture>
-                                                                                        <source width="689" height="412"
-                                                                                                data-image-size="videoModulePoster"
-                                                                                                srcset="https://static4.franchisedirect.ie/dims4/default/3bdfcbd/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg"/>
-                                                                                        <img class="Image"
-                                                                                             data-image-size="videoModulePoster"
-                                                                                             alt="Coworking Spaces: The Future of Work"
-                                                                                             srcset="https://static4.franchisedirect.ie/dims4/default/3bdfcbd/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg 1x,https://static4.franchisedirect.ie/dims4/default/45d1d02/2147483647/strip/true/crop/480x287+0+36/resize/1378x824!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg 2x"
-                                                                                             width="689" height="412"
-                                                                                             src="https://static4.franchisedirect.ie/dims4/default/3bdfcbd/2147483647/strip/true/crop/480x287+0+36/resize/689x412!/quality/95/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FEn0Ppf1X3zs%2Fhqdefault.jpg">
-                                                                                    </picture>
-                                                                                    <div class="VideoModal-controls">
-                                                                                        <button class="VideoModal-playButton">
-                                                                                            <i class="far fa-play-circle"></i>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                                <div class="VideoModal-player">
-                                                                                    <bsp-youtubeplayer
-                                                                                            class="YouTubeVideoPlayer"
-                                                                                            data-video-player
-                                                                                            player-id="f9ce68b4f328346cc9dec394c41b80b14"
-                                                                                            video-id="En0Ppf1X3zs"
-                                                                                            video-title="Coworking Spaces: The Future of Work"
-                                                                                    >
-                                                                                        <div>
-                                                                                            <iframe id="YouTubeVideoPlayer-f9ce68b4f328346cc9dec394c41b80b14"
-                                                                                                    role="application"
-                                                                                                    title="YouTube embedded video player"
-                                                                                                    allowfullscreen
-                                                                                                    src="//www.youtube.com/embed/En0Ppf1X3zs?enablejsapi=1&playsinline=1"></iframe>
-                                                                                        </div>
-
-                                                                                        <video-player-controls
-                                                                                                class="VideoPlayerControls">
-                                                                                            <div class="VideoPlayerControls-initialControls">
-                                                                                                <button class="VideoPlayerControls-initialPlayButton"
-                                                                                                        data-click="play"
-                                                                                                        type="button"
-                                                                                                        aria-label="play">
-                                                                                                    <i class="far fa-play-circle"></i>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                            <div class="VideoPlayerControls-playbackControls">
-                                                                                                <div class="VideoPlayerControls-seekControls">
-                                                                                                    <div class="VideoPlayerControls-seekTrack"></div>
-                                                                                                    <div class="VideoPlayerControls-seekTrackProgress"></div>
-                                                                                                    <div class="VideoPlayerControls-seekTrackVein"></div>
-                                                                                                    <input aria-label="seek"
-                                                                                                           data-change="seek"
-                                                                                                           type="range"
-                                                                                                           min="0"
-                                                                                                           max="100"
-                                                                                                           step="0.01"
-                                                                                                           value="0">
-                                                                                                    <div class="VideoPlayerControls-companionContainer"></div>
-                                                                                                </div>
-                                                                                                <div class="VideoPlayerControls-controls">
-                                                                                                    <div class="VideoPlayerControls-time">
-                                                                                                        0:00 / 0:00
-                                                                                                    </div>
-                                                                                                    <div class="VideoPlayerControls-centerControls">
-                                                                                                        <button class="VideoPlayerControls-rewindButton"
-                                                                                                                data-click="rewind"
-                                                                                                                type="button"
-                                                                                                                aria-label="rewind">
-                                                                                                            <svg>
-                                                                                                                <use xlink:href="#player-back-5"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                        <button class="VideoPlayerControls-playPauseButton"
-                                                                                                                data-click="togglePlayback"
-                                                                                                                type="button"
-                                                                                                                aria-label="toggle playback">
-                                                                                                            <svg class="VideoPlayerControls-playIcon">
-                                                                                                                <use xlink:href="#player-play"></use>
-                                                                                                            </svg>
-                                                                                                            <svg class="VideoPlayerControls-pauseIcon">
-                                                                                                                <use xlink:href="#player-pause"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                        <button class="VideoPlayerControls-forwardButton"
-                                                                                                                data-click="forward"
-                                                                                                                type="button"
-                                                                                                                aria-label="forward">
-                                                                                                            <svg>
-                                                                                                                <use xlink:href="#player-forward-5"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                    <div class="VideoPlayerControls-rightControls">
-                                                                                                        <div class="VideoPlayerControls-companionControl">
-                                                                                                            Video
-                                                                                                            Companion
-                                                                                                            <bsp-toggle-input
-                                                                                                                    class="ToggleInput"
-                                                                                                                    checked>
-                                                                                                                <label class="ToggleInput-label">
-                                                                                                                    <input type="checkbox"
-                                                                                                                           checked
-                                                                                                                           name="companion-toggle">
-                                                                                                                    <div class="ToggleInput-toggle">
-                                                                                                                        <div class="ToggleInput-slider"></div>
-                                                                                                                        <div class="ToggleInput-activeLabel">
-                                                                                                                            On
-                                                                                                                        </div>
-                                                                                                                        <div class="ToggleInput-inactiveLabel">
-                                                                                                                            Off
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-                                                                                                                </label>
-                                                                                                            </bsp-toggle-input>
-                                                                                                        </div>
-                                                                                                        <button class="VideoPlayerControls-muteToggle"
-                                                                                                                data-click="toggleMute"
-                                                                                                                type="button"
-                                                                                                                aria-label="toggle mute">
-                                                                                                            <svg class="VideoPlayerControls-volumeIcon">
-                                                                                                                <use xlink:href="#player-volume"></use>
-                                                                                                            </svg>
-                                                                                                            <svg class="VideoPlayerControls-volumeOffIcon">
-                                                                                                                <use xlink:href="#player-volume-off"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                        <button class="VideoPlayerControls-fullscreenToggle"
-                                                                                                                data-click="toggleFullscreen"
-                                                                                                                type="button"
-                                                                                                                aria-label="toggle fullscreen">
-                                                                                                            <svg class="VideoPlayerControls-enterFullscreenIcon">
-                                                                                                                <use xlink:href="#player-fullscreen"></use>
-                                                                                                            </svg>
-                                                                                                            <svg class="VideoPlayerControls-exitFullscreenIcon">
-                                                                                                                <use xlink:href="#player-fullscreen-exit"></use>
-                                                                                                            </svg>
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="VideoPlayerControls-miniPlayerControls">
-                                                                                                <button class="VideoPlayerControls-playPauseButton"
-                                                                                                        data-click="togglePlayback"
-                                                                                                        type="button"
-                                                                                                        aria-label="toggle playback">
-                                                                                                    <svg class="VideoPlayerControls-playIcon">
-                                                                                                        <use xlink:href="#player-play"></use>
-                                                                                                    </svg>
-                                                                                                    <svg class="VideoPlayerControls-pauseIcon">
-                                                                                                        <use xlink:href="#player-pause"></use>
-                                                                                                    </svg>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </video-player-controls>
-                                                                                    </bsp-youtubeplayer>
-                                                                                </div>
-
-                                                                            </div>
-                                                                            <div class="VideoModal-content">
-                                                                                <div class="VideoModal-title">Coworking
-                                                                                    Spaces: The Future of Work
-                                                                                </div>
-
-
-                                                                                <div class="VideoModal-description">
-                                                                                    Coworking spaces are the future of
-                                                                                    work. Venture X is leading the way
-                                                                                    in an innovative industry to fill
-                                                                                    this need!
-                                                                                </div>
-
-
-                                                                                <div class="VideoModal-cta">
-
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </bsp-video-modal>
-                                                                    </template>
-                                                                </bsp-video-module-a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="container mt-5">
+                                                <h3>Результаты расчета</h3>
+                                                <p>Общие начальные затраты: <span id="initial_investments">0</span> руб.
+                                                </p>
+                                                <p>Ежемесячные расходы: <span id="monthly_expenses">0</span> руб.</p>
+                                                <p>Чистая ежемесячная прибыль: <span id="net_monthly_profit">0</span>
+                                                    руб.</p>
+                                                <p>Срок окупаемости: <span id="payback_period">0</span> месяцев</p>
+                                                <p>Рентабельность инвестиций (ROI): <span id="roi">0</span>%</p>
                                             </div>
 
 
-                                            <div class="TabItem-footer">
-                                                <div class="LeadButton"
-                                                     data-franchise-id="0000015c-d714-d671-affd-d7be0fc40000"
-                                                     data-franchise-name="Venture X" data-lead-source="10"
-                                                     data-lead-form-url="https://www.franchiseeurope.com/request-information"
-                                                     data-btn-type="button"
-                                                     data-profile-status="open"
-
-                                                     data-lead-button>
-                                                    <div class="LeadButton-label">
-                                                        <i class="fa-regular fa-check"></i>
-                                                        <span class="SmallLabel">REQUEST FREE INFO</span>
-                                                        <span class="LargeLabel">REQUEST FREE INFO</span>
-                                                        <span class="AddedToDrawerLabel">ADDED TO LIST</span>
-                                                    </div>
-                                                    <div class="LeadButton-infoRequestedLabel">
-                                                        <i class="fa-regular fa-check"></i>
-                                                        REQUESTED
-                                                    </div>
-                                                    <div class="LeadButton-checkbox-hidden">
-                                                        <div class="LeadCheckboxInput">
-                                                            <label class="LeadCheckboxInput-label">
-                                                                <input type="checkbox"
-                                                                       value="0000015c-d714-d671-affd-d7be0fc40000"
-                                                                       name="profileIds"
-                                                                       value="0000015c-d714-d671-affd-d7be0fc40000">
-                                                                <i class="far unchecked fa-square"></i>
-                                                                <i class="fad checked fa-check-square"></i>
-                                                                <span>REQUEST FREE INFO</span>
-                                                            </label>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
 
                                 <div class="Tabs-panel" data-id="master-franchise" data-tab-panel>
                                     <div class="TabItem master-franchise">
                                         <div class="TabItem-content">
-                                            <div class="TabItem-header">
-                                                <div class="TabItem-title">Venture X Master Franchise</div>
-                                            </div>
-
-                                            <div class="ProfileMasterFranchiseDetail">
-                                                <div class="ProfileMasterFranchiseDetail">
-
-                                                    <div class="ProfileMasterFranchiseDetail-title">
-                                                        <h2>Ljgjkybntkyfz byajhvfwbz </h2>
-                                                    </div>
+                                            <div id="map" style="width: 1200px; height: 600px"></div>
 
 
-                                                </div>
-                                            </div>
-
-
-                                            <div class="TabItem-footer">
-                                                <div class="LeadButton"
-                                                        {#                                                     data-franchise-id="0000015c-d714-d671-affd-d7be0fc40000"#}
-                                                     data-franchise-name="Venture X" data-lead-source="10"
-                                                     data-lead-form-url="https://www.franchiseeurope.com/request-information"
-                                                     data-btn-type="button"
-                                                     data-profile-status="open"
-
-                                                     data-lead-button>
-                                                    <div class="LeadButton-label">
-                                                        <i class="fa-regular fa-check"></i>
-                                                        <span class="SmallLabel">REQUEST FREE INFO</span>
-                                                        <span class="LargeLabel">REQUEST FREE INFO</span>
-                                                        <span class="AddedToDrawerLabel">ADDED TO LIST</span>
-                                                    </div>
-                                                    <div class="LeadButton-infoRequestedLabel">
-                                                        <i class="fa-regular fa-check"></i>
-                                                        REQUESTED
-                                                    </div>
-                                                    <div class="LeadButton-checkbox-hidden">
-                                                        <div class="LeadCheckboxInput">
-                                                            <label class="LeadCheckboxInput-label">
-                                                                <input type="checkbox"
-                                                                       value="0000015c-d714-d671-affd-d7be0fc40000"
-                                                                       name="profileIds"
-                                                                       value="0000015c-d714-d671-affd-d7be0fc40000">
-                                                                <i class="far unchecked fa-square"></i>
-                                                                <i class="fad checked fa-check-square"></i>
-                                                                <span>REQUEST FREE INFO</span>
-                                                            </label>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -37992,6 +37563,125 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     }
 
 
+</script>
+<script>
+    function calculate() {
+        // Получение значений полей формы
+        const region = document.getElementById('region');
+        const loanAmount = parseFloat(document.getElementById('loan_amount').value) || 0;
+        const calculationPeriod = parseInt(document.getElementById('calculation_period').value) || 0;
+        const requiredNumberOfEmployees = parseInt(document.getElementById('required_number_of_employees').value) || 0;
+        const averageClients = parseInt(document.getElementById('average_clients').value) || 0;
+        const startInvestments = parseFloat(document.getElementById('total_initial_investment').value) || 0;
+        const averageCheck = parseFloat(document.getElementById('average_check').value) || 0;
+        const royaltiesMonthlyCoast = parseFloat(document.getElementById('royalties_monthly_coast').value) || 0;
+
+        // Получение данных региона
+        const averageRent = parseFloat(region.options[region.selectedIndex].getAttribute('data-rent')) || 0;
+        const averageSalary = parseFloat(region.options[region.selectedIndex].getAttribute('data-salary')) || 0;
+        const internetAndCommunicationPayment = parseFloat(region.options[region.selectedIndex].getAttribute('data-internet')) || 0;
+        const utilityPayment = parseFloat(region.options[region.selectedIndex].getAttribute('data-utility')) || 0;
+        const annualInterestRate = parseFloat(region.options[region.selectedIndex].getAttribute('data-interest-rate')) / 100 || 0;
+
+        // Расчет месячной процентной ставки
+        const monthlyInterestRate = annualInterestRate / 12;
+
+        // Расчет ежемесячного платежа по кредиту (аннуитетный платеж)
+        let loanPayment = 0;
+        if (loanAmount > 0 && calculationPeriod > 0 && monthlyInterestRate > 0) {
+            loanPayment = loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, calculationPeriod) / (Math.pow(1 + monthlyInterestRate, calculationPeriod) - 1);
+        }
+
+        // Общие начальные затраты
+        const initialInvestments = startInvestments + loanAmount;
+
+        // Ежемесячные расходы
+        const monthlyExpenses = averageRent + internetAndCommunicationPayment + utilityPayment + (averageSalary * requiredNumberOfEmployees) + royaltiesMonthlyCoast + loanPayment;
+
+        // Ежемесячная прибыль
+        const monthlyRevenue = averageClients * averageCheck;
+        const monthlyProfit = monthlyRevenue - monthlyExpenses;
+
+        // Накопленная прибыль
+        let cumulativeProfit = 0;
+        let paybackPeriodMonths = "Бизнес не окупается при данных условиях";
+
+        for (let month = 1; month <= calculationPeriod; month++) {
+            cumulativeProfit += monthlyProfit;
+
+            if (cumulativeProfit >= initialInvestments) {
+                paybackPeriodMonths = month;
+                break;
+            }
+        }
+        paybackPeriodMonths += calculationPeriod
+
+        // Расчет ROI
+        let roi = "Невозможно рассчитать";
+        if (paybackPeriodMonths !== "Бизнес не окупается при данных условиях") {
+            roi = ((cumulativeProfit / initialInvestments) * 100).toFixed(2);
+        }
+
+        // Вывод результатов
+        document.getElementById('initial_investments').innerText = initialInvestments.toLocaleString();
+        document.getElementById('monthly_expenses').innerText = monthlyExpenses.toLocaleString();
+        document.getElementById('net_monthly_profit').innerText = monthlyProfit.toLocaleString();
+        document.getElementById('payback_period').innerText = paybackPeriodMonths;
+        document.getElementById('roi').innerText = roi;
+    }
+
+    // Начальный расчет при загрузке страницы
+    document.addEventListener('DOMContentLoaded', calculate);
+</script>
+
+<script>
+    async function initMap() {
+        // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+        await ymaps3.ready;
+        const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker} = ymaps3;
+
+        // Initialize the map
+        map = new YMap(
+          // Pass the link to the HTMLElement of the container
+          document.getElementById('map'),
+          // Pass the map initialization parameters
+          {location: LOCATION, showScaleInCopyrights: true},
+          [
+            // Add a map scheme layer
+            new YMapDefaultSchemeLayer({}),
+            // Add a layer of geo objects to display the markers
+            new YMapDefaultFeaturesLayer({})
+          ]
+        );
+          const polygonFeature = new YMapFeature({
+            id: 'polygon',
+            source: 'featureSource',
+            geometry: {
+                type: 'Polygon',
+                coordinates: [
+                    [
+                       [37.588144, 55.733842],
+                        [25.229762, 55.289311],
+                        [25.329762, 55.389311]
+                    ]
+                ]
+            },
+            style: {
+                stroke: [{width: 6, color: 'rgb(14, 194, 219)'}],
+                fill: 'rgba(56, 56, 219, 0.5)'
+            }
+        });
+
+        // Добавляем слой для отображения схематической карты
+        map.addChild(new YMapDefaultSchemeLayer());
+        {#map.addChild(new YMapDefaultFeaturesLayer());#}
+
+{#map.addChild(polygonFeature);#}
+
+
+    }
+
+    initMap();
 </script>
 
 </html>

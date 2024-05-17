@@ -3,8 +3,100 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-from .forms import CurrentUserForm, AddFranchiseForm, FranchiseEditForm
-from .models import Franchise, FranchisePhoto, RequestsToBuy
+from .forms import CurrentUserForm, AddFranchiseForm, FranchiseEditForm, AddLocationMapForm
+from .models import Franchise, FranchisePhoto, RequestsToBuy, LocationMap
+
+REGION_CHOICES = {
+    'adygea': 'Adygea',
+    'altai': 'Altai',
+    'altai_republic': 'Altai Republic',
+    'amur': 'Amur',
+    'arkhangelsk': 'Arkhangelsk',
+    'astrakhan': 'Astrakhan',
+    'bashkortostan': 'Bashkortostan',
+    'belgorod': 'Belgorod',
+    'bryansk': 'Bryansk',
+    'buryatia': 'Buryatia',
+    'chechnya': 'Chechnya',
+    'chelyabinsk': 'Chelyabinsk',
+    'chukotka': 'Chukotka',
+    'chuvashia': 'Chuvashia',
+    'crimea': 'Crimea',
+    'dagestan': 'Dagestan',
+    'donetsk': 'Donetsk',
+    'ingushetia': 'Ingushetia',
+    'irkutsk': 'Irkutsk',
+    'ivanovo': 'Ivanovo',
+    'jewish_autonomous_oblast': 'Jewish Autonomous Oblast',
+    'kabardino_balkaria': 'Kabardino-Balkaria',
+    'kaliningrad': 'Kaliningrad',
+    'kalmykia': 'Kalmykia',
+    'kaluga': 'Kaluga',
+    'kamchatka': 'Kamchatka',
+    'karachay_cherkessia': 'Karachay-Cherkessia',
+    'karelia': 'Karelia',
+    'kemerovo': 'Kemerovo',
+    'khabarovsk': 'Khabarovsk',
+    'khakassia': 'Khakassia',
+    'khanty_mansi': 'Khanty-Mansi',
+    'kherson': 'Kherson',
+    'kirov': 'Kirov',
+    'komi': 'Komi',
+    'kostroma': 'Kostroma',
+    'krasnodar': 'Krasnodar',
+    'krasnoyarsk': 'Krasnoyarsk',
+    'kurgan': 'Kurgan',
+    'kursk': 'Kursk',
+    'leningrad': 'Leningrad',
+    'lipetsk': 'Lipetsk',
+    'lugansk': 'Lugansk',
+    'magadan': 'Magadan',
+    'mari_el': 'Mari El',
+    'mordovia': 'Mordovia',
+    'moscow': 'Moscow',
+    'moscow_oblast': 'Moscow Oblast',
+    'murmansk': 'Murmansk',
+    'nenets': 'Nenets',
+    'nizhny_novgorod': 'Nizhny Novgorod',
+    'north_ossetia_alania': 'North Ossetia-Alania',
+    'novgorod': 'Novgorod',
+    'novosibirsk': 'Novosibirsk',
+    'omsk': 'Omsk',
+    'orel': 'Orel',
+    'orenburg': 'Orenburg',
+    'penza': 'Penza',
+    'perm': 'Perm',
+    'primorsky': 'Primorsky',
+    'pskov': 'Pskov',
+    'rostov': 'Rostov',
+    'ryazan': 'Ryazan',
+    'sakha_yakutia': 'Sakha (Yakutia)',
+    'sakhalin': 'Sakhalin',
+    'samara': 'Samara',
+    'saratov': 'Saratov',
+    'sevastopol_city': 'Sevastopol City',
+    'smolensk': 'Smolensk',
+    'st_petersburg': 'St. Petersburg',
+    'stavropol': 'Stavropol',
+    'sverdlovsk': 'Sverdlovsk',
+    'tambov': 'Tambov',
+    'tatarstan': 'Tatarstan',
+    'tomsk': 'Tomsk',
+    'tula': 'Tula',
+    'tuva': 'Tuva',
+    'tver': 'Tver',
+    'tyumen': 'Tyumen',
+    'udmurtia': 'Udmurtia',
+    'ulyanovsk': 'Ulyanovsk',
+    'vladimir': 'Vladimir',
+    'volgograd': 'Volgograd',
+    'vologda': 'Vologda',
+    'voronezh': 'Voronezh',
+    'yamalo_nenets': 'Yamalo-Nenets',
+    'yaroslavl': 'Yaroslavl',
+    'zabaykalsky': 'Zabaykalsky',
+    'zaporozhye': 'Zaporozhye',
+}
 
 
 def my_view(request):
@@ -16,17 +108,38 @@ def my_view(request):
 def create_franchise(request):
     if request.user.user_type != 'owner':
         return redirect('login')
+
     if request.method == 'POST':
-        form = AddFranchiseForm(request.POST, request.FILES, request=request)
+        franchise_form = AddFranchiseForm(request.POST, request.FILES, request=request)
         franchise_photos = request.FILES.getlist('images')
-        if form.is_valid() and len(franchise_photos) > 0:
-            franchise = form.save()
+
+        if franchise_form.is_valid() and len(franchise_photos) > 0:
+            franchise = franchise_form.save()
+
             for photo in franchise_photos:
                 FranchisePhoto.objects.create(franchise=franchise, franchise_photos=photo)
+
+            # Save location map data
+            regions_data = request.POST.getlist('regions')
+            for region in regions_data:
+                region_name = region.get('name')
+                points = region.get('points', 0)
+                if region_name and points:
+                    LocationMap.objects.create(
+                        franchise=franchise,
+                        **{region_name: points}
+                    )
+
             return redirect('user_franchises')
     else:
-        form = AddFranchiseForm()
-    return render(request, 'create_franchise.html', {'form': form})
+        franchise_form = AddFranchiseForm()
+        initial_regions = []
+
+    return render(request, 'create_franchise.html', {
+        'franchise_form': franchise_form,
+             'initial_regions': initial_regions,
+        'region_choices': REGION_CHOICES
+    })
 
 
 @login_required
@@ -120,5 +233,4 @@ def delete_franchise(request, franchise_id):
         franchise.delete()
         return redirect('user_franchises')
     else:
-
         return HttpResponseRedirect(reverse('user_franchises'))
