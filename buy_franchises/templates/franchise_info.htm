@@ -10,6 +10,13 @@
             -moz-appearance: textfield;
         }
 
+        .formula {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
         #map {
             width: 100%;
             height: 400px;
@@ -192,21 +199,25 @@
 
     }
     </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
     <script src="https://api-maps.yandex.ru/v3/?apikey=b94a3ac5-188a-4af3-b0b6-ab4c78289a42&lang=ru_RU"></script>
-     <script>
+    <script>
         const initialData = {{ initial_data|safe }};
 
         async function initMap() {
             await ymaps3.ready;
 
-            const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer } = ymaps3;
-            const { YMapDefaultMarker } = await ymaps3.import('@yandex/ymaps3-markers@0.0.1');
-             const initialCoordinates = initialData.length > 0 ? initialData[0].geo : [37.588144, 55.733842];
+            const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer} = ymaps3;
+            const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-markers@0.0.1');
+            const initialCoordinates = initialData.length > 0 ? initialData[0].geo : [37.588144, 55.733842];
             const map = new YMap(
                 document.getElementById('map'),
                 {
                     location: {
-                        center:initialCoordinates,
+                        center: initialCoordinates,
                         zoom: 5
                     }
                 }
@@ -218,7 +229,7 @@
             initialData.forEach(data => {
                 map.addChild(new YMapDefaultMarker({
                     coordinates: data.geo,
-                    title: "открыто франшиз: " + data.value.toString() ,
+                    title: "открыто франшиз: " + data.value.toString(),
                     subtitle: data.region,
                     color: 'blue',
                 }));
@@ -228,7 +239,7 @@
         document.addEventListener('DOMContentLoaded', initMap);
     </script>
 
-     <script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
     <script defer as="script" src="https://kit.fontawesome.com/3a55385e84.js" crossorigin="anonymous"></script>
 
     <meta property="og:title" content="Venture X">
@@ -37506,6 +37517,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                                 <p>Срок окупаемости: <span id="payback_period">0</span> месяцев</p>
                                                 <p>Рентабельность инвестиций (ROI): <span id="roi">0</span>%</p>
                                             </div>
+
 
 
                                         </div>
