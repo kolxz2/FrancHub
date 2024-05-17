@@ -165,6 +165,85 @@
     }
     </style>
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <!-- Подключите jQuery (если еще не подключен) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Подключите JS файл Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        let fieldIndex = 0;
+
+        function getAllSelectedRegions() {
+            let selectedRegions = new Set();
+            document.querySelectorAll('select[name^="region_"]').forEach(select => {
+                selectedRegions.add(select.value);
+            });
+            return selectedRegions;
+        }
+
+        function updateRegionOptions() {
+            const selectedRegions = getAllSelectedRegions();
+            document.querySelectorAll('select[name^="region_"]').forEach(select => {
+                let currentValue = select.value;
+                select.innerHTML = '';
+                allRegions.forEach(region => {
+                    if (!selectedRegions.has(region.value) || region.value === currentValue) {
+                        let option = document.createElement('option');
+                        option.value = region.value;
+                        option.textContent = region.text;
+                        if (region.value === currentValue) {
+                            option.selected = true;
+                        }
+                        select.appendChild(option);
+                    }
+                });
+                $(select).select2();  // Инициализация Select2 после обновления опций
+            });
+        }
+
+        function addRegionField(region = '', value = 1) {
+            let container = document.getElementById('region-container');
+            let newField = document.createElement('div');
+            newField.classList.add('region-entry');
+
+            newField.innerHTML = `
+                <select name="region_${fieldIndex}" onchange="updateRegionOptions()" class="region-select">
+                    ${allRegions.map(regionObj => `<option value="${regionObj.value}" ${regionObj.value === region ? 'selected' : ''}>${regionObj.text}</option>`).join('')}
+                </select>
+                <input type="number" name="value_${fieldIndex}" value="${value}" min="1" step="1" oninput="validateInput(this)" />
+                <button type="button" onclick="removeRegionField(this)">-</button>
+            `;
+            fieldIndex++;
+            container.appendChild(newField);
+            $(newField).find('.region-select').select2();  // Инициализация Select2 для нового поля
+            updateRegionOptions();
+        }
+
+        function removeRegionField(button) {
+            let container = document.getElementById('region-container');
+            container.removeChild(button.parentElement);
+            updateRegionOptions();
+        }
+
+        function validateInput(input) {
+            if (input.value < 1) {
+                input.value = 1;
+            }
+        }
+
+        const allRegions = {{ all_regions|safe }};
+        const initialData = {{ initial_data|safe }};
+
+        $(document).ready(function () {
+            if (initialData.length > 0) {
+                initialData.forEach(data => addRegionField(data.region, data.value));
+            } else {
+                addRegionField(); // Add the initial field on page load
+            }
+        });
+    </script>
+
     <script defer as="script" src="https://kit.fontawesome.com/3a55385e84.js" crossorigin="anonymous"></script>
 
     <meta property="og:title" content="Venture X">
@@ -1946,6 +2025,14 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     <h2>Создание франшизы</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {% if franchise %}
+            <p>
+
+                <label for="sait_manager_comment">Корректировки по заполненной форме:</label>
+                <textarea readonly name="sait_manager_comment" cols="40" rows="10" required=""
+                          id="sait_manager_comment">{{ franchise.sait_manager_comment }} </textarea>
+            </p>
+        {% endif %}
         <div class="form-row">
             <div>
                 <label for="id_short_description">Краткое описание:</label>
@@ -2200,6 +2287,9 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         {{ form.preview_photo }}
         <input required name="images" id="imageInput" type="file" multiple class="changelist-form-container"/>
         <div id="imagePreview"></div>
+        <div id="region-container"></div>
+        <label>Добавить регион размещения франшиз</label>
+        <button type="button" onclick="addRegionField()">+</button>
 
 
         <div id="myModal" class="modal">
