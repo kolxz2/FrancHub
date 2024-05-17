@@ -36597,12 +36597,11 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
             <div class="SearchModule-container">
 
                 <div class="SearchModule-title">Найдите франшизу для себя</div>
-            {% comment %} todo сделать поиск здесь. Форма не работает {% endcomment %}
                 <div class="SearchOverlay-content">
 
-                    <form class="SearchOverlay-form">
+                    <form class="SearchOverlay-form"  method="GET">
                         <label class="sr-only" for="SearchOverlayInput">Search</label>
-                        <input id="SearchOverlayInput" type="text" class="SearchOverlay-input" name="q"
+                        <input id="search_query" name="search" type="text" class="SearchOverlay-input"
                                placeholder="Search...">
                         <button type="submit" class="SearchOverlay-button" aria-label="Search">
                             <svg class="icon-magnify">
