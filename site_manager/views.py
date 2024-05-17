@@ -18,9 +18,9 @@ def franchise_validation(request, franchise_id):
             comment = request.POST.get('sait_manager_comment', '')
             if action == 'comment':
                 franchise.sait_manager_comment = comment
-                franchise.allow_to_publish = False
+                franchise.allow_to_publish = "filled_in_incorrectly"
             elif action == 'publish':
-                franchise.allow_to_publish = True
+                franchise.allow_to_publish = "published"
             franchise.save()
             return redirect('all_site_franchises')
         form = AddFranchiseForm(request.POST, request.FILES, instance=franchise)
@@ -54,9 +54,11 @@ def all_site_franchises(request):
     franchises = Franchise.objects.all()
 
     if publish_filter == 'published':
-        franchises = franchises.filter(allow_to_publish=True)
-    elif publish_filter == 'unpublished':
-        franchises = franchises.filter(allow_to_publish=False)
+        franchises = franchises.filter(allow_to_publish="published")
+    elif publish_filter == 'need_a_check':
+        franchises = franchises.filter(allow_to_publish="need_a_check")
+    elif publish_filter == 'filled_in_incorrectly':
+        franchises = franchises.filter(allow_to_publish="filled_in_incorrectly")
     if search_query and search_query != '':
         franchises = franchises.filter(
             Q(advantages_over_competitors__icontains=search_query) |

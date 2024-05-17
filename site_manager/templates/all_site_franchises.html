@@ -1775,11 +1775,11 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                         <input id="search_query" name="search" type="text"
                                class="SearchOverlay-input"
                                placeholder="Search...">
-          <button type="submit" class="SearchOverlay-button" aria-label="Search">
-    <svg class="icon-magnify" viewBox="0 0 24 24" width="24" height="24">
-        <path d="M10 2a8 8 0 106.32 12.9l5.38 5.38a1 1 0 001.41-1.41l-5.38-5.38A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
-    </svg>
-</button>
+                        <button type="submit" class="SearchOverlay-button" aria-label="Search">
+                            <svg class="icon-magnify" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M10 2a8 8 0 106.32 12.9l5.38 5.38a1 1 0 001.41-1.41l-5.38-5.38A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
+                            </svg>
+                        </button>
                     </form>
                 </div>
                 <div class="SearchOverlay-content">
@@ -1794,10 +1794,15 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                         {% if publish_filter == 'published' %}selected{% endif %}>
                                     Опубликованные
                                 </option>
-                                <option value="unpublished"
+                                <option value="need_a_check"
                                         {% if publish_filter == 'unpublished' %}selected{% endif %}>
-                                    Неопубликованные
+                                    Нужна проверка
                                 </option>
+                                <option value="filled_in_incorrectly"
+                                        {% if publish_filter == 'unpublished' %}selected{% endif %}>
+                                    Заполнена неверно
+                                </option>
+                            </select>
                             </select>
                             <span id="arrow" class="arrow"></span>
                         </div>
@@ -1946,9 +1951,15 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                                                                              href="{% url 'franchise_validation' franchise.franchise_id %}"
                                                                                              aria-label="Wayback Burgers"
                                                                                              data-cms-ai="0"
-                                                                                             style="color: {% if franchise.allow_to_publish %}green{% else %}#e6c200{% endif %};">
-                                                                {% if franchise.allow_to_publish %}
-                                                                    Опубликована{% else %}Нужна проверка{% endif %}</a>
+                                                                                             style="color: {% if franchise.allow_to_publish == "published" %}green{% elif franchise.allow_to_publish == "need_a_check" %}#e6c200{% elif franchise.allow_to_publish == "filled_in_incorrectly" %}#cd0020{% endif %};">
+                                                                {% if franchise.allow_to_publish == "published" %}
+                                                                    Опубликована
+                                                                {% elif franchise.allow_to_publish == "need_a_check" %}
+                                                                    Нужна проверка
+                                                                {% elif franchise.allow_to_publish == "filled_in_incorrectly" %}
+                                                                    Заполнена неверно
+                                                                {% endif %}</a>
+
                                                             </div>
                                                         </div>
                                                     </div>
