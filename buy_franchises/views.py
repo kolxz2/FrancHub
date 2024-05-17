@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
 from accounts.models import CustomUser
-from personal_account.models import Franchise, FranchisePhoto, RequestsToBuy, Category
+from personal_account.models import Franchise, FranchisePhoto, RequestsToBuy, Category, Region
 
 
 # @csrf_exempt
@@ -42,7 +42,6 @@ def franchise_info(request, franchise_id):
     if request.method == 'POST':
         user = get_object_or_404(CustomUser, email=request.user.email)
         franchise = get_object_or_404(Franchise, pk=franchise_id)
-
         # Создаем новую запись в модели RequestsToBuy
         new_request = RequestsToBuy(user=user, franchise=franchise)
         new_request.save()
@@ -52,5 +51,14 @@ def franchise_info(request, franchise_id):
         franchise = get_object_or_404(Franchise, pk=franchise_id)
         franchise_photos = FranchisePhoto.objects.filter(franchise=franchise)
         user = request.user
+        regions = Region.objects.all()
+        total_initial_investment = franchise.start_investments + franchise.lump_sum_payment
         return render(request, 'franchise_info.htm',
-                      {'franchise': franchise, 'franchise_photos': franchise_photos, 'user': user})
+                      {
+                          'franchise': franchise,
+                          'franchise_photos': franchise_photos,
+                          'user': user,
+                          'regions': regions,
+                          'total_initial_investment': total_initial_investment
+                      }
+                      )

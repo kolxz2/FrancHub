@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-        {% load static %}
+    {% load static %}
     <meta charset="UTF-8">
     <style>
         .franchise-advantages {
@@ -1622,40 +1622,40 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                     <ul class="Navigation-items-auth" data-logged-in="false">
                         {% if user.is_authenticated %}
 
-                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+                            <div style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
 
 
 
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationLink"
-                                                                    href="{% url 'logout' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Выход</span>
-                                </a></div>
-                            </div>
-                        </li>
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationLink"
+                                                                        href="{% url 'logout' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Выход</span>
+                                    </a></div>
+                                </div>
+                            </li>
 
-                    {% else %}
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="{% url 'register' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Регистрация</span>
-                                </a></div>
-                            </div>
-                        </li>
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="{% url 'login' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Вход</span>
-                                </a></div>
-                            </div>
-                        </li>
-                    {% endif %}
+                        {% else %}
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                        href="{% url 'register' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Регистрация</span>
+                                    </a></div>
+                                </div>
+                            </li>
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                        href="{% url 'login' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Вход</span>
+                                    </a></div>
+                                </div>
+                            </li>
+                        {% endif %}
                     </ul>
                 </bsp-nav>
 
@@ -1864,8 +1864,39 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                 </div>
                             </div>
                         </li>
-                        {% elif user.user_type ==  'franchise' %}
-                           <li class="Navigation-items-item">
+                    {% elif user.is_staff %}
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'all_site_franchises' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Франшизы сайта</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'user_buy_franchise_requests' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Заявки на покупку</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% elif user.user_type ==  'franchise' %}
+                        <li class="Navigation-items-item">
                             <div class="NavigationItem">
                                 <div class="NavigationItem-text"><a class="NavigationItem-text-link"
                                                                     href="{% url 'user_requests_to_by' %}"
@@ -1901,7 +1932,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                 <ul class="Navigation-items-auth" data-logged-in="false">
                     {% if user.is_authenticated %}
 
-                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+                        <div style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
 
 
 
@@ -1943,269 +1974,285 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 </bsp-header>
 <div class="container">
     <h2>Создание франшизы</h2>
+
+    {% csrf_token %}
+    <div class="form-row">
+        <div>
+            <label for="id_short_description">Краткое описание:</label>
+            <input readonly type="text" name="short_description" required="" id="id_short_description"
+                   value="{{ franchise.short_description }}">
+        </div>
+        {# todo Зарегистрировать франшизу#}
+        <div>
+            <label for="id_title">Название франшизы:</label>
+            <input type="text" name="title" required="" id="id_title"
+                   value="{{ franchise.title }}">
+        </div>
+    </div>
+
+    {#        ---------------------#}
+    <div class="form-row">
+        <div>
+            <label for="id_inn_link">ИНН:</label>
+            <input readonly name="inn_link" required="" id="id_inn_link"
+                   value="{{ franchise.inn_link }}">
+        </div>
+
+        <div>
+            <label for="id_date_of_trademark_registration">Дата регистрации товарного знака:</label>
+            <input readonly name="date_of_trademark_registration" required=""
+                   id="id_date_of_trademark_registration"
+                   value="{{ franchise.date_of_trademark_registration }}">
+        </div>
+
+
+        <div>
+            <label for="id_business_launch_deadline">Крайний срок запуска бизнеса:</label>
+            <input readonly type="number" name="business_launch_deadline" required="" id="id_business_launch_deadline"
+                   value="{{ franchise.business_launch_deadline }}">
+        </div>
+
+        <div>
+            <label for="id_year_of_company_opening">Год открытия франшизы:</label>
+            <input readonly type="number" name="year_of_company_opening" required="" id="id_year_of_company_opening"
+                   value="{{ franchise.year_of_company_opening }}">
+        </div>
+
+        <div>
+            <label for="id_registered_trademark_number">Номер зарегистрированного товарного знака:</label>
+            <input readonly type="number" name="registered_trademark_number" required=""
+                   id="id_registered_trademark_number"
+                   value="{{ franchise.registered_trademark_number }}">
+        </div>
+
+
+    </div>
+    <div class="form-row">
+        <div>
+            <label for="id_juridical_information">Юридическая информация:</label>
+            <input readonly name="juridical_information" required=""
+                   id="id_juridical_information" value="{{ franchise.juridical_information }}">
+        </div>
+
+        <div>
+            <label for="id_link_to_the_franchise_website">Ссылка на веб-сайт франшизы:</label>
+            <input readonly name="link_to_the_franchise_website" required=""
+                   id="id_link_to_the_franchise_website"
+                   value="{{ franchise.link_to_the_franchise_website }}">
+        </div>
+
+        <div>
+            <label for="id_number_of_franchise_points">Количество точек франшизы:</label>
+            <input readonly type="number" name="number_of_franchise_points" required=""
+                   id="id_number_of_franchise_points"
+                   value="{{ franchise.number_of_franchise_points }}">
+        </div>
+        <div>
+            <label for="id_franchise_start_year">Год старта франшизы: </label>
+            <input readonly type="number" name="franchise_start_year" required="" id="id_franchise_start_year"
+                   value="{{ franchise.franchise_start_year }}">
+        </div>
+    </div>
+    {#------------------------------------------------------------------------#}
+
+    <div class="form-row">
+        <div>
+            <label for="id_lump_sum_payment">Единовременная выплата:</label>
+            <input readonly type="number" name="lump_sum_payment" required="" id="id_lump_sum_payment"
+                   value="{{ franchise.lump_sum_payment }}">
+        </div>
+
+        <div>
+            <label for="id_investments_from_and_to">Инвестиции от:</label>
+            <input readonly name="investments_from_and_to" required=""
+                   id="id_investments_from_and_to"
+                   value="{{ franchise.investments_from_and_to }}"></input>
+        </div>
+
+        <div>
+            <label for="id_payback_period">Срок окупаемости:</label>
+            <input readonly type="number" name="payback_period" required="" id="id_payback_period"
+                   value="{{ franchise.payback_period }}">
+        </div>
+
+        <div>
+            <label for="id_average_check">Средний чек:</label>
+            <input name="average_check" required="" id="average_check" type="number"
+                   value="{{ franchise.average_check }}">
+        </div>
+
+        <div>
+            <label for="id_royalties_monthly_coast">Ежемесячные отчисления франчайзеру:</label>
+            <input name="royalties_monthly_coast" required="" id="royalties_monthly_coast" type="number"
+                   value="{{ franchise.royalties_monthly_coast }}">
+        </div>
+    </div>
+
+    {#        ------------------------------------------------------#}
+    <div class="form-row">
+        <div>
+            <label for="id_required_number_of_employees">Требуемое количество сотрудников:</label>
+            <input readonly type="number" name="required_number_of_employees" required=""
+                   id="id_required_number_of_employees"
+                   value="{{ franchise.required_number_of_employees }}">
+        </div>
+
+        {#            <div>#}
+        {#                <label for="id_city_head_office">Город головного офис:</label>#}
+        {#                <input name="city_head_office" required="" id="id_city_head_office"#}
+        {#                       value="{{ franchise.city_head_office }}">#}
+        {#            </div>#}
+
+        <div>
+            <label for="id_number_of_own_points">Количество собственных точек:</label>
+            <input type="number" name="number_of_own_points" required="" id="id_number_of_own_points"
+                   value="{{ franchise.number_of_own_points }}">
+        </div>
+
+        <div>
+            <label for="id_number_of_own_points">Затраты на старте:</label>
+            <input readonly type="number" name="start_investments" required="" id="id_start_investments"
+                   value="{{ franchise.start_investments }}">
+        </div>
+
+
+        {#            <div>#}
+        {#                <label for="id_in_which_cities_shouldiopenafranchise">В каких городах следует открывать#}
+        {#                    франшизу:</label>#}
+        {#                <input name="in_which_cities_shouldiopenafranchise" required=""#}
+        {#                       id="id_in_which_cities_shouldiopenafranchise"#}
+        {#                       value="{{ franchise.in_which_cities_shouldiopenafranchise }}">#}
+        {#            </div>#}
+
+    </div>
+    <p>
+        <label for="id_category">Категория:</label>
+        <select disabled name="category" required="" id="id_category">
+
+            <option value="1" {% if franchise.category_id == 1 %} selected {% endif %}>Пища и напитки</option>
+
+            <option value="2" {% if franchise.category_id == 2 %} selected {% endif %}>Розничная торговля</option>
+
+            <option value="3" {% if franchise.category_id == 3 %} selected {% endif %}>Услуги</option>
+
+            <option value="4"{% if franchise.category_id == 4 %} selected {% endif %}>Бизнес-возможности</option>
+
+            <option value="5"{% if franchise.category_id == 5 %} selected {% endif %}>Образование</option>
+
+            <option value="6" {% if franchise.category_id == 6 %} selected {% endif %}>Здравоохранение</option>
+
+            <option value="7"{% if franchise.category_id == 7 %} selected {% endif %}>Финансы</option>
+
+            <option value="8"{% if franchise.category_id == 8 %} selected {% endif %}>Недвижимость</option>
+
+            <option value="9"{% if franchise.category_id == 9 %} selected {% endif %}>Красота</option>
+
+        </select>
+    </p>
+
+
+    {#------------------------------------------------------------------------------#}
+
+    <p>
+        <label for="id_advantages_over_competitors">Преимущества перед конкурентами:</label>
+        <textarea readonly name="advantages_over_competitors" cols="40" rows="10" required=""
+                  id="id_advantages_over_competitors"
+                  style="height: 129px;">{{ franchise.advantages_over_competitors }}</textarea>
+    </p>
+    <p>
+        <label for="id_company_description">Описание компании:</label>
+        <textarea readonly name="company_description" cols="40" rows="10" required=""
+                  id="id_company_description">{{ franchise.company_description }}</textarea>
+    </p>
+    <p>
+        <label for="id_costs_at_the_franchise_launch_stage">Расходы на этапе запуска франшизы :</label>
+        <textarea readonly name="costs_at_the_franchise_launch_stage" cols="40" rows="10" required=""
+                  id="id_costs_at_the_franchise_launch_stage">{{ franchise.costs_at_the_franchise_launch_stage }}</textarea>
+    </p>
+    {#        <p>#}
+    {#            <label for="id_desired_placement_sections">Желаемые разделы размещения:</label>#}
+    {#            <textarea name="desired_placement_sections" cols="40" rows="10" required=""#}
+    {#                      id="id_desired_placement_sections"#}
+    {#                      style="height: 171px;">{{ franchise.desired_placement_sections }}</textarea>#}
+    {#        </p>#}
+    <p>
+        <label for="id_example_of_profit_calculation">Пример расчета прибыли:</label>
+        <textarea readonly name="example_of_profit_calculation" cols="40" rows="10" required=""
+                  id="id_example_of_profit_calculation">{{ franchise.example_of_profit_calculation }}</textarea>
+    </p>
+
+    {#        <p>#}
+    {#            <label for="id_geography_of_development">География развития:</label>#}
+    {#            <textarea name="geography_of_development" cols="40" rows="10" required=""#}
+    {#                      id="id_geography_of_development">{{ franchise.geography_of_development }}</textarea>#}
+    {#        </p>#}
+
+    <p>
+        <label for="id_juicy_description_of_the_franchise">Сочное описание франшизы:</label>
+        <textarea readonly name="juicy_description_of_the_franchise" cols="40" rows="10" required=""
+                  id="id_juicy_description_of_the_franchise">{{ franchise.juicy_description_of_the_franchise }}</textarea>
+    </p>
+
+    <p>
+        <label for="id_most_important_choosing_factors">Наиболее важные факторы выбора:</label>
+        <textarea readonly name="most_important_choosing_factors" cols="40" rows="10" required=""
+                  id="id_most_important_choosing_factors">{{ franchise.most_important_choosing_factors }}</textarea>
+    </p>
+
+    {#        <p>#}
+    {#            <label for="id_room_requirements">Требования к помещению:</label>#}
+    {#            <textarea name="room_requirements" cols="40" rows="10" required=""#}
+    {#                      id="id_room_requirements">{{ franchise.room_requirements }}</textarea>#}
+    {#        </p>#}
+    <div>
+        <label for="id_royalties_monthly_deductions">Ежемесячные отчисления в виде роялти:</label>
+        <textarea readonly name="royalties_monthly_deductions" cols="40" rows="10" required=""
+                  id="id_royalties_monthly_deductions">{{ franchise.royalties_monthly_deductions }}</textarea>
+    </div>
+
+    <p>
+        <label for="id_training_and_support">Обучение и поддержка:</label>
+        <textarea readonly name="training_and_support" cols="40" rows="10" required=""
+                  id="id_training_and_support">{{ franchise.training_and_support }}</textarea>
+    </p>
+    <p>
+        <label for="id_what_is_included_in_the_lump_sum">Что включено в единовременный платеж:</label>
+        <textarea readonly name="what_is_included_in_the_lump_sum" cols="40" rows="10" required=""
+                  id="id_what_is_included_in_the_lump_sum">{{ franchise.what_is_included_in_the_lump_sum }}</textarea>
+    </p>
+    {#        <p>#}
+    {#            <label for="id_what_is_your_main_product">К какому товару или услуге относится основной продукт:</label>#}
+    {#            <textarea name="what_is_your_main_product" cols="40" rows="10" required="" id="id_what_is_your_main_product"#}
+    {#                      style="height: 92px;">{{ franchise.what_is_your_main_product }}</textarea>#}
+    {#        </p>#}
+
+    <label for="id_image">Additional Images:</label>
+
+
+    {{ form.preview_photo }}
+    {#        <p>#}
+    {#            <label for="id_preview_photo">Презентационная картинка по ГОСТ-1020:</label>#}
+    {#            <input type="file" name="preview_photo" accept="image/*" id="id_preview_photo"#}
+    {#                   value="{{ franchise.preview_photo.url }}">#}
+    {#        </p>#}
+
+    <input required name="images" id="imageInput" type="file" multiple class="changelist-form-container"/>
+    <div id="imagePreview"></div>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-row">
-            <div>
-                <label for="id_short_description">Краткое описание:</label>
-                <input type="text" name="short_description" required="" id="id_short_description"
-                       value="{{ franchise.short_description }}">
-            </div>
-{# todo Зарегистрировать франшизу#}
-            <div>
-                <label for="id_title">Название франшизы:</label>
-                <input type="text" name="title" required="" id="id_title"
-                       value="{{ franchise.title }}">
-            </div>
-        </div>
-
-        {#        ---------------------#}
-        <div class="form-row">
-            <div>
-                <label for="id_inn_link">ИНН:</label>
-                <input name="inn_link" required="" id="id_inn_link"
-                       value="{{ franchise.inn_link }}">
-            </div>
-
-            <div>
-                <label for="id_date_of_trademark_registration">Дата регистрации товарного знака:</label>
-                <input name="date_of_trademark_registration" required=""
-                       id="id_date_of_trademark_registration"
-                       value="{{ franchise.date_of_trademark_registration }}">
-            </div>
-
-
-            <div>
-                <label for="id_business_launch_deadline">Крайний срок запуска бизнеса:</label>
-                <input type="number" name="business_launch_deadline" required="" id="id_business_launch_deadline"
-                       value="{{ franchise.business_launch_deadline }}">
-            </div>
-
-            <div>
-                <label for="id_year_of_company_opening">Год открытия франшизы:</label>
-                <input type="number" name="year_of_company_opening" required="" id="id_year_of_company_opening"
-                       value="{{ franchise.year_of_company_opening }}">
-            </div>
-
-            <div>
-                <label for="id_registered_trademark_number">Номер зарегистрированного товарного знака:</label>
-                <input type="number" name="registered_trademark_number" required="" id="id_registered_trademark_number"
-                       value="{{ franchise.registered_trademark_number }}">
-            </div>
-
-
-        </div>
-        <div class="form-row">
-            <div>
-                <label for="id_juridical_information">Юридическая информация:</label>
-                <input name="juridical_information" required=""
-                       id="id_juridical_information" value="{{ franchise.juridical_information }}">
-            </div>
-
-            <div>
-                <label for="id_link_to_the_franchise_website">Ссылка на веб-сайт франшизы:</label>
-                <input name="link_to_the_franchise_website" required=""
-                       id="id_link_to_the_franchise_website"
-                       value="{{ franchise.link_to_the_franchise_website }}">
-            </div>
-
-            <div>
-                <label for="id_number_of_franchise_points">Количество точек франшизы:</label>
-                <input type="number" name="number_of_franchise_points" required="" id="id_number_of_franchise_points"
-                       value="{{ franchise.number_of_franchise_points }}">
-            </div>
-            <div>
-                <label for="id_franchise_start_year">Год старта франшизы: </label>
-                <input type="number" name="franchise_start_year" required="" id="id_franchise_start_year"
-                       value="{{ franchise.franchise_start_year }}">
-            </div>
-        </div>
-        {#------------------------------------------------------------------------#}
-
-        <div class="form-row">
-            <div>
-                <label for="id_lump_sum_payment">Единовременная выплата:</label>
-                <input type="number" name="lump_sum_payment" required="" id="id_lump_sum_payment"
-                       value="{{ franchise.lump_sum_payment }}">
-            </div>
-
-            <div>
-                <label for="id_investments_from_and_to">Инвестиции от:</label>
-                <input name="investments_from_and_to" required=""
-                       id="id_investments_from_and_to"
-                       value="{{ franchise.investments_from_and_to }}"></input>
-            </div>
-
-            <div>
-                <label for="id_payback_period">Срок окупаемости:</label>
-                <input type="number" name="payback_period" required="" id="id_payback_period"
-                       value="{{ franchise.payback_period }}">
-            </div>
-
-            <div>
-                <label for="id_monthly_profit">Ежемесячная прибыль:</label>
-                <input name="monthly_profit" required="" id="id_monthly_profit"
-                       value="{{ franchise.monthly_profit }}"></input>
-            </div>
-        </div>
-
-        {#        ------------------------------------------------------#}
-        <div class="form-row">
-            <div>
-                <label for="id_required_number_of_employees">Требуемое количество сотрудников:</label>
-                <input type="number" name="required_number_of_employees" required=""
-                       id="id_required_number_of_employees"
-                       value="{{ franchise.required_number_of_employees }}">
-            </div>
-
-            {#            <div>#}
-            {#                <label for="id_city_head_office">Город головного офис:</label>#}
-            {#                <input name="city_head_office" required="" id="id_city_head_office"#}
-            {#                       value="{{ franchise.city_head_office }}">#}
-            {#            </div>#}
-
-            <div>
-                <label for="id_number_of_own_points">Количество собственных точек:</label>
-                <input type="number" name="number_of_own_points" required="" id="id_number_of_own_points"
-                       value="{{ franchise.number_of_own_points }}">
-            </div>
-
-            <div>
-                <label for="id_number_of_own_points">Затраты на старте:</label>
-                <input type="number" name="start_investments" required="" id="id_start_investments"
-                       value="{{ franchise.start_investments }}">
-            </div>
-
-
-            {#            <div>#}
-            {#                <label for="id_in_which_cities_shouldiopenafranchise">В каких городах следует открывать#}
-            {#                    франшизу:</label>#}
-            {#                <input name="in_which_cities_shouldiopenafranchise" required=""#}
-            {#                       id="id_in_which_cities_shouldiopenafranchise"#}
-            {#                       value="{{ franchise.in_which_cities_shouldiopenafranchise }}">#}
-            {#            </div>#}
-
-        </div>
         <p>
-            <label for="id_category">Категория:</label>
-            <select name="category" required="" id="id_category">
 
-                <option value="1" {% if franchise.category_id == 1 %} selected {% endif %}>Пища и напитки</option>
-
-                <option value="2" {% if franchise.category_id == 2 %} selected {% endif %}>Розничная торговля</option>
-
-                <option value="3" {% if franchise.category_id == 3 %} selected {% endif %}>Услуги</option>
-
-                <option value="4"{% if franchise.category_id == 4 %} selected {% endif %}>Бизнес-возможности</option>
-
-                <option value="5"{% if franchise.category_id == 5 %} selected {% endif %}>Образование</option>
-
-                <option value="6" {% if franchise.category_id == 6 %} selected {% endif %}>Здравоохранение</option>
-
-                <option value="7"{% if franchise.category_id == 7 %} selected {% endif %}>Финансы</option>
-
-                <option value="8"{% if franchise.category_id == 8 %} selected {% endif %}>Недвижимость</option>
-
-                <option value="9"{% if franchise.category_id == 9 %} selected {% endif %}>Красота</option>
-
-            </select>
+            <label for="sait_manager_comment">Корректировки по заполненной форме:</label>
+            <textarea name="sait_manager_comment" cols="40" rows="10" required=""
+                      id="sait_manager_comment">{{ franchise.sait_manager_comment }} </textarea>
         </p>
-
-
-        {#------------------------------------------------------------------------------#}
-
-        <p>
-            <label for="id_advantages_over_competitors">Преимущества перед конкурентами:</label>
-            <textarea name="advantages_over_competitors" cols="40" rows="10" required=""
-                      id="id_advantages_over_competitors"
-                      style="height: 129px;">{{ franchise.advantages_over_competitors }}</textarea>
-        </p>
-        <p>
-            <label for="id_company_description">Описание компании:</label>
-            <textarea name="company_description" cols="40" rows="10" required=""
-                      id="id_company_description">{{ franchise.company_description }}</textarea>
-        </p>
-        <p>
-            <label for="id_costs_at_the_franchise_launch_stage">Расходы на этапе запуска франшизы :</label>
-            <textarea name="costs_at_the_franchise_launch_stage" cols="40" rows="10" required=""
-                      id="id_costs_at_the_franchise_launch_stage">{{ franchise.costs_at_the_franchise_launch_stage }}</textarea>
-        </p>
-        {#        <p>#}
-        {#            <label for="id_desired_placement_sections">Желаемые разделы размещения:</label>#}
-        {#            <textarea name="desired_placement_sections" cols="40" rows="10" required=""#}
-        {#                      id="id_desired_placement_sections"#}
-        {#                      style="height: 171px;">{{ franchise.desired_placement_sections }}</textarea>#}
-        {#        </p>#}
-        <p>
-            <label for="id_example_of_profit_calculation">Пример расчета прибыли:</label>
-            <textarea name="example_of_profit_calculation" cols="40" rows="10" required=""
-                      id="id_example_of_profit_calculation">{{ franchise.example_of_profit_calculation }}</textarea>
-        </p>
-
-        {#        <p>#}
-        {#            <label for="id_geography_of_development">География развития:</label>#}
-        {#            <textarea name="geography_of_development" cols="40" rows="10" required=""#}
-        {#                      id="id_geography_of_development">{{ franchise.geography_of_development }}</textarea>#}
-        {#        </p>#}
-
-        <p>
-            <label for="id_juicy_description_of_the_franchise">Сочное описание франшизы:</label>
-            <textarea name="juicy_description_of_the_franchise" cols="40" rows="10" required=""
-                      id="id_juicy_description_of_the_franchise">{{ franchise.juicy_description_of_the_franchise }}</textarea>
-        </p>
-
-        <p>
-            <label for="id_most_important_choosing_factors">Наиболее важные факторы выбора:</label>
-            <textarea name="most_important_choosing_factors" cols="40" rows="10" required=""
-                      id="id_most_important_choosing_factors">{{ franchise.most_important_choosing_factors }}</textarea>
-        </p>
-
-        {#        <p>#}
-        {#            <label for="id_room_requirements">Требования к помещению:</label>#}
-        {#            <textarea name="room_requirements" cols="40" rows="10" required=""#}
-        {#                      id="id_room_requirements">{{ franchise.room_requirements }}</textarea>#}
-        {#        </p>#}
-        <div>
-            <label for="id_royalties_monthly_deductions">Ежемесячные отчисления в виде роялти:</label>
-            <textarea name="royalties_monthly_deductions" cols="40" rows="10" required=""
-                      id="id_royalties_monthly_deductions">{{ franchise.royalties_monthly_deductions }}</textarea>
-        </div>
-
-        <p>
-            <label for="id_training_and_support">Обучение и поддержка:</label>
-            <textarea name="training_and_support" cols="40" rows="10" required=""
-                      id="id_training_and_support">{{ franchise.training_and_support }}</textarea>
-        </p>
-        <p>
-            <label for="id_what_is_included_in_the_lump_sum">Что включено в единовременный платеж:</label>
-            <textarea name="what_is_included_in_the_lump_sum" cols="40" rows="10" required=""
-                      id="id_what_is_included_in_the_lump_sum">{{ franchise.what_is_included_in_the_lump_sum }}</textarea>
-        </p>
-        {#        <p>#}
-        {#            <label for="id_what_is_your_main_product">К какому товару или услуге относится основной продукт:</label>#}
-        {#            <textarea name="what_is_your_main_product" cols="40" rows="10" required="" id="id_what_is_your_main_product"#}
-        {#                      style="height: 92px;">{{ franchise.what_is_your_main_product }}</textarea>#}
-        {#        </p>#}
-
-        <label for="id_image">Additional Images:</label>
-
-
-        {{ form.preview_photo }}
-        {#        <p>#}
-        {#            <label for="id_preview_photo">Презентационная картинка по ГОСТ-1020:</label>#}
-        {#            <input type="file" name="preview_photo" accept="image/*" id="id_preview_photo"#}
-        {#                   value="{{ franchise.preview_photo.url }}">#}
-        {#        </p>#}
-
-        <input required name="images" id="imageInput" type="file" multiple class="changelist-form-container"/>
-        <div id="imagePreview"></div>
-
-        <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-        </div>
-        <button type="submit">Submit</button>
-        <button type="button" onclick="confirmDelete()">Удалить</button>
+        <button type="submit" name="action" value="comment">Отправить комментарий</button>
+        <button type="submit" name="action" value="publish">Опубликовать</button>
     </form>
 </div>
 <script>

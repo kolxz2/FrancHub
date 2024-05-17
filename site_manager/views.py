@@ -8,12 +8,19 @@ from personal_account.models import FranchisePhoto, Franchise
 @login_required
 def franchise_validation(request, franchise_id):
     franchise = get_object_or_404(Franchise, pk=franchise_id)
-    # if franchise.user_id != request.user.id:
+    # if request.user.is_staff:
     #     return redirect('unauthorized_access')
     if request.method == 'POST':
-        if 'delete_franchise' in request.POST:
-            franchise.delete()
-            return redirect('user_franchises')
+        if 'action' in request.POST:
+            action = request.POST.get('action')
+            comment = request.POST.get('sait_manager_comment', '')
+            if action == 'comment':
+                franchise.sait_manager_comment = comment
+                franchise.allow_to_publish = False
+            elif action == 'publish':
+                franchise.allow_to_publish = True
+            franchise.save()
+            return redirect('all_site_franchises')
         form = AddFranchiseForm(request.POST, request.FILES, instance=franchise)
         franchise_photos = request.FILES.getlist('images')
         if form.is_valid():
@@ -24,7 +31,7 @@ def franchise_validation(request, franchise_id):
             return redirect('user_franchises')
     else:
         form = FranchiseEditForm(instance=franchise)
-    return render(request, 'create_franchise.html', {'franchise': franchise, 'form': form})
+    return render(request, 'franchise_validation.html', {'franchise': franchise, 'form': form})
 
 
 @login_required

@@ -36345,7 +36345,6 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                         </li>
 
 
-
                         <li class="Navigation-items-item" data-overflow-trigger="">
                             <div class="NavigationItem" data-overflow-menu="">
                                 <div class="NavigationItem-text">
@@ -36483,6 +36482,37 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                 </div>
                             </div>
                         </li>
+                    {% elif user.is_staff %}
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'all_site_franchises' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Франшизы сайта</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="Navigation-items-item">
+                            <div class="NavigationItem">
+                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                    href="{% url 'user_buy_franchise_requests' %}"
+                                                                    data-cms-ai="0">
+                                    <span class="NavigationItem-text-link-label">Заявки на покупку</span>
+                                </a>
+                                    <div class="NavigationItem-more">
+                                        <button aria-label="Open Sub Navigation">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     {% elif user.user_type ==  'franchise' %}
                         <li class="Navigation-items-item">
                             <div class="NavigationItem">
@@ -36557,20 +36587,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
             </bsp-nav>
         </div>
     </div>
-    <bsp-search-overlay class="SearchOverlay">
-        <div class="SearchOverlay-content">
-            <form class="SearchOverlay-form" action="https://www.franchiseeurope.com/text-search" novalidate=""
-                  autocomplete="off">
-                <label class="sr-only" for="SearchOverlayInput">Search</label>
-                <input id="SearchOverlayInput" type="text" class="SearchOverlay-input" name="q" placeholder="Search...">
-                <button type="submit" class="SearchOverlay-button" aria-label="Search">
-                    <svg class="icon-magnify">
-                        <use xlink:href="#icon-magnify"></use>
-                    </svg>
-                </button>
-            </form>
-        </div>
-    </bsp-search-overlay>
+
 </bsp-header>
 
 <div class="Page-above" data-modulewell="">
@@ -36580,6 +36597,20 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
             <div class="SearchModule-container">
 
                 <div class="SearchModule-title">Найдите франшизу для себя</div>
+            {% comment %} todo сделать поиск здесь. Форма не работает {% endcomment %}
+                <div class="SearchOverlay-content">
+
+                    <form class="SearchOverlay-form">
+                        <label class="sr-only" for="SearchOverlayInput">Search</label>
+                        <input id="SearchOverlayInput" type="text" class="SearchOverlay-input" name="q"
+                               placeholder="Search...">
+                        <button type="submit" class="SearchOverlay-button" aria-label="Search">
+                            <svg class="icon-magnify">
+                                <use xlink:href="#icon-magnify"></use>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
                 <form class="SearchModule-form"
                       action="{% url 'main_list' %}"
                       autocomplete="off">

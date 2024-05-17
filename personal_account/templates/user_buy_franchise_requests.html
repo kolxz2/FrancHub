@@ -12,6 +12,15 @@
 
         }
 
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
         body:before {
             visibility: hidden;
             border: 0;
@@ -1727,7 +1736,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                             </div>
                         </li>
                     {% elif user.user_type ==  'franchise' %}
-                           <li class="Navigation-items-item">
+                        <li class="Navigation-items-item">
                             <div class="NavigationItem">
                                 <div class="NavigationItem-text"><a class="NavigationItem-text-link"
                                                                     href="{% url 'user_requests_to_by' %}"

@@ -1,6 +1,6 @@
 from django import forms
 
-from personal_account.models import Franchise, FranchisePhoto
+from personal_account.models import Franchise, FranchisePhoto, LocationMap
 
 
 class CurrentUserForm(forms.Form):
@@ -46,3 +46,9 @@ class FranchisePhotoForm(forms.ModelForm):
     class Meta:
         model = FranchisePhoto
         fields = ['franchise_photos']
+
+
+class AddLocationMapForm(forms.ModelForm):
+    class Meta:
+        model = LocationMap
+        exclude = ['franchise']

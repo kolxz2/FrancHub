@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-        {% load static %}
+    {% load static %}
     <meta charset="UTF-8">
     <style>
-        .franchise-advantages {
-            color: #282828; /* Цвет текста */
-            font-size: 20px; /* Размер шрифта */
-            font-weight: normal; /* Жирный текст */
-            font-family: Arial, sans-serif;
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
 
+        input[type=number] {
+            -moz-appearance: textfield;
         }
 
         body:before {
@@ -1622,40 +1623,40 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                     <ul class="Navigation-items-auth" data-logged-in="false">
                         {% if user.is_authenticated %}
 
-                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+                            <div style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
 
 
 
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationLink"
-                                                                    href="{% url 'logout' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Выход</span>
-                                </a></div>
-                            </div>
-                        </li>
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationLink"
+                                                                        href="{% url 'logout' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Выход</span>
+                                    </a></div>
+                                </div>
+                            </li>
 
-                    {% else %}
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="{% url 'register' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Регистрация</span>
-                                </a></div>
-                            </div>
-                        </li>
-                        <li class="Navigation-items-item">
-                            <div class="NavigationItem">
-                                <div class="NavigationItem-text"><a class="NavigationItem-text-link"
-                                                                    href="{% url 'login' %}"
-                                                                    data-cms-ai="0">
-                                    <span class="NavigationItem-text-link-label">Вход</span>
-                                </a></div>
-                            </div>
-                        </li>
-                    {% endif %}
+                        {% else %}
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                        href="{% url 'register' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Регистрация</span>
+                                    </a></div>
+                                </div>
+                            </li>
+                            <li class="Navigation-items-item">
+                                <div class="NavigationItem">
+                                    <div class="NavigationItem-text"><a class="NavigationItem-text-link"
+                                                                        href="{% url 'login' %}"
+                                                                        data-cms-ai="0">
+                                        <span class="NavigationItem-text-link-label">Вход</span>
+                                    </a></div>
+                                </div>
+                            </li>
+                        {% endif %}
                     </ul>
                 </bsp-nav>
 
@@ -1864,8 +1865,8 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                                 </div>
                             </div>
                         </li>
-                        {% elif user.user_type ==  'franchise' %}
-                           <li class="Navigation-items-item">
+                    {% elif user.user_type ==  'franchise' %}
+                        <li class="Navigation-items-item">
                             <div class="NavigationItem">
                                 <div class="NavigationItem-text"><a class="NavigationItem-text-link"
                                                                     href="{% url 'user_requests_to_by' %}"
@@ -1901,7 +1902,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                 <ul class="Navigation-items-auth" data-logged-in="false">
                     {% if user.is_authenticated %}
 
-                                    <div  style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
+                        <div style=" padding-right: 20px; white-space: nowrap;">{{ user.username }}</div>
 
 
 
@@ -1951,7 +1952,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
                 <input type="text" name="short_description" required="" id="id_short_description"
                        value="{{ franchise.short_description }}">
             </div>
-{# todo Зарегистрировать франшизу#}
+            {# todo Зарегистрировать франшизу#}
             <div>
                 <label for="id_title">Название франшизы:</label>
                 <input type="text" name="title" required="" id="id_title"
@@ -2043,9 +2044,15 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
             </div>
 
             <div>
-                <label for="id_monthly_profit">Ежемесячная прибыль:</label>
-                <input name="monthly_profit" required="" id="id_monthly_profit"
-                       value="{{ franchise.monthly_profit }}"></input>
+                <label for="id_average_check">Средний чек:</label>
+                <input name="average_check" required="" id="average_check" type="number"
+                       value="{{ franchise.average_check }}">
+            </div>
+
+            <div>
+                <label for="id_royalties_monthly_coast">Ежемесячные отчисления франчайзеру:</label>
+                <input name="royalties_monthly_coast" required="" id="royalties_monthly_coast" type="number"
+                       value="{{ franchise.royalties_monthly_coast }}">
             </div>
         </div>
 
@@ -2191,14 +2198,9 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 
 
         {{ form.preview_photo }}
-        {#        <p>#}
-        {#            <label for="id_preview_photo">Презентационная картинка по ГОСТ-1020:</label>#}
-        {#            <input type="file" name="preview_photo" accept="image/*" id="id_preview_photo"#}
-        {#                   value="{{ franchise.preview_photo.url }}">#}
-        {#        </p>#}
-
         <input required name="images" id="imageInput" type="file" multiple class="changelist-form-container"/>
         <div id="imagePreview"></div>
+
 
         <div id="myModal" class="modal">
             <span class="close">&times;</span>
@@ -2301,22 +2303,5 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         }
     }
 </script>
-<script>
-    var inputElements = document.querySelectorAll('#id_business_launch_deadline,' +
-        ' #id_franchise_start_year, #id_lump_sum_payment, #id_number_of_franchise_points, #id_number_of_own_points, #id_payback_period, #id_registered_trademark_number, #id_required_number_of_employees, #id_year_of_company_opening');
 
-    // Проходим по каждому элементу
-    inputElements.forEach(function (inputElement) {
-        // Добавляем обработчик события на ввод текста
-        inputElement.addEventListener('input', function (event) {
-            // Получаем введенное значение
-            var inputValue = event.target.value;
-            // Удаляем из введенного значения все символы, кроме цифр
-            var cleanedValue = inputValue.replace(/\D/g, '');
-
-            // Обновляем значение в поле ввода
-            event.target.value = cleanedValue;
-        });
-    });
-</script>
 </html>
