@@ -2,7 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from personal_account.forms import AddFranchiseForm, FranchiseEditForm
-from personal_account.models import FranchisePhoto, Franchise
+from personal_account.models import FranchisePhoto, Franchise, LocationMap
+from personal_account.views import all_regions
 
 
 @login_required
@@ -31,7 +32,15 @@ def franchise_validation(request, franchise_id):
             return redirect('user_franchises')
     else:
         form = FranchiseEditForm(instance=franchise)
-    return render(request, 'franchise_validation.html', {'franchise': franchise, 'form': form})
+        initial_data = []
+        location_maps = LocationMap.objects.filter(franchise=franchise.franchise_id)
+        for location in location_maps:
+            for field in location._meta.fields:
+                if field.name not in ['id', 'franchise'] and getattr(location,
+                                                                     field.name) > 0 and field.name != 'map_id':
+                    initial_data.append({'region': field.name, 'value': getattr(location, field.name)})
+    return render(request, 'franchise_validation.html',
+                  {'franchise': franchise, 'form': form, "all_regions": all_regions, 'initial_data': initial_data})
 
 
 @login_required

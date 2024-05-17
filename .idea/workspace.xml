@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="Фильтр для всех франшиз">
-      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0011_remove_franchise_monthly_profit_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal_account/migrations/0012_alter_locationmap_adygea_alter_locationmap_altai_and_more.py" afterDir="false" />
+    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="Добавляем динамически">
+      <change afterPath="$PROJECT_DIR$/personal_account/templates/location_map_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/templates/franchise_info.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buy_franchises/templates/main_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/templates/main_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buy_franchises/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/personal_account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/create_franchise.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal_account/templates/user_buy_franchise_requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/templates/user_buy_franchise_requests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal_account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/personal_account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal_account/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site_manager/templates/franchise_validation.html" beforeDir="false" afterPath="$PROJECT_DIR$/site_manager/templates/franchise_validation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/site_manager/views.py" afterDir="false" />
@@ -52,32 +47,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.FrancHub.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kolxz2Aorus/PycharmProjects/FrancHub/site_manager&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.FrancHub.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/kolxz2Aorus/PycharmProjects/FrancHub/site_manager",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;,
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql",
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kolxz2Aorus\PycharmProjects\FrancHub\site_manager" />
@@ -186,7 +181,7 @@
       <workItem from="1715589565735" duration="616000" />
       <workItem from="1715721571997" duration="311000" />
       <workItem from="1715846860545" duration="38324000" />
-      <workItem from="1715950777666" duration="4894000" />
+      <workItem from="1715950777666" duration="13203000" />
     </task>
     <task id="LOCAL-00001" summary="registration, login, detect auth">
       <option name="closed" value="true" />
@@ -252,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715861544471</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Добавляем динамически">
+      <option name="closed" value="true" />
+      <created>1715960838474</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715960838474</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +268,8 @@
     <MESSAGE value="Create site admin" />
     <MESSAGE value="Delete Статьи" />
     <MESSAGE value="Фильтр для всех франшиз" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фильтр для всех франшиз" />
+    <MESSAGE value="Добавляем динамически" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавляем динамически" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

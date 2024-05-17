@@ -47,8 +47,3 @@ class FranchisePhotoForm(forms.ModelForm):
         model = FranchisePhoto
         fields = ['franchise_photos']
 
-
-class AddLocationMapForm(forms.ModelForm):
-    class Meta:
-        model = LocationMap
-        exclude = ['franchise']
