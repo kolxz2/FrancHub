@@ -1762,35 +1762,56 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     </div>
 </bsp-header>
 <main class="TagPage-main" data-copmanion-content="">
+
     <div class="TagPage-contentWrapper">
+
         <div class="TagPage-content" data-modulewell="">
+
             <div class="SearchResultsModule" data-module="">
+                <div class="SearchOverlay-content">
+
+                    <form class="SearchOverlay-form" method="GET">
+                        <label class="sr-only" for="SearchOverlayInput">Search</label>
+                        <input id="search_query" name="search" type="text"
+                               class="SearchOverlay-input"
+                               placeholder="Search...">
+          <button type="submit" class="SearchOverlay-button" aria-label="Search">
+    <svg class="icon-magnify" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M10 2a8 8 0 106.32 12.9l5.38 5.38a1 1 0 001.41-1.41l-5.38-5.38A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
+    </svg>
+</button>
+                    </form>
+                </div>
+                <div class="SearchOverlay-content">
+                    <form method="GET">
+                        <div class="select-wrapper">
+                            <select name="publish_filter" id="publishFilter" style="width: 500px"
+                                    onchange="toggleArrow()">
+                                <option value="" {% if not publish_filter %}selected{% endif %}>
+                                    Все
+                                </option>
+                                <option value="published"
+                                        {% if publish_filter == 'published' %}selected{% endif %}>
+                                    Опубликованные
+                                </option>
+                                <option value="unpublished"
+                                        {% if publish_filter == 'unpublished' %}selected{% endif %}>
+                                    Неопубликованные
+                                </option>
+                            </select>
+                            <span id="arrow" class="arrow"></span>
+                        </div>
+                        <button type="submit">Фильтровать</button>
+                    </form>
+                </div>
                 <form class="SearchResultsModule-form" data-search-form="">
                     <div class="SearchResultsModule-ajax">
                         <div class="SearchResultsModule-ajaxContent" data-has-results="true">
                             <div class="SearchResultsModule-filters">
                                 <div class="SearchResultsModule-wrapper">
                                     <main class="SearchResultsModule-main">
-                                        <form method="GET">
-                                            <div class="select-wrapper">
-                                                <select name="publish_filter" id="publishFilter" style="width: 500px"
-                                                        onchange="toggleArrow()">
-                                                    <option value="" {% if not publish_filter %}selected{% endif %}>
-                                                        Все
-                                                    </option>
-                                                    <option value="published"
-                                                            {% if publish_filter == 'published' %}selected{% endif %}>
-                                                        Опубликованные
-                                                    </option>
-                                                    <option value="unpublished"
-                                                            {% if publish_filter == 'unpublished' %}selected{% endif %}>
-                                                        Неопубликованные
-                                                    </option>
-                                                </select>
-                                                <span id="arrow" class="arrow"></span>
-                                            </div>
-                                            <button type="submit">Фильтровать</button>
-                                        </form>
+
+
                                         <div class="ModuleHeader">
                                             <div class="ModuleHeader-block"><h2 class="ModuleHeader-title">Франшизы
                                                 сайта</h2></div>

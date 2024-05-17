@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
 from personal_account.forms import AddFranchiseForm, FranchiseEditForm
@@ -49,11 +50,26 @@ def all_site_franchises(request):
         return redirect('login')
 
     publish_filter = request.GET.get('publish_filter')
+    search_query = request.GET.get('search')
     franchises = Franchise.objects.all()
 
     if publish_filter == 'published':
         franchises = franchises.filter(allow_to_publish=True)
     elif publish_filter == 'unpublished':
         franchises = franchises.filter(allow_to_publish=False)
+    if search_query and search_query != '':
+        franchises = franchises.filter(
+            Q(advantages_over_competitors__icontains=search_query) |
+            Q(company_description__icontains=search_query) |
+            Q(costs_at_the_franchise_launch_stage__icontains=search_query) |
+            Q(example_of_profit_calculation__icontains=search_query) |
+            Q(juicy_description_of_the_franchise__icontains=search_query) |
+            Q(most_important_choosing_factors__icontains=search_query) |
+            Q(short_description__icontains=search_query) |
+            Q(title__icontains=search_query) |
+            Q(training_and_support__icontains=search_query) |
+            Q(what_is_included_in_the_lump_sum__icontains=search_query)
+        )
 
-    return render(request, 'all_site_franchises.html', {'franchises': franchises, 'publish_filter': publish_filter})
+    return render(request, 'all_site_franchises.html',
+                  {'franchises': franchises, 'publish_filter': publish_filter, 'search_query': search_query})
