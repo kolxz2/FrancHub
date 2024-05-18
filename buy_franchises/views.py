@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
 from accounts.models import CustomUser
-from personal_account.models import Franchise, FranchisePhoto, RequestsToBuy, Category, Region, LocationMap
+from personal_account.models import Franchise, FranchisePhoto, RequestsToBuy, Category, LocationMap, Region
 from personal_account.views import all_regions
 
 

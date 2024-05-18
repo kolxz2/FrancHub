@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="публикую для Булата" />
+    <list default="true" id="bdc230bf-2312-49d1-b8ef-182fdfdc2276" name="Changes" comment="публикую для Булата">
+      <change beforePath="$PROJECT_DIR$/buy_franchises/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/buy_franchises/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,14 +51,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Rebasing master",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/kolxz2Aorus/PycharmProjects/FrancHub/site_manager",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "terminal",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -175,6 +177,7 @@
       <workItem from="1715721571997" duration="311000" />
       <workItem from="1715846860545" duration="38324000" />
       <workItem from="1715950777666" duration="31541000" />
+      <workItem from="1716029647841" duration="470000" />
     </task>
     <task id="LOCAL-00001" summary="registration, login, detect auth">
       <option name="closed" value="true" />

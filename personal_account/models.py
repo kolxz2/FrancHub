@@ -199,3 +199,18 @@ class RequestsToBuy(models.Model):
 
     class Meta:
         db_table = 'requests_to_buy'
+
+
+class Region(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    average_salary = models.DecimalField(max_digits=10, decimal_places=2)
+    average_rent = models.DecimalField(max_digits=10, decimal_places=2)
+    average_interest_rate = models.DecimalField(max_digits=5, decimal_places=2)
+    internet_and_communication_payment = models.DecimalField(max_digits=10, decimal_places=2)
+    utility_payment = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'regions_statistic'
